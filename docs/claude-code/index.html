@@ -1,0 +1,955 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="generator" content="Astro v5.18.1"><title>Claude Code · skillsetc</title><meta name="description" content="Anthropic's official agentic coding tool — CLI, IDE extensions, desktop, and web. Surfaces, install, CLI flags, permission modes, keyboard shortcuts, and headless mode."><link rel="canonical" href="https://nimiqtoolbox.github.io/skillsetc/docs/claude-code"><meta name="theme-color" content="#0B1020"><meta name="color-scheme" content="dark"><link rel="icon" type="image/svg+xml" href="/skillsetc/favicon.svg"><link rel="apple-touch-icon" href="/skillsetc/favicon.svg"><meta property="og:type" content="website"><meta property="og:title" content="Claude Code · skillsetc"><meta property="og:description" content="Anthropic's official agentic coding tool — CLI, IDE extensions, desktop, and web. Surfaces, install, CLI flags, permission modes, keyboard shortcuts, and headless mode."><meta property="og:url" content="https://nimiqtoolbox.github.io/skillsetc/docs/claude-code"><meta property="og:image" content="https://nimiqtoolbox.github.io/og-default.png"><meta property="og:site_name" content="skillsetc"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Claude Code · skillsetc"><meta name="twitter:description" content="Anthropic's official agentic coding tool — CLI, IDE extensions, desktop, and web. Surfaces, install, CLI flags, permission modes, keyboard shortcuts, and headless mode."><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/skillsetc/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CbWU6YBD.js"></script><link rel="stylesheet" href="/skillsetc/_astro/_slug_.CMe-WxGh.css">
+<link rel="stylesheet" href="/skillsetc/_astro/_slug_.De0UF2tn.css"></head> <body data-base="/skillsetc"> <a href="#main" class="skip-link">Skip to content</a> <header class="site-header" data-pagefind-ignore data-astro-cid-3ef6ksr2> <div class="header-inner" data-astro-cid-3ef6ksr2> <a href="/skillsetc/" class="brand" aria-label="skillsetc — home" data-astro-cid-3ef6ksr2> <span class="brand-mark" aria-hidden="true" data-astro-cid-3ef6ksr2>◆</span> <span class="brand-name" data-astro-cid-3ef6ksr2>skillsetc</span> </a> <nav class="primary-nav" aria-label="Primary" data-astro-cid-3ef6ksr2> <a href="/skillsetc/docs" class="nav-link active" data-astro-cid-3ef6ksr2> Docs </a><a href="/skillsetc/decide" class="nav-link" data-astro-cid-3ef6ksr2> Decide </a> </nav> <div class="header-actions" data-astro-cid-3ef6ksr2> <button type="button" class="search-trigger" data-search-trigger aria-label="Search the guide" data-astro-cid-3ef6ksr2> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg> <span class="search-trigger-label" data-astro-cid-3ef6ksr2>Search</span> <span class="kbd-group search-trigger-kbd" aria-label="⌘ then K" data-astro-cid-wy7pfqz2>  <kbd data-astro-cid-wy7pfqz2>⌘</kbd> <span class="kbd-sep" aria-hidden="true" data-astro-cid-wy7pfqz2>+</span> <kbd data-astro-cid-wy7pfqz2>K</kbd>  </span>  </button> <a href="https://github.com" class="icon-link" aria-label="GitHub repository" target="_blank" rel="noopener noreferrer" data-astro-cid-3ef6ksr2> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class aria-hidden="true"><path d="M12 .5a11.5 11.5 0 00-3.64 22.41c.58.1.79-.25.79-.55v-2.06c-3.2.7-3.88-1.36-3.88-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.74 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.17a10.95 10.95 0 015.76 0c2.2-1.48 3.16-1.17 3.16-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.06.78 2.13v3.16c0 .31.21.66.8.55A11.5 11.5 0 0012 .5z" fill="currentColor"/></svg> </a> <button type="button" class="menu-trigger" data-menu-trigger aria-label="Open navigation menu" data-astro-cid-3ef6ksr2> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg> </button> </div> </div> </header>  <script type="module">const t=document.querySelector(".site-header");if(t){const e=()=>{t.dataset.scrolled=window.scrollY>8?"true":"false"};e(),window.addEventListener("scroll",e,{passive:!0}),document.addEventListener("astro:after-swap",e)}</script> <main id="main">  <div class="doc-shell" data-astro-cid-fz5pa65a> <aside class="sidebar" data-pagefind-ignore aria-label="Documentation navigation" data-astro-cid-ssfzsv2f> <nav class="sidebar-nav" data-astro-cid-ssfzsv2f> <section class="sidebar-group" data-astro-cid-o4nxl7dn> <h2 class="sidebar-group-label" data-astro-cid-o4nxl7dn>Primitives</h2> <ul class="sidebar-list" data-astro-cid-o4nxl7dn> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/skills" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Skills</span> <span class="sb-desc" data-astro-cid-o7fgaejc>SKILL.md, progressive disclosure, authoring</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/subagents" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Subagents</span> <span class="sb-desc" data-astro-cid-o7fgaejc>Isolated contexts, /agents, invocation</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/hooks-mcp-memory-settings" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Hooks · MCP · Memory</span> <span class="sb-desc" data-astro-cid-o7fgaejc>Lifecycle, transports, CLAUDE.md, settings</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/comparison-and-decision-guide" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Decision Guide</span> <span class="sb-desc" data-astro-cid-o7fgaejc>When to use what — with worked examples</span> </a> </li>  </ul> </section> <section class="sidebar-group" data-astro-cid-o4nxl7dn> <h2 class="sidebar-group-label" data-astro-cid-o4nxl7dn>Reference</h2> <ul class="sidebar-list" data-astro-cid-o4nxl7dn> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/claude-code" class="sb-link active" aria-current="page" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Claude Code</span> <span class="sb-desc" data-astro-cid-o7fgaejc>CLI · IDE · permissions · slash commands</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/openai-codex" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>OpenAI Codex</span> <span class="sb-desc" data-astro-cid-o7fgaejc>CLI · Cloud · IDE · models · pricing</span> </a> </li>  </ul> </section>  </nav> </aside>  <article class="doc-article" data-pagefind-body data-astro-cid-fz5pa65a> <nav class="breadcrumbs" aria-label="Breadcrumb" data-astro-cid-ilhxcym7> <ol data-astro-cid-ilhxcym7> <li data-astro-cid-ilhxcym7> <a href="/skillsetc/docs" data-astro-cid-ilhxcym7>Docs</a> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="bc-sep" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> </li><li data-astro-cid-ilhxcym7> <span aria-current="page" data-astro-cid-ilhxcym7>Claude Code</span>  </li> </ol> </nav>  <span class="eyebrow"> Reference </span> <h1 class="doc-title serif" data-astro-cid-fz5pa65a>Claude Code</h1> <p class="doc-lead" data-astro-cid-fz5pa65a>Anthropic&#39;s official agentic coding tool — CLI, IDE extensions, desktop, and web. Surfaces, install, CLI flags, permission modes, keyboard shortcuts, and headless mode.</p> <section class="sources-panel" aria-label="Sources" data-astro-cid-5nphvqvb><header class="sources-header" data-astro-cid-5nphvqvb><span class="sources-eyebrow" data-astro-cid-5nphvqvb>Sourced from</span></header><ul class="sources-list" data-astro-cid-5nphvqvb><li data-astro-cid-5nphvqvb><a href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>docs.claude.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/en/docs/claude-code/overview</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://docs.claude.com/en/docs/claude-code/quickstart" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>docs.claude.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/en/docs/claude-code/quickstart</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://docs.claude.com/en/docs/claude-code/cli-reference" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>docs.claude.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/en/docs/claude-code/cli-reference</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://docs.claude.com/en/docs/claude-code/slash-commands" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>docs.claude.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/en/docs/claude-code/slash-commands</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://docs.claude.com/en/docs/claude-code/ide-integrations" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>docs.claude.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/en/docs/claude-code/ide-integrations</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://docs.claude.com/en/docs/claude-code/permissions" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>docs.claude.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/en/docs/claude-code/permissions</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li></ul></section> <div class="prose" data-astro-cid-fz5pa65a>  <h2 id="1-what-claude-code-is">1. What Claude Code is<a class="heading-anchor" aria-label="Permalink" href="#1-what-claude-code-is">#</a></h2>
+<p>A single product, multiple surfaces:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Surface</th><th>What it is</th></tr></thead><tbody><tr><td><strong>Terminal CLI</strong></td><td>The <code>claude</code> command. Full-featured TUI, headless <code>-p</code> mode, the canonical reference for everything else.</td></tr><tr><td><strong>VS Code Extension</strong></td><td>Inline diffs, conversation history, <code>@</code>-mention files, multi-tab conversations, extended-thinking toggle. Install: search “Claude Code” in Extensions, or <code>code --install-extension anthropic.claude-code</code>.</td></tr><tr><td><strong>JetBrains plugin</strong></td><td>IntelliJ IDEA, PyCharm, WebStorm, GoLand, RubyMine, PhpStorm, AppCode. Install from JetBrains Marketplace.</td></tr><tr><td><strong>Desktop app</strong></td><td>macOS (Intel + Apple Silicon) and Windows (x64 + ARM64). Multiple sessions, scheduled tasks, visual diff review. Download at <code>claude.com/download</code>.</td></tr><tr><td><strong>Web app</strong></td><td><code>claude.ai/code</code> — browser-based version with cloud-side execution.</td></tr></tbody></table>
+<p><strong>Default model behavior:</strong> Claude Code respects your subscription tier and the <code>model</code> setting. As of April 2026 the family is Opus 4.7 (1M context), Sonnet 4.6, Haiku 4.5. Switch with <code>/model</code> mid-session or <code>--model &#x3C;id></code> at launch.</p>
+<hr>
+<h2 id="2-installation">2. Installation<a class="heading-anchor" aria-label="Permalink" href="#2-installation">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://docs.claude.com/en/docs/claude-code/quickstart" rel="noopener noreferrer" target="_blank">https://docs.claude.com/en/docs/claude-code/quickstart</a></p>
+</blockquote>
+<h3 id="macos--linux--wsl">macOS / Linux / WSL<a class="heading-anchor" aria-label="Permalink" href="#macos--linux--wsl">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">curl</span><span style="color:#99FFE4"> -fsSL</span><span style="color:#99FFE4"> https://claude.ai/install.sh</span><span style="color:#A0A0A0"> |</span><span style="color:#FFC799"> bash</span></span></code></pre>
+<h3 id="windows-powershell">Windows PowerShell<a class="heading-anchor" aria-label="Permalink" href="#windows-powershell">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#FFF">irm https:</span><span style="color:#A0A0A0">//</span><span style="color:#FFF">claude.ai</span><span style="color:#A0A0A0">/</span><span style="color:#FFF">install.ps1 </span><span style="color:#A0A0A0">|</span><span style="color:#FFF"> iex</span></span></code></pre>
+<h3 id="windows-cmd">Windows CMD<a class="heading-anchor" aria-label="Permalink" href="#windows-cmd">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bat"><code><span class="line"><span style="color:#FFF">curl -fsSL https://claude.ai/install.cmd -o install.cmd </span><span style="color:#A0A0A0">&#x26;&#x26;</span><span style="color:#FFF"> install.cmd </span><span style="color:#A0A0A0">&#x26;&#x26;</span><span style="color:#A0A0A0"> del</span><span style="color:#FFF"> install.cmd</span></span></code></pre>
+<h3 id="homebrew-macos">Homebrew (macOS)<a class="heading-anchor" aria-label="Permalink" href="#homebrew-macos">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">brew</span><span style="color:#99FFE4"> install</span><span style="color:#99FFE4"> --cask</span><span style="color:#99FFE4"> claude-code</span><span style="color:#8B8B8B94">            # stable channel (~1 week behind)</span></span>
+<span class="line"><span style="color:#FFC799">brew</span><span style="color:#99FFE4"> install</span><span style="color:#99FFE4"> --cask</span><span style="color:#99FFE4"> claude-code@latest</span><span style="color:#8B8B8B94">     # latest release</span></span>
+<span class="line"><span style="color:#FFC799">brew</span><span style="color:#99FFE4"> upgrade</span><span style="color:#99FFE4"> claude-code</span><span style="color:#8B8B8B94">                   # neither auto-updates</span></span></code></pre>
+<h3 id="winget-windows">WinGet (Windows)<a class="heading-anchor" aria-label="Permalink" href="#winget-windows">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#FFF">winget install Anthropic.ClaudeCode</span></span>
+<span class="line"><span style="color:#FFF">winget upgrade Anthropic.ClaudeCode</span></span></code></pre>
+<blockquote>
+<p><strong>Note:</strong> Native installations auto-update in the background. Homebrew and WinGet do <strong>not</strong>. On native Windows, install Git for Windows so Claude Code can use Bash; without it, the shell tool falls back to PowerShell.</p>
+</blockquote>
+<h3 id="first-session">First session<a class="heading-anchor" aria-label="Permalink" href="#first-session">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">cd</span><span style="color:#99FFE4"> your-project</span></span>
+<span class="line"><span style="color:#FFC799">claude</span></span></code></pre>
+<p>Login is prompted on first use. Account types accepted: Claude Pro/Max, Anthropic Console (API), Bedrock, Vertex AI, Microsoft Foundry.</p>
+<hr>
+<h2 id="3-cli-flags--modes">3. CLI flags &#x26; modes<a class="heading-anchor" aria-label="Permalink" href="#3-cli-flags--modes">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://docs.claude.com/en/docs/claude-code/cli-reference" rel="noopener noreferrer" target="_blank">https://docs.claude.com/en/docs/claude-code/cli-reference</a></p>
+</blockquote>
+<h3 id="top-level-commands">Top-level commands<a class="heading-anchor" aria-label="Permalink" href="#top-level-commands">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody><tr><td><code>claude</code></td><td>Start interactive session in current directory</td></tr><tr><td><code>claude "prompt"</code></td><td>Start interactive session with an opening prompt</td></tr><tr><td><code>claude -p "prompt"</code></td><td><strong>Print mode</strong> — non-interactive; runs once via SDK and exits</td></tr><tr><td><code>claude -c</code> / <code>--continue</code></td><td>Continue most recent conversation</td></tr><tr><td><code>claude -r "&#x3C;id>"</code> / <code>--resume "&#x3C;id>"</code></td><td>Resume a specific session by ID/name</td></tr><tr><td><code>claude update</code></td><td>Update to latest version</td></tr><tr><td><code>claude auth login</code></td><td>Sign in (<code>--email</code>, <code>--sso</code>, <code>--console</code>)</td></tr><tr><td><code>claude auth logout</code></td><td>Sign out</td></tr><tr><td><code>claude auth status</code></td><td>JSON status output</td></tr><tr><td><code>claude mcp ...</code></td><td>Manage MCP servers (see <code>04-hooks-mcp-memory-settings.md</code>)</td></tr><tr><td><code>claude agents</code></td><td>List subagents grouped by source without opening a session</td></tr><tr><td><code>claude plugin install/list/uninstall</code></td><td>Manage plugins</td></tr></tbody></table>
+<h3 id="frequently-used-flags">Frequently used flags<a class="heading-anchor" aria-label="Permalink" href="#frequently-used-flags">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Flag</th><th>Short</th><th>Purpose</th></tr></thead><tbody><tr><td><code>--print</code></td><td><code>-p</code></td><td>Non-interactive single-shot mode</td></tr><tr><td><code>--continue</code></td><td><code>-c</code></td><td>Continue most recent conversation</td></tr><tr><td><code>--resume "&#x3C;id>"</code></td><td><code>-r</code></td><td>Resume named session</td></tr><tr><td><code>--model &#x3C;id></code></td><td></td><td><code>sonnet</code>, <code>opus</code>, <code>haiku</code>, or full ID like <code>claude-opus-4-7</code></td></tr><tr><td><code>--effort &#x3C;level></code></td><td></td><td><code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, <code>max</code></td></tr><tr><td><code>--permission-mode &#x3C;mode></code></td><td></td><td><code>default</code>, <code>acceptEdits</code>, <code>plan</code>, <code>auto</code>, <code>dontAsk</code>, <code>bypassPermissions</code></td></tr><tr><td><code>--output-format &#x3C;fmt></code></td><td></td><td><code>text</code>, <code>json</code>, <code>stream-json</code> (print mode only)</td></tr><tr><td><code>--include-hook-events</code></td><td></td><td>Include hook events in <code>stream-json</code> output</td></tr><tr><td><code>--include-partial-messages</code></td><td></td><td>Include partial streaming events</td></tr><tr><td><code>--max-turns &#x3C;n></code></td><td></td><td>Limit agentic turns (print mode)</td></tr><tr><td><code>--max-budget-usd &#x3C;n></code></td><td></td><td>Stop before spending threshold (print mode)</td></tr><tr><td><code>--json-schema '&#x3C;schema>'</code></td><td></td><td>Validated structured JSON output (print mode)</td></tr><tr><td><code>--add-dir &#x3C;paths></code></td><td></td><td>Additional working directories during session</td></tr><tr><td><code>--system-prompt "&#x3C;text>"</code></td><td></td><td>Replace entire system prompt</td></tr><tr><td><code>--system-prompt-file &#x3C;path></code></td><td></td><td>Load system prompt from file</td></tr><tr><td><code>--append-system-prompt "&#x3C;text>"</code></td><td></td><td>Append to default system prompt</td></tr><tr><td><code>--append-system-prompt-file &#x3C;path></code></td><td></td><td>Append file contents to system prompt</td></tr><tr><td><code>--tools "&#x3C;list>"</code></td><td></td><td>Restrict tool availability</td></tr><tr><td><code>--allowedTools "&#x3C;list>"</code></td><td></td><td>Auto-approve listed tools</td></tr><tr><td><code>--disallowedTools "&#x3C;list>"</code></td><td></td><td>Block listed tools</td></tr><tr><td><code>--dangerously-skip-permissions</code></td><td></td><td>Skip all prompts (use only in sandboxes)</td></tr><tr><td><code>--allow-dangerously-skip-permissions</code></td><td></td><td>Add <code>bypassPermissions</code> to mode cycle without starting in it</td></tr><tr><td><code>--bare</code></td><td></td><td>Skip hooks, skills, plugins, MCP, CLAUDE.md auto-discovery</td></tr><tr><td><code>--name "&#x3C;n>"</code></td><td><code>-n</code></td><td>Set session display name</td></tr><tr><td><code>--init</code> / <code>--init-only</code></td><td></td><td>Run init hooks (and exit, with <code>--init-only</code>)</td></tr><tr><td><code>--exclude-dynamic-system-prompt-sections</code></td><td></td><td>Improve prompt-cache reuse across machines</td></tr><tr><td><code>--settings &#x3C;file/json></code></td><td></td><td>Load extra settings</td></tr><tr><td><code>--setting-sources &#x3C;list></code></td><td></td><td>Restrict which scopes are loaded (<code>user,project,local</code>)</td></tr><tr><td><code>--mcp-config &#x3C;files/json></code></td><td></td><td>Load extra MCP servers</td></tr><tr><td><code>--strict-mcp-config</code></td><td></td><td>Use only servers from <code>--mcp-config</code></td></tr><tr><td><code>--agent &#x3C;name></code></td><td></td><td>Run with a subagent as the main thread</td></tr><tr><td><code>--agents '&#x3C;json>'</code></td><td></td><td>Define subagents inline</td></tr><tr><td><code>--ide</code></td><td></td><td>Auto-connect to IDE if running</td></tr><tr><td><code>--verbose</code> / <code>--debug [cats]</code> / <code>--debug-file &#x3C;path></code></td><td></td><td>Logging</td></tr><tr><td><code>--version</code></td><td><code>-v</code></td><td>Print version</td></tr><tr><td><code>--help</code></td><td></td><td>Help</td></tr></tbody></table>
+<h3 id="headless--sdk-examples">Headless / SDK examples<a class="heading-anchor" aria-label="Permalink" href="#headless--sdk-examples">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> "explain this codebase"</span><span style="color:#99FFE4"> --output-format</span><span style="color:#99FFE4"> json</span></span>
+<span class="line"><span style="color:#FFC799">cat</span><span style="color:#99FFE4"> error.log</span><span style="color:#A0A0A0"> |</span><span style="color:#FFC799"> claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> "summarise the error and propose a fix"</span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> --output-format</span><span style="color:#99FFE4"> stream-json</span><span style="color:#99FFE4"> --include-hook-events</span><span style="color:#99FFE4"> --max-turns</span><span style="color:#FFC799"> 3</span><span style="color:#99FFE4"> "run the tests and fix any failures"</span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> --json-schema</span><span style="color:#99FFE4"> '{"type":"object","properties":{"summary":{"type":"string"},"risk":{"enum":["low","med","high"]}}}'</span><span style="color:#99FFE4"> "review this branch"</span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> --max-budget-usd</span><span style="color:#FFC799"> 5.00</span><span style="color:#99FFE4"> "refactor the auth module"</span></span></code></pre>
+<hr>
+<h2 id="4-permission-modes">4. Permission modes<a class="heading-anchor" aria-label="Permalink" href="#4-permission-modes">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://docs.claude.com/en/docs/claude-code/permissions" rel="noopener noreferrer" target="_blank">https://docs.claude.com/en/docs/claude-code/permissions</a></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Mode</th><th>Behavior</th></tr></thead><tbody><tr><td><code>default</code></td><td>Prompts on first use of each tool</td></tr><tr><td><code>acceptEdits</code></td><td>Auto-accepts file edits + safe FS commands (<code>mkdir</code>, <code>touch</code>, <code>mv</code>, <code>cp</code>, …)</td></tr><tr><td><code>plan</code></td><td>Read-only research; presents a plan, cannot modify or execute</td></tr><tr><td><code>auto</code></td><td>Auto-approves with background safety checks (research preview; gated by plan/admin)</td></tr><tr><td><code>dontAsk</code></td><td>Auto-denies anything not on <code>permissions.allow</code> allowlist</td></tr><tr><td><code>bypassPermissions</code></td><td>Skips prompts except for protected dirs (<code>.git</code>, <code>.claude</code>, <code>.vscode</code>, <code>.idea</code>, <code>.husky</code>) — use only in containers/VMs</td></tr></tbody></table>
+<p>Set via:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> --permission-mode</span><span style="color:#99FFE4"> plan</span></span></code></pre>
+<p>Or in settings:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#FFF">{ </span><span style="color:#FFC799">"defaultMode"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"acceptEdits"</span><span style="color:#FFF"> }</span></span></code></pre>
+<p><strong>Cycle modes during a session:</strong> press <code>Shift+Tab</code>.</p>
+<p><strong>Per-tool rules</strong> (in <code>.claude/settings.json</code>):</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#FFF">{</span></span>
+<span class="line"><span style="color:#FFC799">  "permissions"</span><span style="color:#FFF">: {</span></span>
+<span class="line"><span style="color:#FFC799">    "allow"</span><span style="color:#FFF">:  [</span><span style="color:#99FFE4">"Bash(npm run *)"</span><span style="color:#FFF">, </span><span style="color:#99FFE4">"Read(~/.zshrc)"</span><span style="color:#FFF">],</span></span>
+<span class="line"><span style="color:#FFC799">    "deny"</span><span style="color:#FFF">:   [</span><span style="color:#99FFE4">"Bash(curl *)"</span><span style="color:#FFF">,   </span><span style="color:#99FFE4">"Read(./.env)"</span><span style="color:#FFF">],</span></span>
+<span class="line"><span style="color:#FFC799">    "ask"</span><span style="color:#FFF">:    [</span><span style="color:#99FFE4">"Bash(git push *)"</span><span style="color:#FFF">],</span></span>
+<span class="line"><span style="color:#FFC799">    "defaultMode"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"acceptEdits"</span></span>
+<span class="line"><span style="color:#FFF">  }</span></span>
+<span class="line"><span style="color:#FFF">}</span></span></code></pre>
+<hr>
+<h2 id="5-keyboard-shortcuts--input-prefixes">5. Keyboard shortcuts &#x26; input prefixes<a class="heading-anchor" aria-label="Permalink" href="#5-keyboard-shortcuts--input-prefixes">#</a></h2>
+<h3 id="terminal-interactive-mode">Terminal interactive mode<a class="heading-anchor" aria-label="Permalink" href="#terminal-interactive-mode">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Shortcut</th><th>Action</th></tr></thead><tbody><tr><td><code>Esc</code></td><td>Interrupt Claude</td></tr><tr><td><code>Esc</code> <code>Esc</code></td><td>Show command history</td></tr><tr><td><code>Ctrl+C</code></td><td>Exit (with confirmation)</td></tr><tr><td><code>Ctrl+B</code></td><td>Send session to background</td></tr><tr><td><code>Shift+Tab</code></td><td>Cycle permission modes</td></tr><tr><td><code>Tab</code></td><td>Autocomplete commands and file paths</td></tr><tr><td><code>↑</code> / <code>↓</code></td><td>Navigate history</td></tr><tr><td><code>Enter</code></td><td>Submit</td></tr><tr><td><code>Shift+Enter</code></td><td>Multi-line input</td></tr><tr><td><code>?</code></td><td>Show shortcut help</td></tr></tbody></table>
+<h3 id="input-prefixes">Input prefixes<a class="heading-anchor" aria-label="Permalink" href="#input-prefixes">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Prefix</th><th>Effect</th></tr></thead><tbody><tr><td><code>/</code></td><td>Slash command / skill</td></tr><tr><td><code>@</code></td><td>Reference a file or directory</td></tr><tr><td><code>#</code></td><td>Append to memory (CLAUDE.md)</td></tr><tr><td><code>!</code></td><td>Run a shell command directly</td></tr></tbody></table>
+<h3 id="vs-code-extension">VS Code extension<a class="heading-anchor" aria-label="Permalink" href="#vs-code-extension">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Shortcut</th><th>Action</th></tr></thead><tbody><tr><td><code>Cmd+Esc</code> / <code>Ctrl+Esc</code></td><td>Toggle focus between editor and Claude</td></tr><tr><td><code>Cmd+Shift+Esc</code> / <code>Ctrl+Shift+Esc</code></td><td>Open new conversation tab</td></tr><tr><td><code>Option+K</code> / <code>Alt+K</code></td><td>Insert <code>@</code>-mention with current selection + line numbers</td></tr><tr><td><code>Cmd+N</code> / <code>Ctrl+N</code></td><td>New conversation (when <code>enableNewConversationShortcut</code> is on)</td></tr><tr><td><code>Shift+Enter</code></td><td>Multi-line</td></tr></tbody></table>
+<hr>
+<h2 id="6-plan-mode">6. Plan mode<a class="heading-anchor" aria-label="Permalink" href="#6-plan-mode">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://docs.claude.com/en/docs/claude-code/permission-modes" rel="noopener noreferrer" target="_blank">https://docs.claude.com/en/docs/claude-code/permission-modes</a></p>
+</blockquote>
+<p>Plan mode is a permission mode where Claude can read files but cannot modify them or execute commands. It produces a step-by-step plan for your approval.</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> --permission-mode</span><span style="color:#99FFE4"> plan</span></span></code></pre>
+<p>Or press <code>Shift+Tab</code> during a session.</p>
+<p>In VS Code, plan mode opens the plan as a full markdown document with inline comment support before Claude executes.</p>
+<p><strong>When to use:</strong></p>
+<ul>
+<li>Before a complex refactor</li>
+<li>Code-review workflows where planning precedes execution</li>
+<li>Sharing intent with a teammate before kicking off</li>
+</ul>
+<hr>
+<h2 id="7-output-styles-status-line-vim-mode">7. Output styles, status line, vim mode<a class="heading-anchor" aria-label="Permalink" href="#7-output-styles-status-line-vim-mode">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Feature</th><th>How</th></tr></thead><tbody><tr><td><strong>Vim mode</strong></td><td><code>claude --vim</code>, or <code>editorMode: "vim"</code> in settings, or <code>/vim</code> mid-session</td></tr><tr><td><strong>Status line</strong></td><td>Customise via <code>/statusline</code> (uses the <code>statusline-setup</code> subagent)</td></tr><tr><td><strong>Output styles</strong></td><td><code>.claude/output-styles/&#x3C;name>/</code> (project) or <code>~/.claude/output-styles/&#x3C;name>/</code> (user)</td></tr><tr><td><strong>TUI fullscreen</strong></td><td><code>"tui": "fullscreen"</code> in settings</td></tr><tr><td><strong>Language</strong></td><td><code>"language": "english"</code></td></tr></tbody></table>
+<hr>
+<h2 id="8-background-tasks--queued-messages">8. Background tasks &#x26; queued messages<a class="heading-anchor" aria-label="Permalink" href="#8-background-tasks--queued-messages">#</a></h2>
+<ul>
+<li>Press <code>Ctrl+B</code> to background the current session.</li>
+<li>Resume foreground with <code>claude --continue</code> or by re-attaching.</li>
+<li>While Claude is processing, you can keep typing — messages queue and process in order.</li>
+<li>Disable background tasks entirely with <code>export CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1</code>.</li>
+</ul>
+<hr>
+<h2 id="9-ide-integrations">9. IDE integrations<a class="heading-anchor" aria-label="Permalink" href="#9-ide-integrations">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://docs.claude.com/en/docs/claude-code/ide-integrations" rel="noopener noreferrer" target="_blank">https://docs.claude.com/en/docs/claude-code/ide-integrations</a> · <a href="https://docs.claude.com/en/docs/claude-code/vs-code" rel="noopener noreferrer" target="_blank">https://docs.claude.com/en/docs/claude-code/vs-code</a></p>
+</blockquote>
+<h3 id="vs-code">VS Code<a class="heading-anchor" aria-label="Permalink" href="#vs-code">#</a></h3>
+<ul>
+<li>Marketplace ID: <code>anthropic.claude-code</code></li>
+<li>CLI install: <code>code --install-extension anthropic.claude-code</code></li>
+<li>Direct: <code>vscode:extension/anthropic.claude-code</code></li>
+</ul>
+<p><strong>Capabilities:</strong> inline diffs (side-by-side), conversation history, multi-tab sessions, file <code>@</code>-mentions with line ranges, permission mode UI, extended-thinking toggle, Chrome integration for browser automation, plan mode as full markdown document.</p>
+<h3 id="jetbrains">JetBrains<a class="heading-anchor" aria-label="Permalink" href="#jetbrains">#</a></h3>
+<ul>
+<li>Marketplace plugin ID: <code>27310-claude-code-beta-</code> (and updates)</li>
+<li>Supports IntelliJ IDEA, PyCharm, WebStorm, AppCode, GoLand, RubyMine, PhpStorm</li>
+<li>Capabilities: interactive diff viewer, selection-context sharing</li>
+</ul>
+<h3 id="desktop-app">Desktop app<a class="heading-anchor" aria-label="Permalink" href="#desktop-app">#</a></h3>
+<ul>
+<li>macOS + Windows (x64 + ARM64)</li>
+<li>Schedule routines, manage multiple sessions, visual diff review</li>
+<li><code>/desktop</code> from terminal hands a CLI session to the desktop app</li>
+<li><code>/teleport</code> resumes a web session in the local terminal</li>
+</ul>
+<h3 id="connect-a-cli-session-to-your-ide">Connect a CLI session to your IDE<a class="heading-anchor" aria-label="Permalink" href="#connect-a-cli-session-to-your-ide">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> --ide</span></span></code></pre>
+<p>Or run <code>/ide</code> mid-session for diff viewing and diagnostics integration.</p>
+<hr>
+<h2 id="10-cost--billing">10. Cost &#x26; billing<a class="heading-anchor" aria-label="Permalink" href="#10-cost--billing">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://docs.claude.com/en/docs/claude-code/overview" rel="noopener noreferrer" target="_blank">https://docs.claude.com/en/docs/claude-code/overview</a></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Plan / channel</th><th>Notes</th></tr></thead><tbody><tr><td><strong>Claude Pro</strong></td><td>Monthly subscription, generous rate limits</td></tr><tr><td><strong>Claude Max</strong></td><td>Highest tier, most powerful models</td></tr><tr><td><strong>Team / Enterprise</strong></td><td>SSO, central billing, managed settings</td></tr><tr><td><strong>Anthropic Console (API)</strong></td><td>Pay-as-you-go credits; auto-creates a “Claude Code” workspace on first login</td></tr><tr><td><strong>Amazon Bedrock</strong></td><td>Run Claude through AWS billing</td></tr><tr><td><strong>Google Vertex AI</strong></td><td>Run Claude through GCP billing</td></tr><tr><td><strong>Microsoft Foundry</strong></td><td>Run Claude through Azure billing</td></tr></tbody></table>
+<p>In-session usage tracking:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/cost    # show session token use &#x26; spend</span></span>
+<span class="line"><span>/usage   # extended thinking + API usage (VS Code)</span></span>
+<span class="line"><span>/upgrade # upgrade subscription or check for app updates</span></span></code></pre>
+<hr>
+<h2 id="11-headless--sdk-mode">11. Headless / SDK mode<a class="heading-anchor" aria-label="Permalink" href="#11-headless--sdk-mode">#</a></h2>
+<p>Print mode (<code>-p</code>) is the canonical way to script Claude Code:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> "summarise CHANGELOG.md"</span><span style="color:#8B8B8B94">                                    # text out</span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> "summarise CHANGELOG.md"</span><span style="color:#99FFE4"> --output-format</span><span style="color:#99FFE4"> json</span><span style="color:#8B8B8B94">               # full JSON envelope</span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> "summarise CHANGELOG.md"</span><span style="color:#99FFE4"> --output-format</span><span style="color:#99FFE4"> stream-json</span><span style="color:#8B8B8B94">        # NDJSON event stream</span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> --output-format</span><span style="color:#99FFE4"> stream-json</span><span style="color:#99FFE4"> --include-hook-events</span><span style="color:#99FFE4"> "..."</span><span style="color:#8B8B8B94">     # include hook lifecycle</span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> --no-session-persistence</span><span style="color:#99FFE4"> "one-shot, no rollout"</span><span style="color:#8B8B8B94">             # don't save session</span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> --max-turns</span><span style="color:#FFC799"> 3</span><span style="color:#99FFE4"> "fix the failing tests"</span><span style="color:#8B8B8B94">                       # cap iterations</span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> --max-budget-usd</span><span style="color:#FFC799"> 5.00</span><span style="color:#99FFE4"> "..."</span><span style="color:#8B8B8B94">                                 # cap spend</span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> --json-schema</span><span style="color:#99FFE4"> '{"type":"object","properties":{...}}'</span><span style="color:#99FFE4"> "..."</span><span style="color:#8B8B8B94">  # structured output</span></span></code></pre>
+<p>Pipe stdin in:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">cat</span><span style="color:#99FFE4"> patch.diff</span><span style="color:#A0A0A0"> |</span><span style="color:#FFC799"> claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> "review this diff and flag risks"</span></span>
+<span class="line"><span style="color:#FFC799">echo</span><span style="color:#99FFE4"> "SELECT * FROM users"</span><span style="color:#A0A0A0"> |</span><span style="color:#FFC799"> claude</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> "explain this SQL"</span></span></code></pre>
+<hr>
+<h2 id="12-slash-commands-built-in">12. Slash commands (built-in)<a class="heading-anchor" aria-label="Permalink" href="#12-slash-commands-built-in">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://docs.claude.com/en/docs/claude-code/slash-commands" rel="noopener noreferrer" target="_blank">https://docs.claude.com/en/docs/claude-code/slash-commands</a></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody><tr><td><code>/help</code></td><td>Show available commands and features</td></tr><tr><td><code>/clear</code></td><td>Clear conversation history</td></tr><tr><td><code>/compact</code></td><td>Summarise to free context</td></tr><tr><td><code>/init</code></td><td>Generate or improve <code>CLAUDE.md</code></td></tr><tr><td><code>/memory</code></td><td>Edit <code>CLAUDE.md</code>, <code>CLAUDE.local.md</code>, auto memory, rules</td></tr><tr><td><code>/model</code></td><td>Switch model</td></tr><tr><td><code>/effort</code></td><td>Adjust effort level</td></tr><tr><td><code>/cost</code></td><td>Token usage &#x26; spend</td></tr><tr><td><code>/usage</code></td><td>Extended thinking + API usage (VS Code)</td></tr><tr><td><code>/resume</code></td><td>Picker for previous sessions</td></tr><tr><td><code>/rename</code></td><td>Change session display name</td></tr><tr><td><code>/login</code> / <code>/logout</code></td><td>Auth</td></tr><tr><td><code>/status</code></td><td>Active settings + their sources</td></tr><tr><td><code>/config</code></td><td>Quick settings access</td></tr><tr><td><code>/permissions</code></td><td>Manage permission rules</td></tr><tr><td><code>/add-dir</code></td><td>Add working directories during session</td></tr><tr><td><code>/export</code></td><td>Export conversation/code</td></tr><tr><td><code>/upgrade</code></td><td>Subscription / app upgrade</td></tr><tr><td><code>/release-notes</code></td><td>Latest release notes</td></tr><tr><td><code>/doctor</code></td><td>Diagnostic checks</td></tr><tr><td><code>/feedback</code> / <code>/bug</code></td><td>Send feedback / report bugs</td></tr><tr><td><code>/agents</code></td><td>Subagent library (running, library)</td></tr><tr><td><code>/mcp</code></td><td>Manage MCP servers</td></tr><tr><td><code>/hooks</code></td><td>View / manage hooks</td></tr><tr><td><code>/plugins</code> (or <code>/plugin</code>)</td><td>Manage plugins</td></tr><tr><td><code>/pr-comments</code></td><td>View PR comments (GitHub workflows)</td></tr><tr><td><code>/review</code></td><td>Code review (skill)</td></tr><tr><td><code>/security-review</code></td><td>Security review of pending changes (skill)</td></tr><tr><td><code>/simplify</code></td><td>Review changed code for reuse/quality (skill)</td></tr><tr><td><code>/batch</code></td><td>Plan + execute large changes across worktrees (skill)</td></tr><tr><td><code>/loop</code></td><td>Repeat a prompt/command on an interval (skill)</td></tr><tr><td><code>/schedule</code></td><td>Create/list/run scheduled remote agents (skill)</td></tr><tr><td><code>/debug</code></td><td>Detailed debug output (skill)</td></tr><tr><td><code>/claude-api</code></td><td>Build/debug Claude API code (skill)</td></tr><tr><td><code>/vim</code></td><td>Toggle vim mode</td></tr><tr><td><code>/ide</code></td><td>Connect to IDE</td></tr><tr><td><code>/desktop</code></td><td>Hand off to desktop app</td></tr><tr><td><code>/remote-control</code></td><td>Enable Remote Control mode</td></tr><tr><td><code>/teleport</code></td><td>Resume web session locally</td></tr><tr><td><code>/statusline</code></td><td>Configure status line</td></tr><tr><td><code>/init-only</code></td><td>Run init hooks and exit</td></tr></tbody></table>
+<blockquote>
+<p>Note: many of the more interesting commands (<code>/review</code>, <code>/loop</code>, <code>/schedule</code>, <code>/simplify</code>, <code>/batch</code>) are <strong>skills</strong>, not hardcoded commands. They live in <code>~/.claude/skills/&#x3C;name>/SKILL.md</code> and you can override or replace them.</p>
+</blockquote>
+<hr>
+<h2 id="13-plugins-overview--see-04--for-storage">13. Plugins (overview — see <code>04-</code> for storage)<a class="heading-anchor" aria-label="Permalink" href="#13-plugins-overview--see-04--for-storage">#</a></h2>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> plugin</span><span style="color:#99FFE4"> install</span><span style="color:#A0A0A0"> &#x3C;</span><span style="color:#99FFE4">nam</span><span style="color:#FFF">e</span><span style="color:#A0A0A0">></span><span style="color:#99FFE4">@</span><span style="color:#A0A0A0">&#x3C;</span><span style="color:#99FFE4">marketplac</span><span style="color:#FFF">e</span><span style="color:#A0A0A0">></span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> plugin</span><span style="color:#99FFE4"> list</span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> plugin</span><span style="color:#99FFE4"> uninstall</span><span style="color:#A0A0A0"> &#x3C;</span><span style="color:#99FFE4">nam</span><span style="color:#FFF">e</span><span style="color:#A0A0A0">></span><span style="color:#99FFE4">@</span><span style="color:#A0A0A0">&#x3C;</span><span style="color:#99FFE4">marketplac</span><span style="color:#FFF">e</span><span style="color:#A0A0A0">></span></span></code></pre>
+<p>A plugin is a distributable bundle of:</p>
+<ul>
+<li>skills</li>
+<li>subagents</li>
+<li>hooks</li>
+<li>MCP servers</li>
+<li>slash commands</li>
+<li>output styles</li>
+<li>a marketplace manifest</li>
+</ul>
+<p>Plugin-namespaced features use the form <code>&#x3C;plugin>:&#x3C;name></code> (e.g., <code>@agent-myplugin:reviewer</code>).</p>
+<hr>
+<h2 id="14-sandbox-configuration">14. Sandbox configuration<a class="heading-anchor" aria-label="Permalink" href="#14-sandbox-configuration">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://docs.claude.com/en/docs/claude-code/settings" rel="noopener noreferrer" target="_blank">https://docs.claude.com/en/docs/claude-code/settings</a></p>
+</blockquote>
+<p>Constrain bash and filesystem access in <code>settings.json</code>:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#FFF">{</span></span>
+<span class="line"><span style="color:#FFC799">  "sandbox"</span><span style="color:#FFF">: {</span></span>
+<span class="line"><span style="color:#FFC799">    "enabled"</span><span style="color:#FFF">: true,</span></span>
+<span class="line"><span style="color:#FFC799">    "filesystem"</span><span style="color:#FFF">: {</span></span>
+<span class="line"><span style="color:#FFC799">      "allowRead"</span><span style="color:#FFF">:  [</span><span style="color:#99FFE4">"/home/user/project"</span><span style="color:#FFF">],</span></span>
+<span class="line"><span style="color:#FFC799">      "allowWrite"</span><span style="color:#FFF">: [</span><span style="color:#99FFE4">"/tmp/build"</span><span style="color:#FFF">],</span></span>
+<span class="line"><span style="color:#FFC799">      "denyRead"</span><span style="color:#FFF">:   [</span><span style="color:#99FFE4">"~/.ssh"</span><span style="color:#FFF">, </span><span style="color:#99FFE4">"~/.aws/credentials"</span><span style="color:#FFF">]</span></span>
+<span class="line"><span style="color:#FFF">    },</span></span>
+<span class="line"><span style="color:#FFC799">    "network"</span><span style="color:#FFF">: {</span></span>
+<span class="line"><span style="color:#FFC799">      "allowedDomains"</span><span style="color:#FFF">: [</span><span style="color:#99FFE4">"github.com"</span><span style="color:#FFF">, </span><span style="color:#99FFE4">"registry.npmjs.org"</span><span style="color:#FFF">],</span></span>
+<span class="line"><span style="color:#FFC799">      "deniedDomains"</span><span style="color:#FFF">:  [</span><span style="color:#99FFE4">"evil.com"</span><span style="color:#FFF">]</span></span>
+<span class="line"><span style="color:#FFF">    }</span></span>
+<span class="line"><span style="color:#FFF">  }</span></span>
+<span class="line"><span style="color:#FFF">}</span></span></code></pre>
+<hr>
+<h2 id="15-updating">15. Updating<a class="heading-anchor" aria-label="Permalink" href="#15-updating">#</a></h2>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> update</span><span style="color:#8B8B8B94">                # native installer</span></span>
+<span class="line"><span style="color:#FFC799">brew</span><span style="color:#99FFE4"> upgrade</span><span style="color:#99FFE4"> claude-code</span><span style="color:#8B8B8B94">     # Homebrew</span></span>
+<span class="line"><span style="color:#FFC799">winget</span><span style="color:#99FFE4"> upgrade</span><span style="color:#99FFE4"> Anthropic.ClaudeCode</span><span style="color:#8B8B8B94">  # WinGet</span></span></code></pre>
+<p><code>/release-notes</code> shows the changelog.</p>
+<hr>
+<h2 id="16-where-things-live-file-paths">16. Where things live (file paths)<a class="heading-anchor" aria-label="Permalink" href="#16-where-things-live-file-paths">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Item</th><th>Path</th></tr></thead><tbody><tr><td>User settings</td><td><code>~/.claude/settings.json</code></td></tr><tr><td>Project shared settings</td><td><code>.claude/settings.json</code></td></tr><tr><td>Project local overrides (gitignored)</td><td><code>.claude/settings.local.json</code></td></tr><tr><td>User memory</td><td><code>~/.claude/CLAUDE.md</code></td></tr><tr><td>Project memory</td><td><code>./CLAUDE.md</code> or <code>.claude/CLAUDE.md</code></td></tr><tr><td>Project local memory (gitignored)</td><td><code>./CLAUDE.local.md</code></td></tr><tr><td>Project rules</td><td><code>.claude/rules/*.md</code></td></tr><tr><td>User rules</td><td><code>~/.claude/rules/*.md</code></td></tr><tr><td>User skills</td><td><code>~/.claude/skills/&#x3C;name>/SKILL.md</code></td></tr><tr><td>Project skills</td><td><code>.claude/skills/&#x3C;name>/SKILL.md</code></td></tr><tr><td>User subagents</td><td><code>~/.claude/agents/&#x3C;name>.md</code></td></tr><tr><td>Project subagents</td><td><code>.claude/agents/&#x3C;name>.md</code></td></tr><tr><td>Hooks</td><td><code>.claude/settings.json</code> → <code>hooks</code> key</td></tr><tr><td>MCP (project)</td><td><code>.mcp.json</code></td></tr><tr><td>MCP (user, OAuth tokens, trust)</td><td><code>~/.claude.json</code></td></tr><tr><td>Output styles</td><td><code>.claude/output-styles/</code> or <code>~/.claude/output-styles/</code></td></tr><tr><td>Auto memory</td><td><code>~/.claude/projects/&#x3C;project>/memory/</code></td></tr><tr><td>Custom commands (legacy)</td><td><code>.claude/commands/&#x3C;name>.md</code></td></tr></tbody></table>
+<p>For <strong>detailed reference</strong> on memory, hooks, MCP, and settings precedence, see <a href="/skillsetc/docs/hooks-mcp-memory-settings"><code>04-hooks-mcp-memory-settings.md</code></a>.</p>  </div> <p class="doc-updated" data-astro-cid-fz5pa65a>Last updated April 28, 2026</p> <nav class="prevnext" aria-label="Pagination" data-astro-cid-oerjsknp><a href="/skillsetc/docs/comparison-and-decision-guide" class="pn-card pn-prev" rel="prev" data-astro-cid-oerjsknp><span class="pn-meta" data-astro-cid-oerjsknp><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Previous</span><span class="pn-label" data-astro-cid-oerjsknp>Decision Guide</span></a><a href="/skillsetc/docs/openai-codex" class="pn-card pn-next" rel="next" data-astro-cid-oerjsknp><span class="pn-meta" data-astro-cid-oerjsknp>Next <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><span class="pn-label" data-astro-cid-oerjsknp>OpenAI Codex</span></a></nav> </article> <aside class="toc" data-pagefind-ignore aria-label="Table of contents" data-astro-cid-6t6zfk7k><span class="eyebrow toc-eyebrow"> On this page </span><ul class="toc-list" data-astro-cid-6t6zfk7k><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#1-what-claude-code-is" data-toc-link="1-what-claude-code-is" data-astro-cid-6t6zfk7k>1. What Claude Code is#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#2-installation" data-toc-link="2-installation" data-astro-cid-6t6zfk7k>2. Installation#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#macos--linux--wsl" data-toc-link="macos--linux--wsl" data-astro-cid-6t6zfk7k>macOS / Linux / WSL#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#windows-powershell" data-toc-link="windows-powershell" data-astro-cid-6t6zfk7k>Windows PowerShell#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#windows-cmd" data-toc-link="windows-cmd" data-astro-cid-6t6zfk7k>Windows CMD#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#homebrew-macos" data-toc-link="homebrew-macos" data-astro-cid-6t6zfk7k>Homebrew (macOS)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#winget-windows" data-toc-link="winget-windows" data-astro-cid-6t6zfk7k>WinGet (Windows)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#first-session" data-toc-link="first-session" data-astro-cid-6t6zfk7k>First session#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#3-cli-flags--modes" data-toc-link="3-cli-flags--modes" data-astro-cid-6t6zfk7k>3. CLI flags &amp; modes#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#top-level-commands" data-toc-link="top-level-commands" data-astro-cid-6t6zfk7k>Top-level commands#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#frequently-used-flags" data-toc-link="frequently-used-flags" data-astro-cid-6t6zfk7k>Frequently used flags#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#headless--sdk-examples" data-toc-link="headless--sdk-examples" data-astro-cid-6t6zfk7k>Headless / SDK examples#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#4-permission-modes" data-toc-link="4-permission-modes" data-astro-cid-6t6zfk7k>4. Permission modes#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#5-keyboard-shortcuts--input-prefixes" data-toc-link="5-keyboard-shortcuts--input-prefixes" data-astro-cid-6t6zfk7k>5. Keyboard shortcuts &amp; input prefixes#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#terminal-interactive-mode" data-toc-link="terminal-interactive-mode" data-astro-cid-6t6zfk7k>Terminal interactive mode#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#input-prefixes" data-toc-link="input-prefixes" data-astro-cid-6t6zfk7k>Input prefixes#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#vs-code-extension" data-toc-link="vs-code-extension" data-astro-cid-6t6zfk7k>VS Code extension#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#6-plan-mode" data-toc-link="6-plan-mode" data-astro-cid-6t6zfk7k>6. Plan mode#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#7-output-styles-status-line-vim-mode" data-toc-link="7-output-styles-status-line-vim-mode" data-astro-cid-6t6zfk7k>7. Output styles, status line, vim mode#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#8-background-tasks--queued-messages" data-toc-link="8-background-tasks--queued-messages" data-astro-cid-6t6zfk7k>8. Background tasks &amp; queued messages#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#9-ide-integrations" data-toc-link="9-ide-integrations" data-astro-cid-6t6zfk7k>9. IDE integrations#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#vs-code" data-toc-link="vs-code" data-astro-cid-6t6zfk7k>VS Code#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#jetbrains" data-toc-link="jetbrains" data-astro-cid-6t6zfk7k>JetBrains#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#desktop-app" data-toc-link="desktop-app" data-astro-cid-6t6zfk7k>Desktop app#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#connect-a-cli-session-to-your-ide" data-toc-link="connect-a-cli-session-to-your-ide" data-astro-cid-6t6zfk7k>Connect a CLI session to your IDE#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#10-cost--billing" data-toc-link="10-cost--billing" data-astro-cid-6t6zfk7k>10. Cost &amp; billing#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#11-headless--sdk-mode" data-toc-link="11-headless--sdk-mode" data-astro-cid-6t6zfk7k>11. Headless / SDK mode#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#12-slash-commands-built-in" data-toc-link="12-slash-commands-built-in" data-astro-cid-6t6zfk7k>12. Slash commands (built-in)#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#13-plugins-overview--see-04--for-storage" data-toc-link="13-plugins-overview--see-04--for-storage" data-astro-cid-6t6zfk7k>13. Plugins (overview — see 04- for storage)#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#14-sandbox-configuration" data-toc-link="14-sandbox-configuration" data-astro-cid-6t6zfk7k>14. Sandbox configuration#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#15-updating" data-toc-link="15-updating" data-astro-cid-6t6zfk7k>15. Updating#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#16-where-things-live-file-paths" data-toc-link="16-where-things-live-file-paths" data-astro-cid-6t6zfk7k>16. Where things live (file paths)#</a></li></ul></aside><script type="module">const i=document.querySelectorAll("[data-toc-link]");if(i.length>0){const s=new Map;i.forEach(t=>s.set(t.dataset.tocLink,t));const r=[];s.forEach((t,o)=>{const e=document.getElementById(o);e&&r.push(e)});let c=null;const l=t=>{t!==c&&(c=t,i.forEach(o=>o.setAttribute("aria-current",o.dataset.tocLink===t?"true":"false")))},a=new IntersectionObserver(t=>{const o=t.filter(e=>e.isIntersecting).sort((e,n)=>e.boundingClientRect.top-n.boundingClientRect.top);if(o.length>0)l(o[0].target.id);else{const e=r.map(n=>({id:n.id,top:n.getBoundingClientRect().top})).filter(n=>n.top<80).sort((n,d)=>d.top-n.top);e[0]&&l(e[0].id)}},{rootMargin:"-72px 0px -65% 0px",threshold:0});r.forEach(t=>a.observe(t))}</script> </div>  </main> <footer class="site-footer" data-pagefind-ignore data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-col footer-brand" data-astro-cid-sz7xmlte> <span class="footer-mark" aria-hidden="true" data-astro-cid-sz7xmlte>◆</span> <span class="footer-name" data-astro-cid-sz7xmlte>skillsetc</span> <p class="footer-tagline" data-astro-cid-sz7xmlte>
+A field guide to Skills, Subagents, Claude Code &amp; OpenAI Codex —
+        compiled from primary sources.
+</p> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h2 class="footer-heading" data-astro-cid-sz7xmlte>Primitives</h2> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/skills" data-astro-cid-sz7xmlte>Skills</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/subagents" data-astro-cid-sz7xmlte>Subagents</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/hooks-mcp-memory-settings" data-astro-cid-sz7xmlte>Hooks · MCP · Memory</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/comparison-and-decision-guide" data-astro-cid-sz7xmlte>Decision Guide</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/decide" data-astro-cid-sz7xmlte>Interactive flow</a></li> </ul> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h2 class="footer-heading" data-astro-cid-sz7xmlte>Reference</h2> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/claude-code" data-astro-cid-sz7xmlte>Claude Code</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/openai-codex" data-astro-cid-sz7xmlte>OpenAI Codex</a></li> </ul> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h2 class="footer-heading" data-astro-cid-sz7xmlte>Sources</h2> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>docs.claude.com</a></li> <li data-astro-cid-sz7xmlte><a href="https://developers.openai.com/codex" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>developers.openai.com</a></li> <li data-astro-cid-sz7xmlte><a href="https://agentskills.io" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>agentskills.io</a></li> <li data-astro-cid-sz7xmlte><a href="https://agents.md" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>agents.md</a></li> </ul> </div> </div> <div class="footer-meta" data-astro-cid-sz7xmlte> <div class="footer-meta-inner" data-astro-cid-sz7xmlte> <span data-astro-cid-sz7xmlte>© 2026 skillsetc</span> <span class="footer-sep" aria-hidden="true" data-astro-cid-sz7xmlte>·</span> <span data-astro-cid-sz7xmlte>Last updated April 28, 2026</span> <span class="footer-sep" aria-hidden="true" data-astro-cid-sz7xmlte>·</span> <span data-astro-cid-sz7xmlte>Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>Astro</a></span> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" data-pagefind-ignore data-astro-cid-mjrxwznw> <div class="search-modal" role="document" data-astro-cid-mjrxwznw> <div class="search-input-row" data-astro-cid-mjrxwznw> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="search-input-icon" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg> <input type="search" id="search-input" class="search-input" placeholder="Search the field guide…" autocomplete="off" spellcheck="false" aria-label="Search query" data-astro-cid-mjrxwznw> <kbd class="search-esc" data-astro-cid-mjrxwznw>esc</kbd> </div> <div class="search-results" id="search-results" aria-live="polite" data-astro-cid-mjrxwznw> <p class="search-hint" data-astro-cid-mjrxwznw>
+Try <em data-astro-cid-mjrxwznw>SKILL.md</em>, <em data-astro-cid-mjrxwznw>permission mode</em>, <em data-astro-cid-mjrxwznw>AGENTS.md</em>, or <em data-astro-cid-mjrxwznw>prefix_rule</em>.
+</p> </div> </div> </dialog>  <script type="module">const i=document.getElementById("search-dialog"),u=document.getElementById("search-input"),a=document.getElementById("search-results");let n=-1,r=[];async function w(){if(window.__pagefind)return window.__pagefind;try{const e=(document.body.dataset.base??"").replace(/\/+$/,""),s=await import(new URL(`${e}/pagefind/pagefind.js`,window.location.origin).toString());return window.__pagefind=s.default??s,window.__pagefind}catch{return null}}async function v(e){if(!a)return;if(!e.trim()){a.innerHTML='<p class="search-hint">Try <em>SKILL.md</em>, <em>permission mode</em>, <em>AGENTS.md</em>, or <em>prefix_rule</em>.</p>',r=[],n=-1;return}const t=await w();if(!t){a.innerHTML=`<p class="search-hint">Search index isn't built yet. Run <em>npm run build</em> or load the production site.</p>`;return}const s=await t.debouncedSearch(e);if(!s)return;const c=s.results.slice(0,8);if(c.length===0){a.innerHTML=`<p class="search-hint">No results for <em>${d(e)}</em>.</p>`,r=[],n=-1;return}const h=await Promise.all(c.map(o=>o.data()));a.innerHTML="",h.forEach((o,g)=>{const l=document.createElement("a");l.className="search-result",l.href=o.url,l.setAttribute("role","option"),l.setAttribute("aria-selected",g===0?"true":"false"),l.innerHTML=`
+        <div class="search-result-meta">${d(o.meta.title??o.url)}</div>
+        <h3 class="search-result-title">${d(o.sub_results?.[0]?.title??o.meta.title??"")}</h3>
+        <p class="search-result-snippet">${o.excerpt}</p>
+      `,a.appendChild(l)}),r=Array.from(a.querySelectorAll(".search-result")),n=0}function f(e){r.length!==0&&(n=(e+r.length)%r.length,r.forEach((t,s)=>{const c=s===n;t.setAttribute("aria-selected",c?"true":"false"),c&&t.scrollIntoView({block:"nearest"})}))}function d(e){return e.replace(/[&<>"']/g,t=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[t])}function m(){i&&(i.open||i.showModal(),setTimeout(()=>u?.focus(),0))}function p(){i?.open&&i.close()}document.addEventListener("click",e=>{e.target?.closest("[data-search-trigger]")&&(e.preventDefault(),m())});document.addEventListener("keydown",e=>{if((/Mac|iPod|iPhone|iPad/.test(navigator.platform)?e.metaKey:e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault(),m();return}if(e.key==="/"&&!(e.target instanceof HTMLInputElement)&&!(e.target instanceof HTMLTextAreaElement)){e.preventDefault(),m();return}if(i?.open&&(e.key==="ArrowDown"&&(e.preventDefault(),f(n+1)),e.key==="ArrowUp"&&(e.preventDefault(),f(n-1)),e.key==="Enter"&&r[n])){e.preventDefault();const c=r[n].href;p(),window.location.href=c}});i?.addEventListener("click",e=>{e.target===i&&p()});u?.addEventListener("input",e=>{const t=e.target.value;v(t)});i?.addEventListener("close",()=>{u&&(u.value=""),a&&(a.innerHTML='<p class="search-hint">Try <em>SKILL.md</em>, <em>permission mode</em>, <em>AGENTS.md</em>, or <em>prefix_rule</em>.</p>'),r=[],n=-1});</script> <script type="module">function i(s){if(s.parentElement?.classList.contains("code-figure"))return;const e=document.createElement("figure");e.className="code-figure",s.replaceWith(e),e.appendChild(s);const c=Array.from(s.classList).find(t=>t.startsWith("language-"))??s.querySelector("code")?.className.match(/language-(\S+)/)?.[0]??"";if(c){const t=c.replace("language-","");if(t&&t!=="plaintext"&&t!=="text"){const o=document.createElement("span");o.className="code-lang",o.textContent=t,e.appendChild(o)}}const n=document.createElement("button");n.type="button",n.className="copy-btn",n.setAttribute("aria-label","Copy code"),n.dataset.copyCode="",n.innerHTML=`
+    <svg class="copy-icon-default" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <path d="M5 15V5a2 2 0 012-2h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <svg class="copy-icon-success" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" style="display:none">
+      <path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+  `,e.appendChild(n)}function r(){document.querySelectorAll("pre.astro-code").forEach(i),document.querySelectorAll("[data-copy-code]").forEach(e=>{e.dataset.bound||(e.dataset.bound="true",e.addEventListener("click",async()=>{const t=e.closest(".code-figure")?.querySelector("pre")?.innerText.replace(/\s+$/,"")??"";try{await navigator.clipboard.writeText(t),e.dataset.copied="true";const o=e.querySelector(".copy-icon-default"),a=e.querySelector(".copy-icon-success");o&&a&&(o.style.display="none",a.style.display="inline"),setTimeout(()=>{e.dataset.copied="false",o&&a&&(o.style.display="inline",a.style.display="none")},1400)}catch{}}))})}typeof document<"u"&&(document.addEventListener("DOMContentLoaded",r),document.addEventListener("astro:after-swap",r));</script> </body> </html> 

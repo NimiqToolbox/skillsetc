@@ -1,0 +1,805 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="generator" content="Astro v5.18.1"><title>Claude Skills · skillsetc</title><meta name="description" content="The SKILL.md open standard — progressive disclosure, frontmatter, bundled resources, scope, invocation, and authoring best practices."><link rel="canonical" href="https://nimiqtoolbox.github.io/skillsetc/docs/skills"><meta name="theme-color" content="#0B1020"><meta name="color-scheme" content="dark"><link rel="icon" type="image/svg+xml" href="/skillsetc/favicon.svg"><link rel="apple-touch-icon" href="/skillsetc/favicon.svg"><meta property="og:type" content="website"><meta property="og:title" content="Claude Skills · skillsetc"><meta property="og:description" content="The SKILL.md open standard — progressive disclosure, frontmatter, bundled resources, scope, invocation, and authoring best practices."><meta property="og:url" content="https://nimiqtoolbox.github.io/skillsetc/docs/skills"><meta property="og:image" content="https://nimiqtoolbox.github.io/og-default.png"><meta property="og:site_name" content="skillsetc"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Claude Skills · skillsetc"><meta name="twitter:description" content="The SKILL.md open standard — progressive disclosure, frontmatter, bundled resources, scope, invocation, and authoring best practices."><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/skillsetc/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CbWU6YBD.js"></script><link rel="stylesheet" href="/skillsetc/_astro/_slug_.CMe-WxGh.css">
+<link rel="stylesheet" href="/skillsetc/_astro/_slug_.De0UF2tn.css"></head> <body data-base="/skillsetc"> <a href="#main" class="skip-link">Skip to content</a> <header class="site-header" data-pagefind-ignore data-astro-cid-3ef6ksr2> <div class="header-inner" data-astro-cid-3ef6ksr2> <a href="/skillsetc/" class="brand" aria-label="skillsetc — home" data-astro-cid-3ef6ksr2> <span class="brand-mark" aria-hidden="true" data-astro-cid-3ef6ksr2>◆</span> <span class="brand-name" data-astro-cid-3ef6ksr2>skillsetc</span> </a> <nav class="primary-nav" aria-label="Primary" data-astro-cid-3ef6ksr2> <a href="/skillsetc/docs" class="nav-link active" data-astro-cid-3ef6ksr2> Docs </a><a href="/skillsetc/decide" class="nav-link" data-astro-cid-3ef6ksr2> Decide </a> </nav> <div class="header-actions" data-astro-cid-3ef6ksr2> <button type="button" class="search-trigger" data-search-trigger aria-label="Search the guide" data-astro-cid-3ef6ksr2> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg> <span class="search-trigger-label" data-astro-cid-3ef6ksr2>Search</span> <span class="kbd-group search-trigger-kbd" aria-label="⌘ then K" data-astro-cid-wy7pfqz2>  <kbd data-astro-cid-wy7pfqz2>⌘</kbd> <span class="kbd-sep" aria-hidden="true" data-astro-cid-wy7pfqz2>+</span> <kbd data-astro-cid-wy7pfqz2>K</kbd>  </span>  </button> <a href="https://github.com" class="icon-link" aria-label="GitHub repository" target="_blank" rel="noopener noreferrer" data-astro-cid-3ef6ksr2> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class aria-hidden="true"><path d="M12 .5a11.5 11.5 0 00-3.64 22.41c.58.1.79-.25.79-.55v-2.06c-3.2.7-3.88-1.36-3.88-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.74 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.17a10.95 10.95 0 015.76 0c2.2-1.48 3.16-1.17 3.16-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.06.78 2.13v3.16c0 .31.21.66.8.55A11.5 11.5 0 0012 .5z" fill="currentColor"/></svg> </a> <button type="button" class="menu-trigger" data-menu-trigger aria-label="Open navigation menu" data-astro-cid-3ef6ksr2> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg> </button> </div> </div> </header>  <script type="module">const t=document.querySelector(".site-header");if(t){const e=()=>{t.dataset.scrolled=window.scrollY>8?"true":"false"};e(),window.addEventListener("scroll",e,{passive:!0}),document.addEventListener("astro:after-swap",e)}</script> <main id="main">  <div class="doc-shell" data-astro-cid-fz5pa65a> <aside class="sidebar" data-pagefind-ignore aria-label="Documentation navigation" data-astro-cid-ssfzsv2f> <nav class="sidebar-nav" data-astro-cid-ssfzsv2f> <section class="sidebar-group" data-astro-cid-o4nxl7dn> <h2 class="sidebar-group-label" data-astro-cid-o4nxl7dn>Primitives</h2> <ul class="sidebar-list" data-astro-cid-o4nxl7dn> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/skills" class="sb-link active" aria-current="page" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Skills</span> <span class="sb-desc" data-astro-cid-o7fgaejc>SKILL.md, progressive disclosure, authoring</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/subagents" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Subagents</span> <span class="sb-desc" data-astro-cid-o7fgaejc>Isolated contexts, /agents, invocation</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/hooks-mcp-memory-settings" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Hooks · MCP · Memory</span> <span class="sb-desc" data-astro-cid-o7fgaejc>Lifecycle, transports, CLAUDE.md, settings</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/comparison-and-decision-guide" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Decision Guide</span> <span class="sb-desc" data-astro-cid-o7fgaejc>When to use what — with worked examples</span> </a> </li>  </ul> </section> <section class="sidebar-group" data-astro-cid-o4nxl7dn> <h2 class="sidebar-group-label" data-astro-cid-o4nxl7dn>Reference</h2> <ul class="sidebar-list" data-astro-cid-o4nxl7dn> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/claude-code" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Claude Code</span> <span class="sb-desc" data-astro-cid-o7fgaejc>CLI · IDE · permissions · slash commands</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/openai-codex" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>OpenAI Codex</span> <span class="sb-desc" data-astro-cid-o7fgaejc>CLI · Cloud · IDE · models · pricing</span> </a> </li>  </ul> </section>  </nav> </aside>  <article class="doc-article" data-pagefind-body data-astro-cid-fz5pa65a> <nav class="breadcrumbs" aria-label="Breadcrumb" data-astro-cid-ilhxcym7> <ol data-astro-cid-ilhxcym7> <li data-astro-cid-ilhxcym7> <a href="/skillsetc/docs" data-astro-cid-ilhxcym7>Docs</a> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="bc-sep" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> </li><li data-astro-cid-ilhxcym7> <span aria-current="page" data-astro-cid-ilhxcym7>Claude Skills</span>  </li> </ol> </nav>  <span class="eyebrow"> Reference </span> <h1 class="doc-title serif" data-astro-cid-fz5pa65a>Claude Skills</h1> <p class="doc-lead" data-astro-cid-fz5pa65a>The SKILL.md open standard — progressive disclosure, frontmatter, bundled resources, scope, invocation, and authoring best practices.</p> <section class="sources-panel" aria-label="Sources" data-astro-cid-5nphvqvb><header class="sources-header" data-astro-cid-5nphvqvb><span class="sources-eyebrow" data-astro-cid-5nphvqvb>Sourced from</span></header><ul class="sources-list" data-astro-cid-5nphvqvb><li data-astro-cid-5nphvqvb><a href="https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>docs.claude.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/en/docs/agents-and-tools/agent-skills/overview</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>docs.claude.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/en/docs/agents-and-tools/agent-skills/best-practices</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://docs.claude.com/en/docs/agents-and-tools/agent-skills/quickstart" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>docs.claude.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/en/docs/agents-and-tools/agent-skills/quickstart</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>code.claude.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/docs/en/skills</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://github.com/anthropics/skills" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>github.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/anthropics/skills</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://agentskills.io" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>agentskills.io</span><span class="sources-path" data-astro-cid-5nphvqvb></span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li></ul></section> <div class="prose" data-astro-cid-fz5pa65a>  <h2 id="1-what-a-skill-is">1. What a Skill is<a class="heading-anchor" aria-label="Permalink" href="#1-what-a-skill-is">#</a></h2>
+<blockquote>
+<p><em>“Agent Skills are modular capabilities that extend Claude’s functionality. Each Skill packages instructions, metadata, and optional resources (scripts, templates) that Claude uses automatically when relevant.”</em>
+— Anthropic, Agent Skills overview</p>
+</blockquote>
+<p>A Skill is a directory with a <code>SKILL.md</code> file at its root. The <code>SKILL.md</code> contains YAML frontmatter (always loaded) and a Markdown body (loaded on demand). Sibling files — additional Markdown, scripts, templates, reference data — are loaded only when the body references them.</p>
+<p>Skills share a single open standard (<code>agentskills.io</code>). The same <code>SKILL.md</code> works in <strong>Claude Code</strong>, <strong>Codex CLI</strong>, <strong>Cursor</strong>, <strong>Gemini CLI</strong>, <strong>Antigravity IDE</strong>, and others.</p>
+<h3 id="how-skills-compare-to-other-primitives">How Skills compare to other primitives<a class="heading-anchor" aria-label="Permalink" href="#how-skills-compare-to-other-primitives">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Feature</th><th>Skill</th><th>MCP tool</th><th>Slash command (legacy)</th><th>Subagent</th></tr></thead><tbody><tr><td>Filesystem-based</td><td>✅</td><td>❌</td><td>✅</td><td>(orchestration unit)</td></tr><tr><td>Auto-discovered by description</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td></tr><tr><td>Progressive disclosure</td><td>✅ (3 levels)</td><td>❌</td><td>❌</td><td>❌</td></tr><tr><td>Bundled resources (scripts, refs)</td><td>✅</td><td>(remote)</td><td>limited</td><td>N/A</td></tr><tr><td>Loaded into</td><td>Same context</td><td>Tool registry</td><td>Same context</td><td><strong>Isolated</strong> context</td></tr><tr><td>Run code</td><td>Via bash</td><td>Via remote process</td><td>N/A</td><td>Via tools</td></tr></tbody></table>
+<blockquote>
+<p>“Custom commands have been merged into skills. A file at <code>.claude/commands/deploy.md</code> and a skill at <code>.claude/skills/deploy/SKILL.md</code> both create <code>/deploy</code> and work the same way.” — <code>code.claude.com/docs/en/skills</code></p>
+</blockquote>
+<hr>
+<h2 id="2-the-progressive-disclosure-model">2. The progressive-disclosure model<a class="heading-anchor" aria-label="Permalink" href="#2-the-progressive-disclosure-model">#</a></h2>
+<p>A Skill is loaded in <strong>three stages</strong>, each more expensive than the last:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Level</th><th>What loads</th><th>When</th><th>Token cost</th></tr></thead><tbody><tr><td><strong>1. Metadata</strong></td><td>YAML frontmatter (<code>name</code>, <code>description</code>)</td><td>Always, at session start</td><td>~100 tok / skill</td></tr><tr><td><strong>2. Instructions</strong></td><td>Markdown body of <code>SKILL.md</code></td><td>When the skill is triggered</td><td>&#x3C;5k tok</td></tr><tr><td><strong>3. Resources / scripts</strong></td><td>Sibling files referenced by the body; scripts run via bash</td><td>On demand, when referenced or executed</td><td>~0 (script code never enters context — only its output)</td></tr></tbody></table>
+<blockquote>
+<p><em>“When a Skill is triggered, Claude uses bash to read SKILL.md from the filesystem, bringing its instructions into the context window. If those instructions reference other files (like FORMS.md or a database schema), Claude reads those files too using additional bash commands. When instructions mention executable scripts, Claude runs them via bash and receives only the output (the script code itself never enters context).”</em></p>
+</blockquote>
+<p><strong>Implication:</strong> you can ship megabytes of reference material in a Skill at zero startup cost — the description matters, not the body length.</p>
+<hr>
+<h2 id="3-skillmd-structure">3. <code>SKILL.md</code> structure<a class="heading-anchor" aria-label="Permalink" href="#3-skillmd-structure">#</a></h2>
+<h3 id="required-frontmatter">Required frontmatter<a class="heading-anchor" aria-label="Permalink" href="#required-frontmatter">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"><span style="color:#FFC799">name</span><span style="color:#FFF">: </span><span style="color:#99FFE4">your-skill-name</span></span>
+<span class="line"><span style="color:#FFC799">description</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Brief description of what this Skill does and when to use it</span></span>
+<span class="line"><span style="color:#FFF">---</span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Constraints</th></tr></thead><tbody><tr><td><code>name</code></td><td>≤ 64 chars; lowercase letters, numbers, hyphens only; no XML tags; cannot contain reserved words <code>anthropic</code> or <code>claude</code></td></tr><tr><td><code>description</code></td><td>≤ 1024 chars; non-empty; no XML tags. <strong>Write in third person.</strong> Include trigger phrases.</td></tr></tbody></table>
+<p><strong>Naming convention</strong> (Anthropic best practices): use the <strong>gerund form</strong> — <code>processing-pdfs</code>, <code>analyzing-spreadsheets</code>, <code>managing-databases</code>. Avoid generic names (<code>helper</code>, <code>utils</code>, <code>tools</code>).</p>
+<p><strong>Description rules:</strong></p>
+<ul>
+<li>Always third person: ✅ “Processes Excel files and generates reports” — ❌ “I can help you process Excel files”</li>
+<li>Front-load the use case</li>
+<li>Include specific trigger phrases (“Use when …”, “Use when the user mentions …”)</li>
+<li>Single description field — Claude uses it to choose between potentially 100+ Skills</li>
+</ul>
+<p>Good vs bad examples:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#8B8B8B94"># Good</span></span>
+<span class="line"><span style="color:#FFC799">description</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Extract text and tables from PDF files, fill forms, merge documents. Use when working with PDF files or when the user mentions PDFs, forms, or document extraction.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B8B8B94"># Bad</span></span>
+<span class="line"><span style="color:#FFC799">description</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Helps with documents</span></span></code></pre>
+<h3 id="optional-frontmatter-claude-code-extensions">Optional frontmatter (Claude Code extensions)<a class="heading-anchor" aria-label="Permalink" href="#optional-frontmatter-claude-code-extensions">#</a></h3>
+<blockquote>
+<p>Source: <a href="https://code.claude.com/docs/en/skills#frontmatter-reference" rel="noopener noreferrer" target="_blank">https://code.claude.com/docs/en/skills#frontmatter-reference</a></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Type</th><th>Purpose</th></tr></thead><tbody><tr><td><code>when_to_use</code></td><td>string</td><td>Extra context appended to description (combined ≤ 1,536 chars)</td></tr><tr><td><code>argument-hint</code></td><td>string</td><td>Autocomplete hint (e.g., <code>[issue-number]</code>)</td></tr><tr><td><code>arguments</code></td><td>string or list</td><td>Named positional arguments for <code>$name</code> substitution</td></tr><tr><td><code>disable-model-invocation</code></td><td>bool</td><td>If <code>true</code>, only manual <code>/&#x3C;name></code> works</td></tr><tr><td><code>user-invocable</code></td><td>bool</td><td>If <code>false</code>, hidden from <code>/</code> menu — only Claude can invoke</td></tr><tr><td><code>allowed-tools</code></td><td>string or list</td><td>Tools available without permission while skill is active</td></tr><tr><td><code>model</code></td><td>string</td><td>Override model when skill is active (<code>sonnet</code>, <code>opus</code>, <code>haiku</code>, <code>inherit</code>, full ID)</td></tr><tr><td><code>effort</code></td><td>string</td><td>Effort override (<code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, <code>max</code>)</td></tr><tr><td><code>context</code></td><td>string</td><td>Set to <code>fork</code> to run in an isolated subagent context</td></tr><tr><td><code>agent</code></td><td>string</td><td>Subagent type when <code>context: fork</code> is set</td></tr><tr><td><code>hooks</code></td><td>object</td><td>Hooks scoped to the skill’s lifecycle</td></tr><tr><td><code>paths</code></td><td>string or list</td><td>Glob patterns limiting when the skill auto-activates</td></tr><tr><td><code>shell</code></td><td>string</td><td><code>bash</code> (default) or <code>powershell</code> for inline shell injections</td></tr></tbody></table>
+<h3 id="body-conventions">Body conventions<a class="heading-anchor" aria-label="Permalink" href="#body-conventions">#</a></h3>
+<p>Recommended sections:</p>
+<ul>
+<li><strong>When to use</strong> — concise trigger description</li>
+<li><strong>Quick start</strong> — minimal ready-to-run example</li>
+<li><strong>Examples</strong> — concrete input/output pairs</li>
+<li><strong>References</strong> — links to deeper documentation files</li>
+</ul>
+<p>Anthropic’s hard guideline: <strong>keep <code>SKILL.md</code> body under 500 lines.</strong> Move details to sibling files.</p>
+<h3 id="minimal-example">Minimal example<a class="heading-anchor" aria-label="Permalink" href="#minimal-example">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"><span style="color:#FFC799">name</span><span style="color:#FFF">: </span><span style="color:#99FFE4">explain-code</span></span>
+<span class="line"><span style="color:#FFC799">description</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Explains code with visual diagrams and analogies. Use when explaining how code works, teaching about a codebase, or when the user asks "how does this work?"</span></span>
+<span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFC799">When explaining code, always include</span><span style="color:#FFF">:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#99FFE4">1. **Start with an analogy** — compare the code to something from everyday life</span></span>
+<span class="line"><span style="color:#99FFE4">2. **Draw a diagram** — ASCII art for flow, structure, or relationships</span></span>
+<span class="line"><span style="color:#99FFE4">3. **Walk through the code** — step-by-step</span></span>
+<span class="line"><span style="color:#99FFE4">4. **Highlight a gotcha** — common mistake or misconception</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#99FFE4">Keep explanations conversational. For complex concepts, use multiple analogies.</span></span></code></pre>
+<h3 id="example-with-optional-fields">Example with optional fields<a class="heading-anchor" aria-label="Permalink" href="#example-with-optional-fields">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"><span style="color:#FFC799">name</span><span style="color:#FFF">: </span><span style="color:#99FFE4">fix-issue</span></span>
+<span class="line"><span style="color:#FFC799">description</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Fix a GitHub issue</span></span>
+<span class="line"><span style="color:#FFC799">when_to_use</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Activate for bug fixes and feature implementation</span></span>
+<span class="line"><span style="color:#FFC799">disable-model-invocation</span><span style="color:#FFF">: </span><span style="color:#FFC799">true</span></span>
+<span class="line"><span style="color:#FFC799">allowed-tools</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Bash(git add *) Bash(git commit *)</span></span>
+<span class="line"><span style="color:#FFC799">arguments</span><span style="color:#FFF">: [</span><span style="color:#99FFE4">issue-number</span><span style="color:#FFF">]</span></span>
+<span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFC799">Fix GitHub issue $ARGUMENTS[0]</span><span style="color:#FFF">:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#99FFE4">1. Read the issue description</span></span>
+<span class="line"><span style="color:#99FFE4">2. Understand the requirements</span></span>
+<span class="line"><span style="color:#99FFE4">3. Implement the fix</span></span>
+<span class="line"><span style="color:#99FFE4">4. Write tests</span></span>
+<span class="line"><span style="color:#99FFE4">5. Create a commit</span></span></code></pre>
+<hr>
+<h2 id="4-bundled-resources-level-3">4. Bundled resources (Level 3)<a class="heading-anchor" aria-label="Permalink" href="#4-bundled-resources-level-3">#</a></h2>
+<p>A Skill can ship a directory tree alongside <code>SKILL.md</code>:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pdf-processing/</span></span>
+<span class="line"><span>├── SKILL.md            # required, main instructions</span></span>
+<span class="line"><span>├── FORMS.md            # additional instructions, loaded on demand</span></span>
+<span class="line"><span>├── REFERENCE.md        # API reference</span></span>
+<span class="line"><span>├── EXAMPLES.md         # usage examples</span></span>
+<span class="line"><span>├── scripts/</span></span>
+<span class="line"><span>│   ├── analyze_form.py # executable script — only output enters context</span></span>
+<span class="line"><span>│   ├── fill_form.py</span></span>
+<span class="line"><span>│   └── validate.py</span></span>
+<span class="line"><span>├── assets/</span></span>
+<span class="line"><span>│   └── icon.png</span></span>
+<span class="line"><span>└── templates/</span></span>
+<span class="line"><span>    └── report_template.md</span></span></code></pre>
+<h3 id="loading-rules">Loading rules<a class="heading-anchor" aria-label="Permalink" href="#loading-rules">#</a></h3>
+<p><strong>Additional Markdown:</strong> referenced via standard markdown links from <code>SKILL.md</code>:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#FFF">- </span><span style="color:#FFF;font-weight:bold">**Form filling**</span><span style="color:#FFF">: see [</span><span style="color:#FFFF">FORMS.md</span><span style="color:#FFF">](</span><span style="color:#FFC799;text-decoration:underline">FORMS.md</span><span style="color:#FFF">)</span></span>
+<span class="line"><span style="color:#FFF">- </span><span style="color:#FFF;font-weight:bold">**API reference**</span><span style="color:#FFF">: see [</span><span style="color:#FFFF">REFERENCE.md</span><span style="color:#FFF">](</span><span style="color:#FFC799;text-decoration:underline">REFERENCE.md</span><span style="color:#FFF">)</span></span>
+<span class="line"><span style="color:#FFF">- </span><span style="color:#FFF;font-weight:bold">**Examples**</span><span style="color:#FFF">: see [</span><span style="color:#FFFF">EXAMPLES.md</span><span style="color:#FFF">](</span><span style="color:#FFC799;text-decoration:underline">EXAMPLES.md</span><span style="color:#FFF">)</span></span></code></pre>
+<p><strong>Executable scripts:</strong> instructed via bash:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#FFC799">## Utility scripts</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFF;font-weight:bold">**analyze_form.py**</span><span style="color:#FFF"> — extract all form fields from a PDF:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0A0A0">\`\`\`</span><span style="color:#FFF">bash</span></span>
+<span class="line"><span style="color:#FFF">python scripts/analyze_form.py input.pdf > fields.json</span></span>
+<span class="line"><span style="color:#A0A0A0">\`\`\`</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFF">Output format:</span></span>
+<span class="line"><span style="color:#A0A0A0">\`\`\`</span><span style="color:#FFF">json</span></span>
+<span class="line"><span style="color:#FFF">{ "field_name": { "type": "text", "x": 100, "y": 200 } }</span></span>
+<span class="line"><span style="color:#A0A0A0">\`\`\`</span></span></code></pre>
+<p>The script code never enters the model’s context — only its <strong>output</strong> does. This is how skills can ship deterministic helpers without paying tokens.</p>
+<h3 id="critical-guidelines">Critical guidelines<a class="heading-anchor" aria-label="Permalink" href="#critical-guidelines">#</a></h3>
+<ol>
+<li><strong>Always use forward slashes in paths</strong>, even on Windows (<code>scripts/helper.py</code>, never <code>scripts\helper.py</code>).</li>
+<li><strong>Keep references one level deep</strong> from <code>SKILL.md</code>. Claude may use <code>head -100</code> to peek at deeply nested files and miss content.</li>
+<li><strong>Solve, don’t punt</strong> — when writing scripts for Skills, handle errors rather than passing them back to the model. Document any “voodoo constants.”</li>
+<li><strong>Descriptive filenames</strong> — <code>form_validation_rules.md</code>, not <code>doc2.md</code>.</li>
+</ol>
+<h3 id="domain-organised-pattern">Domain-organised pattern<a class="heading-anchor" aria-label="Permalink" href="#domain-organised-pattern">#</a></h3>
+<p>For multi-domain skills, organise reference files so only relevant ones load:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>bigquery-skill/</span></span>
+<span class="line"><span>├── SKILL.md</span></span>
+<span class="line"><span>└── reference/</span></span>
+<span class="line"><span>    ├── finance.md</span></span>
+<span class="line"><span>    ├── sales.md</span></span>
+<span class="line"><span>    ├── product.md</span></span>
+<span class="line"><span>    └── marketing.md</span></span></code></pre>
+<p><code>SKILL.md</code> then says “for finance metrics, see <code>reference/finance.md</code>” so Claude only loads the file matching the user’s question.</p>
+<hr>
+<h2 id="5-where-skills-live--how-they-are-discovered">5. Where Skills live &#x26; how they are discovered<a class="heading-anchor" aria-label="Permalink" href="#5-where-skills-live--how-they-are-discovered">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://code.claude.com/docs/en/skills#where-skills-live" rel="noopener noreferrer" target="_blank">https://code.claude.com/docs/en/skills#where-skills-live</a></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Scope</th><th>Path</th><th>Applies to</th><th>Priority</th></tr></thead><tbody><tr><td>Enterprise / managed</td><td>(managed settings location)</td><td>All users in org</td><td><strong>Highest</strong></td></tr><tr><td>Personal</td><td><code>~/.claude/skills/&#x3C;name>/SKILL.md</code></td><td>All your projects</td><td>Medium</td></tr><tr><td>Project</td><td><code>.claude/skills/&#x3C;name>/SKILL.md</code></td><td>This project only</td><td>Low</td></tr><tr><td>Plugin</td><td><code>&#x3C;plugin>/skills/&#x3C;name>/SKILL.md</code></td><td>Where plugin enabled</td><td>Namespaced (<code>&#x3C;plugin>:&#x3C;name></code>)</td></tr></tbody></table>
+<p>When the same <code>name</code> exists at multiple scopes, <strong>enterprise > personal > project</strong>. Plugin skills are namespaced and can never collide. <strong>If a skill and a legacy command share a name, the skill wins.</strong></p>
+<h3 id="live-change-detection">Live change detection<a class="heading-anchor" aria-label="Permalink" href="#live-change-detection">#</a></h3>
+<blockquote>
+<p><em>“Claude Code watches skill directories for file changes. Adding, editing, or removing a skill under <code>~/.claude/skills/</code>, the project <code>.claude/skills/</code>, or a <code>.claude/skills/</code> inside an <code>--add-dir</code> directory takes effect within the current session without restarting. Creating a top-level skills directory that did not exist when the session started requires restarting.”</em></p>
+</blockquote>
+<h3 id="nested-directory-discovery-monorepos">Nested directory discovery (monorepos)<a class="heading-anchor" aria-label="Permalink" href="#nested-directory-discovery-monorepos">#</a></h3>
+<blockquote>
+<p><em>“When you work with files in subdirectories, Claude Code automatically discovers skills from nested <code>.claude/skills/</code> directories. For example, if you’re editing a file in <code>packages/frontend/</code>, Claude Code also looks for skills in <code>packages/frontend/.claude/skills/</code>.”</em></p>
+</blockquote>
+<h3 id="skills-from---add-dir">Skills from <code>--add-dir</code><a class="heading-anchor" aria-label="Permalink" href="#skills-from---add-dir">#</a></h3>
+<p><code>--add-dir</code> grants file access; for skills it also auto-loads <code>.claude/skills/</code> inside the added directory.</p>
+<hr>
+<h2 id="6-how-a-skill-is-invoked">6. How a Skill is invoked<a class="heading-anchor" aria-label="Permalink" href="#6-how-a-skill-is-invoked">#</a></h2>
+<h3 id="1-automatic-model-decided">1. Automatic (model-decided)<a class="heading-anchor" aria-label="Permalink" href="#1-automatic-model-decided">#</a></h3>
+<p>If <code>disable-model-invocation</code> is <strong>not</strong> set, Claude loads a skill when:</p>
+<ol>
+<li>The skill’s <code>description</code> matches the user’s request</li>
+<li>Claude judges it relevant</li>
+</ol>
+<h3 id="2-explicit-user-typed">2. Explicit (user-typed)<a class="heading-anchor" aria-label="Permalink" href="#2-explicit-user-typed">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/skill-name</span></span></code></pre>
+<p>The user types <code>/&#x3C;name></code> — Claude loads and follows the skill.</p>
+<h3 id="3-programmatic-skill-tool-call">3. Programmatic (Skill tool call)<a class="heading-anchor" aria-label="Permalink" href="#3-programmatic-skill-tool-call">#</a></h3>
+<p>Claude can invoke the Skill tool directly with parameters.</p>
+<h3 id="invocation-control-matrix">Invocation control matrix<a class="heading-anchor" aria-label="Permalink" href="#invocation-control-matrix">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Frontmatter</th><th>User can <code>/&#x3C;name></code></th><th>Claude auto-loads</th><th>Description in context</th></tr></thead><tbody><tr><td>(default)</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><code>disable-model-invocation: true</code></td><td>✅</td><td>❌</td><td>❌</td></tr><tr><td><code>user-invocable: false</code></td><td>❌</td><td>✅</td><td>✅</td></tr></tbody></table>
+<p><strong>Manual-only deploy script:</strong></p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"><span style="color:#FFC799">name</span><span style="color:#FFF">: </span><span style="color:#99FFE4">deploy</span></span>
+<span class="line"><span style="color:#FFC799">description</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Deploy the application to production</span></span>
+<span class="line"><span style="color:#FFC799">disable-model-invocation</span><span style="color:#FFF">: </span><span style="color:#FFC799">true</span></span>
+<span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFC799">Deploy $ARGUMENTS to production</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#99FFE4">1. Run tests</span></span>
+<span class="line"><span style="color:#99FFE4">2. Build</span></span>
+<span class="line"><span style="color:#99FFE4">3. Push to deployment target</span></span></code></pre>
+<p><strong>Background knowledge that’s not user-callable:</strong></p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"><span style="color:#FFC799">name</span><span style="color:#FFF">: </span><span style="color:#99FFE4">legacy-system-context</span></span>
+<span class="line"><span style="color:#FFC799">description</span><span style="color:#FFF">: </span><span style="color:#99FFE4">How the legacy authentication system works</span></span>
+<span class="line"><span style="color:#FFC799">user-invocable</span><span style="color:#FFF">: </span><span style="color:#FFC799">false</span></span>
+<span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#99FFE4">The legacy system uses LDAP for authentication...</span></span></code></pre>
+<h3 id="skill-content-lifecycle-in-a-session">Skill content lifecycle in a session<a class="heading-anchor" aria-label="Permalink" href="#skill-content-lifecycle-in-a-session">#</a></h3>
+<blockquote>
+<p><em>“When you or Claude invoke a skill, the rendered SKILL.md content enters the conversation as a single message and stays there for the rest of the session. Claude Code does not re-read the skill file on later turns, so write guidance that should apply throughout a task as standing instructions rather than one-time steps.”</em></p>
+</blockquote>
+<h3 id="auto-compaction-behaviour">Auto-compaction behaviour<a class="heading-anchor" aria-label="Permalink" href="#auto-compaction-behaviour">#</a></h3>
+<blockquote>
+<p><em>“Auto-compaction carries invoked skills forward within a token budget. When the conversation is summarised to free context, Claude Code re-attaches the most recent invocation of each skill after the summary, keeping the first 5,000 tokens of each. Re-attached skills share a combined budget of 25,000 tokens.”</em></p>
+</blockquote>
+<p>So if you invoke many skills in one long session, the oldest ones may be dropped after compaction.</p>
+<hr>
+<h2 id="7-authoring-best-practices-from-anthropic">7. Authoring best practices (from Anthropic)<a class="heading-anchor" aria-label="Permalink" href="#7-authoring-best-practices-from-anthropic">#</a></h2>
+<h3 id="conciseness">Conciseness<a class="heading-anchor" aria-label="Permalink" href="#conciseness">#</a></h3>
+<blockquote>
+<p><em>“The context window is a public good. … Default assumption: Claude is already very smart.”</em></p>
+</blockquote>
+<p>A 50-token skill body is often more effective than a 150-token one that re-explains basics.</p>
+<h3 id="right-level-of-freedom">Right level of freedom<a class="heading-anchor" aria-label="Permalink" href="#right-level-of-freedom">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Task fragility</th><th>Specificity</th></tr></thead><tbody><tr><td>Multiple valid approaches</td><td>Text-based guidelines (high freedom)</td></tr><tr><td>Preferred pattern, some variation OK</td><td>Pseudocode / parameterised scripts (medium)</td></tr><tr><td>Fragile or specific sequence required</td><td>Specific scripts (low freedom)</td></tr></tbody></table>
+<h3 id="test-with-all-your-target-models">Test with all your target models<a class="heading-anchor" aria-label="Permalink" href="#test-with-all-your-target-models">#</a></h3>
+<p>Skills are additions to the underlying model. Run your skill with Haiku, Sonnet, and Opus — what works for one may need more detail for another.</p>
+<h3 id="description-writing-rules">Description-writing rules<a class="heading-anchor" aria-label="Permalink" href="#description-writing-rules">#</a></h3>
+<ul>
+<li>Specific keywords > vague summaries</li>
+<li>Both <strong>what</strong> and <strong>when</strong> in the same description</li>
+<li>Third person, always</li>
+<li>Front-load the key use case</li>
+</ul>
+<h3 id="common-pitfalls">Common pitfalls<a class="heading-anchor" aria-label="Permalink" href="#common-pitfalls">#</a></h3>
+<ul>
+<li><strong>Time-sensitive info</strong> (“if you’re doing this before August 2025…”) — wraps in <code>&#x3C;details></code> instead.</li>
+<li><strong>Inconsistent terminology</strong> — pick “API endpoint” and stick with it (don’t drift to “API route”).</li>
+<li><strong>Too many options</strong> — recommend one approach with explicit escape hatches.</li>
+<li><strong>Deep reference chains</strong> — keep references one level from <code>SKILL.md</code>.</li>
+</ul>
+<h3 id="evaluation-first-development">Evaluation-first development<a class="heading-anchor" aria-label="Permalink" href="#evaluation-first-development">#</a></h3>
+<ol>
+<li>Run Claude on representative tasks <strong>without</strong> the skill — find the gaps.</li>
+<li>Write three evaluations covering those gaps.</li>
+<li>Establish a baseline performance.</li>
+<li>Write the <strong>minimum</strong> instructions needed to pass.</li>
+<li>Iterate.</li>
+</ol>
+<p>Example evaluation:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#FFF">{</span></span>
+<span class="line"><span style="color:#FFC799">  "skills"</span><span style="color:#FFF">: [</span><span style="color:#99FFE4">"pdf-processing"</span><span style="color:#FFF">],</span></span>
+<span class="line"><span style="color:#FFC799">  "query"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"Extract all text from this PDF and save it to output.txt"</span><span style="color:#FFF">,</span></span>
+<span class="line"><span style="color:#FFC799">  "files"</span><span style="color:#FFF">: [</span><span style="color:#99FFE4">"test-files/document.pdf"</span><span style="color:#FFF">],</span></span>
+<span class="line"><span style="color:#FFC799">  "expected_behavior"</span><span style="color:#FFF">: [</span></span>
+<span class="line"><span style="color:#99FFE4">    "Reads the PDF file using an appropriate library"</span><span style="color:#FFF">,</span></span>
+<span class="line"><span style="color:#99FFE4">    "Extracts text from all pages"</span><span style="color:#FFF">,</span></span>
+<span class="line"><span style="color:#99FFE4">    "Saves to output.txt"</span></span>
+<span class="line"><span style="color:#FFF">  ]</span></span>
+<span class="line"><span style="color:#FFF">}</span></span></code></pre>
+<h3 id="iterative-refinement-with-claude">Iterative refinement with Claude<a class="heading-anchor" aria-label="Permalink" href="#iterative-refinement-with-claude">#</a></h3>
+<ol>
+<li>Solve a task with Claude A using normal prompting.</li>
+<li>Identify the reusable pattern.</li>
+<li>Ask Claude A to draft the skill.</li>
+<li>Review for conciseness; trim explanations.</li>
+<li>Test on similar tasks with a fresh Claude B.</li>
+<li>Observe; refine; repeat.</li>
+</ol>
+<h3 id="pre-publish-checklist-anthropic">Pre-publish checklist (Anthropic)<a class="heading-anchor" aria-label="Permalink" href="#pre-publish-checklist-anthropic">#</a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Description is specific and includes trigger keywords</li>
+<li class="task-list-item"><input type="checkbox" disabled> Description covers both what + when</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>SKILL.md</code> body &#x3C; 500 lines</li>
+<li class="task-list-item"><input type="checkbox" disabled> Detailed material lives in sibling files</li>
+<li class="task-list-item"><input type="checkbox" disabled> No time-sensitive info</li>
+<li class="task-list-item"><input type="checkbox" disabled> Consistent terminology</li>
+<li class="task-list-item"><input type="checkbox" disabled> Concrete examples (not abstract)</li>
+<li class="task-list-item"><input type="checkbox" disabled> References are one level deep</li>
+<li class="task-list-item"><input type="checkbox" disabled> Workflows have clear steps</li>
+<li class="task-list-item"><input type="checkbox" disabled> Scripts handle errors (no punting)</li>
+<li class="task-list-item"><input type="checkbox" disabled> No “voodoo constants”</li>
+<li class="task-list-item"><input type="checkbox" disabled> Required packages verified as available</li>
+<li class="task-list-item"><input type="checkbox" disabled> All paths use forward slashes</li>
+<li class="task-list-item"><input type="checkbox" disabled> At least three evaluations</li>
+<li class="task-list-item"><input type="checkbox" disabled> Tested with Haiku + Sonnet + Opus</li>
+</ul>
+<hr>
+<h2 id="8-anthropic-published-skills">8. Anthropic-published skills<a class="heading-anchor" aria-label="Permalink" href="#8-anthropic-published-skills">#</a></h2>
+<h3 id="pre-built-claudeai--claude-api">Pre-built (claude.ai + Claude API)<a class="heading-anchor" aria-label="Permalink" href="#pre-built-claudeai--claude-api">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Skill ID</th><th>Purpose</th></tr></thead><tbody><tr><td><code>pptx</code></td><td>PowerPoint creation, editing, analysis</td></tr><tr><td><code>xlsx</code></td><td>Excel analysis, pivot tables, charts</td></tr><tr><td><code>docx</code></td><td>Word creation, editing, formatting</td></tr><tr><td><code>pdf</code></td><td>Generate formatted PDFs</td></tr></tbody></table>
+<p>These are referenced by <code>skill_id</code> in the API <code>container</code> parameter:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#FFF">response </span><span style="color:#A0A0A0">=</span><span style="color:#FFF"> client.beta.messages.create(</span></span>
+<span class="line"><span style="color:#FFF">    model</span><span style="color:#A0A0A0">=</span><span style="color:#99FFE4">"claude-opus-4-7"</span><span style="color:#FFF">,</span></span>
+<span class="line"><span style="color:#FFF">    max_tokens</span><span style="color:#A0A0A0">=</span><span style="color:#FFC799">4096</span><span style="color:#FFF">,</span></span>
+<span class="line"><span style="color:#FFF">    betas</span><span style="color:#A0A0A0">=</span><span style="color:#FFF">[</span><span style="color:#99FFE4">"code-execution-2025-08-25"</span><span style="color:#FFF">, </span><span style="color:#99FFE4">"skills-2025-10-02"</span><span style="color:#FFF">],</span></span>
+<span class="line"><span style="color:#FFF">    container</span><span style="color:#A0A0A0">=</span><span style="color:#FFF">{</span></span>
+<span class="line"><span style="color:#99FFE4">        "skills"</span><span style="color:#FFF">: [{</span><span style="color:#99FFE4">"type"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"anthropic"</span><span style="color:#FFF">, </span><span style="color:#99FFE4">"skill_id"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"pptx"</span><span style="color:#FFF">, </span><span style="color:#99FFE4">"version"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"latest"</span><span style="color:#FFF">}]</span></span>
+<span class="line"><span style="color:#FFF">    },</span></span>
+<span class="line"><span style="color:#FFF">    tools</span><span style="color:#A0A0A0">=</span><span style="color:#FFF">[{</span><span style="color:#99FFE4">"type"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"code_execution_20250825"</span><span style="color:#FFF">, </span><span style="color:#99FFE4">"name"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"code_execution"</span><span style="color:#FFF">}],</span></span>
+<span class="line"><span style="color:#FFF">    messages</span><span style="color:#A0A0A0">=</span><span style="color:#FFF">[{</span><span style="color:#99FFE4">"role"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"user"</span><span style="color:#FFF">, </span><span style="color:#99FFE4">"content"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"Create a presentation..."</span><span style="color:#FFF">}],</span></span>
+<span class="line"><span style="color:#FFF">)</span></span></code></pre>
+<p>Required beta headers:</p>
+<ul>
+<li><code>code-execution-2025-08-25</code></li>
+<li><code>skills-2025-10-02</code></li>
+<li><code>files-api-2025-04-14</code> (if uploading files)</li>
+</ul>
+<h3 id="open-source-repository">Open-source repository<a class="heading-anchor" aria-label="Permalink" href="#open-source-repository">#</a></h3>
+<p><code>https://github.com/anthropics/skills</code> — examples and reference skills:</p>
+<ul>
+<li><strong>claude-api skill</strong> — bundles up-to-date Claude API reference for 8 SDK languages (auto-included in Claude Code)</li>
+<li><strong>document-skills</strong> (pdf, docx, xlsx)</li>
+<li><strong>example-skills</strong> (brand-guidelines, pdf-processing, etc.)</li>
+<li><strong>skill-creator</strong> — a skill that helps you author skills</li>
+</ul>
+<p>You can register the repo as a Claude Code Plugin marketplace and install plugins from it.</p>
+<h3 id="built-in-skills-shipped-with-claude-code">Built-in skills shipped with Claude Code<a class="heading-anchor" aria-label="Permalink" href="#built-in-skills-shipped-with-claude-code">#</a></h3>
+<p>These appear in the slash-command menu and are implemented as skills:</p>
+<ul>
+<li><code>/review</code> — review a pull request</li>
+<li><code>/security-review</code> — security review of pending changes</li>
+<li><code>/simplify</code> — review changed code for reuse, quality, efficiency</li>
+<li><code>/batch</code> — research and execute large changes across worktrees</li>
+<li><code>/loop</code> — repeat a prompt or command on an interval</li>
+<li><code>/schedule</code> — manage scheduled remote agents</li>
+<li><code>/claude-api</code> — build/debug Anthropic SDK code</li>
+<li><code>/init</code> — generate <code>CLAUDE.md</code></li>
+<li><code>/keybindings-help</code>, <code>/update-config</code>, <code>/fewer-permission-prompts</code> — assistants for configuring the harness</li>
+</ul>
+<hr>
+<h2 id="9-where-skills-work-surfaces">9. Where Skills work (surfaces)<a class="heading-anchor" aria-label="Permalink" href="#9-where-skills-work-surfaces">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Surface</th><th>Pre-built</th><th>Custom</th><th>Storage</th><th>Sharing</th></tr></thead><tbody><tr><td><strong>Claude Code</strong></td><td>✗</td><td>✅</td><td><code>~/.claude/skills/</code>, <code>.claude/skills/</code></td><td>Per-user or check into repo</td></tr><tr><td><strong>Claude API</strong></td><td>✅</td><td>✅</td><td>API uploads via <code>/v1/skills</code></td><td>Workspace-wide</td></tr><tr><td><strong>claude.ai</strong></td><td>✅</td><td>✅</td><td>Settings → Features → upload zip</td><td>Per-user only (no central admin)</td></tr></tbody></table>
+<p><strong>Cross-surface caveat:</strong> uploads do <strong>not</strong> sync. Skills uploaded to claude.ai must be separately uploaded to the API and vice versa. Claude Code skills are filesystem-based and separate.</p>
+<h3 id="runtime-constraints-by-surface">Runtime constraints by surface<a class="heading-anchor" aria-label="Permalink" href="#runtime-constraints-by-surface">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Surface</th><th>Network</th><th>Package install</th><th>Notes</th></tr></thead><tbody><tr><td><strong>claude.ai</strong></td><td>Varies (admin-controlled)</td><td>—</td><td>Per-user uploads</td></tr><tr><td><strong>Claude API</strong></td><td>❌ none</td><td>❌ none (only pre-installed packages)</td><td>Code execution container, sandboxed</td></tr><tr><td><strong>Claude Code</strong></td><td>✅ full</td><td>✅ (local install only — global discouraged)</td><td>Filesystem-based</td></tr></tbody></table>
+<hr>
+<h2 id="10-limitations">10. Limitations<a class="heading-anchor" aria-label="Permalink" href="#10-limitations">#</a></h2>
+<h3 id="description-budget">Description budget<a class="heading-anchor" aria-label="Permalink" href="#description-budget">#</a></h3>
+<p>Skill descriptions are loaded into context at startup so Claude knows what’s available. The budget is <strong>1% of the context window</strong>, with an 8,000-character fallback. With many skills, descriptions get truncated and may lose the trigger keywords Claude needs.</p>
+<p>Raise the budget:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#A0A0A0">export</span><span style="color:#FFF"> SLASH_COMMAND_TOOL_CHAR_BUDGET</span><span style="color:#A0A0A0">=</span><span style="color:#FFC799">16000</span></span></code></pre>
+<h3 id="token-costs-summary">Token costs (summary)<a class="heading-anchor" aria-label="Permalink" href="#token-costs-summary">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Aspect</th><th>Cost</th></tr></thead><tbody><tr><td>Skill metadata (Level 1)</td><td>~100 tok / skill, pre-loaded</td></tr><tr><td><code>SKILL.md</code> body (Level 2)</td><td>&#x3C;5k tok, loaded when triggered</td></tr><tr><td>Sibling files (Level 3)</td><td>0 until accessed</td></tr><tr><td>Bundled scripts</td><td>Output only — code never loaded</td></tr><tr><td>Unused references</td><td>0</td></tr></tbody></table>
+<h3 id="security">Security<a class="heading-anchor" aria-label="Permalink" href="#security">#</a></h3>
+<blockquote>
+<p><em>“We strongly recommend using Skills only from trusted sources: those you created yourself or obtained from Anthropic. Skills provide Claude with new capabilities through instructions and code, and while this makes them powerful, it also means a malicious Skill can direct Claude to invoke tools or execute code in ways that don’t match the Skill’s stated purpose.”</em></p>
+</blockquote>
+<ul>
+<li>Audit all files (<code>SKILL.md</code>, scripts, assets) before installing</li>
+<li>Skills fetching from external URLs are particularly risky — fetched content can contain prompt-injection</li>
+<li>Treat installation like installing software: only from trusted sources</li>
+</ul>
+<hr>
+<h2 id="11-authoring-workflow-claude-code">11. Authoring workflow (Claude Code)<a class="heading-anchor" aria-label="Permalink" href="#11-authoring-workflow-claude-code">#</a></h2>
+<h3 id="step-1--make-the-directory">Step 1 — make the directory<a class="heading-anchor" aria-label="Permalink" href="#step-1--make-the-directory">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">mkdir</span><span style="color:#99FFE4"> -p</span><span style="color:#99FFE4"> ~/.claude/skills/explain-code</span></span></code></pre>
+<h3 id="step-2--write-skillmd">Step 2 — write <code>SKILL.md</code><a class="heading-anchor" aria-label="Permalink" href="#step-2--write-skillmd">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"><span style="color:#FFC799">name</span><span style="color:#FFF">: </span><span style="color:#99FFE4">explain-code</span></span>
+<span class="line"><span style="color:#FFC799">description</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Explains code with visual diagrams and analogies. Use when explaining how code works, teaching about a codebase, or when the user asks "how does this work?"</span></span>
+<span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFF">When explaining code, always include:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFF">1. </span><span style="color:#FFF;font-weight:bold">**Analogy**</span><span style="color:#FFF"> — compare to everyday life</span></span>
+<span class="line"><span style="color:#FFF">2. </span><span style="color:#FFF;font-weight:bold">**Diagram**</span><span style="color:#FFF"> — ASCII flow or structure</span></span>
+<span class="line"><span style="color:#FFF">3. </span><span style="color:#FFF;font-weight:bold">**Walk-through**</span><span style="color:#FFF"> — step by step</span></span>
+<span class="line"><span style="color:#FFF">4. </span><span style="color:#FFF;font-weight:bold">**Gotcha**</span><span style="color:#FFF"> — what to watch for</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFF">Keep explanations conversational.</span></span></code></pre>
+<h3 id="step-3--test">Step 3 — test<a class="heading-anchor" aria-label="Permalink" href="#step-3--test">#</a></h3>
+<ul>
+<li>Explicit: <code>/explain-code src/auth/login.ts</code></li>
+<li>Automatic: ask “How does this code work?” — Claude should pick it up via the description.</li>
+</ul>
+<h3 id="step-4--share">Step 4 — share<a class="heading-anchor" aria-label="Permalink" href="#step-4--share">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Audience</th><th>How</th></tr></thead><tbody><tr><td>Just you</td><td>Keep in <code>~/.claude/skills/</code></td></tr><tr><td>Your team</td><td>Move to <code>.claude/skills/</code> and commit to git</td></tr><tr><td>Your org</td><td>Deploy via <a href="https://code.claude.com/docs/en/settings" rel="noopener noreferrer" target="_blank">managed settings</a></td></tr><tr><td>Public</td><td>Bundle in a Plugin and publish a marketplace</td></tr></tbody></table>
+<hr>
+<h2 id="12-decision-when-to-use-a-skill">12. Decision: when to use a Skill<a class="heading-anchor" aria-label="Permalink" href="#12-decision-when-to-use-a-skill">#</a></h2>
+<p>Use a <strong>Skill</strong> when:</p>
+<ul>
+<li>You have a reusable workflow or knowledge artifact you want available across sessions</li>
+<li>Description-based auto-discovery is more useful than a memorised slash command</li>
+<li>You want to ship deterministic helper scripts (forms, validators, generators) without paying tokens</li>
+<li>You want one open standard that works across Claude, Codex, Cursor, etc.</li>
+</ul>
+<p>Use a <strong>Subagent</strong> instead when:</p>
+<ul>
+<li>The task produces verbose intermediate output (logs, search results) you don’t want in your main thread</li>
+<li>You need a different model, different tools, or stricter permissions for the task</li>
+<li>The work can complete and return only a summary</li>
+</ul>
+<p>Use a <strong>Hook</strong> instead when:</p>
+<ul>
+<li>You need an action to fire <strong>automatically</strong> on every tool call, prompt submission, session start, etc.</li>
+<li>You need to <em>block</em> a tool call based on its inputs</li>
+</ul>
+<p>Use <strong><code>CLAUDE.md</code></strong> instead when:</p>
+<ul>
+<li>The information should be loaded into <strong>every</strong> session for this project — there is no “trigger phrase” because it’s always relevant.</li>
+</ul>
+<p>See <a href="/skillsetc/docs/comparison-and-decision-guide"><code>06-comparison-and-decision-guide.md</code></a> for the full decision tree.</p>  </div> <p class="doc-updated" data-astro-cid-fz5pa65a>Last updated April 28, 2026</p> <nav class="prevnext" aria-label="Pagination" data-astro-cid-oerjsknp><span data-astro-cid-oerjsknp></span><a href="/skillsetc/docs/subagents" class="pn-card pn-next" rel="next" data-astro-cid-oerjsknp><span class="pn-meta" data-astro-cid-oerjsknp>Next <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><span class="pn-label" data-astro-cid-oerjsknp>Subagents</span></a></nav> </article> <aside class="toc" data-pagefind-ignore aria-label="Table of contents" data-astro-cid-6t6zfk7k><span class="eyebrow toc-eyebrow"> On this page </span><ul class="toc-list" data-astro-cid-6t6zfk7k><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#1-what-a-skill-is" data-toc-link="1-what-a-skill-is" data-astro-cid-6t6zfk7k>1. What a Skill is#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#how-skills-compare-to-other-primitives" data-toc-link="how-skills-compare-to-other-primitives" data-astro-cid-6t6zfk7k>How Skills compare to other primitives#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#2-the-progressive-disclosure-model" data-toc-link="2-the-progressive-disclosure-model" data-astro-cid-6t6zfk7k>2. The progressive-disclosure model#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#3-skillmd-structure" data-toc-link="3-skillmd-structure" data-astro-cid-6t6zfk7k>3. SKILL.md structure#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#required-frontmatter" data-toc-link="required-frontmatter" data-astro-cid-6t6zfk7k>Required frontmatter#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#optional-frontmatter-claude-code-extensions" data-toc-link="optional-frontmatter-claude-code-extensions" data-astro-cid-6t6zfk7k>Optional frontmatter (Claude Code extensions)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#body-conventions" data-toc-link="body-conventions" data-astro-cid-6t6zfk7k>Body conventions#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#minimal-example" data-toc-link="minimal-example" data-astro-cid-6t6zfk7k>Minimal example#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#example-with-optional-fields" data-toc-link="example-with-optional-fields" data-astro-cid-6t6zfk7k>Example with optional fields#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#4-bundled-resources-level-3" data-toc-link="4-bundled-resources-level-3" data-astro-cid-6t6zfk7k>4. Bundled resources (Level 3)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#loading-rules" data-toc-link="loading-rules" data-astro-cid-6t6zfk7k>Loading rules#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#critical-guidelines" data-toc-link="critical-guidelines" data-astro-cid-6t6zfk7k>Critical guidelines#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#domain-organised-pattern" data-toc-link="domain-organised-pattern" data-astro-cid-6t6zfk7k>Domain-organised pattern#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#5-where-skills-live--how-they-are-discovered" data-toc-link="5-where-skills-live--how-they-are-discovered" data-astro-cid-6t6zfk7k>5. Where Skills live &amp; how they are discovered#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#live-change-detection" data-toc-link="live-change-detection" data-astro-cid-6t6zfk7k>Live change detection#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#nested-directory-discovery-monorepos" data-toc-link="nested-directory-discovery-monorepos" data-astro-cid-6t6zfk7k>Nested directory discovery (monorepos)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#skills-from---add-dir" data-toc-link="skills-from---add-dir" data-astro-cid-6t6zfk7k>Skills from --add-dir#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#6-how-a-skill-is-invoked" data-toc-link="6-how-a-skill-is-invoked" data-astro-cid-6t6zfk7k>6. How a Skill is invoked#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#1-automatic-model-decided" data-toc-link="1-automatic-model-decided" data-astro-cid-6t6zfk7k>1. Automatic (model-decided)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#2-explicit-user-typed" data-toc-link="2-explicit-user-typed" data-astro-cid-6t6zfk7k>2. Explicit (user-typed)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#3-programmatic-skill-tool-call" data-toc-link="3-programmatic-skill-tool-call" data-astro-cid-6t6zfk7k>3. Programmatic (Skill tool call)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#invocation-control-matrix" data-toc-link="invocation-control-matrix" data-astro-cid-6t6zfk7k>Invocation control matrix#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#skill-content-lifecycle-in-a-session" data-toc-link="skill-content-lifecycle-in-a-session" data-astro-cid-6t6zfk7k>Skill content lifecycle in a session#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#auto-compaction-behaviour" data-toc-link="auto-compaction-behaviour" data-astro-cid-6t6zfk7k>Auto-compaction behaviour#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#7-authoring-best-practices-from-anthropic" data-toc-link="7-authoring-best-practices-from-anthropic" data-astro-cid-6t6zfk7k>7. Authoring best practices (from Anthropic)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#conciseness" data-toc-link="conciseness" data-astro-cid-6t6zfk7k>Conciseness#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#right-level-of-freedom" data-toc-link="right-level-of-freedom" data-astro-cid-6t6zfk7k>Right level of freedom#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#test-with-all-your-target-models" data-toc-link="test-with-all-your-target-models" data-astro-cid-6t6zfk7k>Test with all your target models#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#description-writing-rules" data-toc-link="description-writing-rules" data-astro-cid-6t6zfk7k>Description-writing rules#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#common-pitfalls" data-toc-link="common-pitfalls" data-astro-cid-6t6zfk7k>Common pitfalls#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#evaluation-first-development" data-toc-link="evaluation-first-development" data-astro-cid-6t6zfk7k>Evaluation-first development#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#iterative-refinement-with-claude" data-toc-link="iterative-refinement-with-claude" data-astro-cid-6t6zfk7k>Iterative refinement with Claude#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#pre-publish-checklist-anthropic" data-toc-link="pre-publish-checklist-anthropic" data-astro-cid-6t6zfk7k>Pre-publish checklist (Anthropic)#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#8-anthropic-published-skills" data-toc-link="8-anthropic-published-skills" data-astro-cid-6t6zfk7k>8. Anthropic-published skills#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#pre-built-claudeai--claude-api" data-toc-link="pre-built-claudeai--claude-api" data-astro-cid-6t6zfk7k>Pre-built (claude.ai + Claude API)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#open-source-repository" data-toc-link="open-source-repository" data-astro-cid-6t6zfk7k>Open-source repository#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#built-in-skills-shipped-with-claude-code" data-toc-link="built-in-skills-shipped-with-claude-code" data-astro-cid-6t6zfk7k>Built-in skills shipped with Claude Code#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#9-where-skills-work-surfaces" data-toc-link="9-where-skills-work-surfaces" data-astro-cid-6t6zfk7k>9. Where Skills work (surfaces)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#runtime-constraints-by-surface" data-toc-link="runtime-constraints-by-surface" data-astro-cid-6t6zfk7k>Runtime constraints by surface#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#10-limitations" data-toc-link="10-limitations" data-astro-cid-6t6zfk7k>10. Limitations#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#description-budget" data-toc-link="description-budget" data-astro-cid-6t6zfk7k>Description budget#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#token-costs-summary" data-toc-link="token-costs-summary" data-astro-cid-6t6zfk7k>Token costs (summary)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#security" data-toc-link="security" data-astro-cid-6t6zfk7k>Security#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#11-authoring-workflow-claude-code" data-toc-link="11-authoring-workflow-claude-code" data-astro-cid-6t6zfk7k>11. Authoring workflow (Claude Code)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#step-1--make-the-directory" data-toc-link="step-1--make-the-directory" data-astro-cid-6t6zfk7k>Step 1 — make the directory#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#step-2--write-skillmd" data-toc-link="step-2--write-skillmd" data-astro-cid-6t6zfk7k>Step 2 — write SKILL.md#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#step-3--test" data-toc-link="step-3--test" data-astro-cid-6t6zfk7k>Step 3 — test#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#step-4--share" data-toc-link="step-4--share" data-astro-cid-6t6zfk7k>Step 4 — share#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#12-decision-when-to-use-a-skill" data-toc-link="12-decision-when-to-use-a-skill" data-astro-cid-6t6zfk7k>12. Decision: when to use a Skill#</a></li></ul></aside><script type="module">const i=document.querySelectorAll("[data-toc-link]");if(i.length>0){const s=new Map;i.forEach(t=>s.set(t.dataset.tocLink,t));const r=[];s.forEach((t,o)=>{const e=document.getElementById(o);e&&r.push(e)});let c=null;const l=t=>{t!==c&&(c=t,i.forEach(o=>o.setAttribute("aria-current",o.dataset.tocLink===t?"true":"false")))},a=new IntersectionObserver(t=>{const o=t.filter(e=>e.isIntersecting).sort((e,n)=>e.boundingClientRect.top-n.boundingClientRect.top);if(o.length>0)l(o[0].target.id);else{const e=r.map(n=>({id:n.id,top:n.getBoundingClientRect().top})).filter(n=>n.top<80).sort((n,d)=>d.top-n.top);e[0]&&l(e[0].id)}},{rootMargin:"-72px 0px -65% 0px",threshold:0});r.forEach(t=>a.observe(t))}</script> </div>  </main> <footer class="site-footer" data-pagefind-ignore data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-col footer-brand" data-astro-cid-sz7xmlte> <span class="footer-mark" aria-hidden="true" data-astro-cid-sz7xmlte>◆</span> <span class="footer-name" data-astro-cid-sz7xmlte>skillsetc</span> <p class="footer-tagline" data-astro-cid-sz7xmlte>
+A field guide to Skills, Subagents, Claude Code &amp; OpenAI Codex —
+        compiled from primary sources.
+</p> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h2 class="footer-heading" data-astro-cid-sz7xmlte>Primitives</h2> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/skills" data-astro-cid-sz7xmlte>Skills</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/subagents" data-astro-cid-sz7xmlte>Subagents</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/hooks-mcp-memory-settings" data-astro-cid-sz7xmlte>Hooks · MCP · Memory</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/comparison-and-decision-guide" data-astro-cid-sz7xmlte>Decision Guide</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/decide" data-astro-cid-sz7xmlte>Interactive flow</a></li> </ul> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h2 class="footer-heading" data-astro-cid-sz7xmlte>Reference</h2> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/claude-code" data-astro-cid-sz7xmlte>Claude Code</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/openai-codex" data-astro-cid-sz7xmlte>OpenAI Codex</a></li> </ul> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h2 class="footer-heading" data-astro-cid-sz7xmlte>Sources</h2> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>docs.claude.com</a></li> <li data-astro-cid-sz7xmlte><a href="https://developers.openai.com/codex" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>developers.openai.com</a></li> <li data-astro-cid-sz7xmlte><a href="https://agentskills.io" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>agentskills.io</a></li> <li data-astro-cid-sz7xmlte><a href="https://agents.md" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>agents.md</a></li> </ul> </div> </div> <div class="footer-meta" data-astro-cid-sz7xmlte> <div class="footer-meta-inner" data-astro-cid-sz7xmlte> <span data-astro-cid-sz7xmlte>© 2026 skillsetc</span> <span class="footer-sep" aria-hidden="true" data-astro-cid-sz7xmlte>·</span> <span data-astro-cid-sz7xmlte>Last updated April 28, 2026</span> <span class="footer-sep" aria-hidden="true" data-astro-cid-sz7xmlte>·</span> <span data-astro-cid-sz7xmlte>Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>Astro</a></span> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" data-pagefind-ignore data-astro-cid-mjrxwznw> <div class="search-modal" role="document" data-astro-cid-mjrxwznw> <div class="search-input-row" data-astro-cid-mjrxwznw> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="search-input-icon" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg> <input type="search" id="search-input" class="search-input" placeholder="Search the field guide…" autocomplete="off" spellcheck="false" aria-label="Search query" data-astro-cid-mjrxwznw> <kbd class="search-esc" data-astro-cid-mjrxwznw>esc</kbd> </div> <div class="search-results" id="search-results" aria-live="polite" data-astro-cid-mjrxwznw> <p class="search-hint" data-astro-cid-mjrxwznw>
+Try <em data-astro-cid-mjrxwznw>SKILL.md</em>, <em data-astro-cid-mjrxwznw>permission mode</em>, <em data-astro-cid-mjrxwznw>AGENTS.md</em>, or <em data-astro-cid-mjrxwznw>prefix_rule</em>.
+</p> </div> </div> </dialog>  <script type="module">const i=document.getElementById("search-dialog"),u=document.getElementById("search-input"),a=document.getElementById("search-results");let n=-1,r=[];async function w(){if(window.__pagefind)return window.__pagefind;try{const e=(document.body.dataset.base??"").replace(/\/+$/,""),s=await import(new URL(`${e}/pagefind/pagefind.js`,window.location.origin).toString());return window.__pagefind=s.default??s,window.__pagefind}catch{return null}}async function v(e){if(!a)return;if(!e.trim()){a.innerHTML='<p class="search-hint">Try <em>SKILL.md</em>, <em>permission mode</em>, <em>AGENTS.md</em>, or <em>prefix_rule</em>.</p>',r=[],n=-1;return}const t=await w();if(!t){a.innerHTML=`<p class="search-hint">Search index isn't built yet. Run <em>npm run build</em> or load the production site.</p>`;return}const s=await t.debouncedSearch(e);if(!s)return;const c=s.results.slice(0,8);if(c.length===0){a.innerHTML=`<p class="search-hint">No results for <em>${d(e)}</em>.</p>`,r=[],n=-1;return}const h=await Promise.all(c.map(o=>o.data()));a.innerHTML="",h.forEach((o,g)=>{const l=document.createElement("a");l.className="search-result",l.href=o.url,l.setAttribute("role","option"),l.setAttribute("aria-selected",g===0?"true":"false"),l.innerHTML=`
+        <div class="search-result-meta">${d(o.meta.title??o.url)}</div>
+        <h3 class="search-result-title">${d(o.sub_results?.[0]?.title??o.meta.title??"")}</h3>
+        <p class="search-result-snippet">${o.excerpt}</p>
+      `,a.appendChild(l)}),r=Array.from(a.querySelectorAll(".search-result")),n=0}function f(e){r.length!==0&&(n=(e+r.length)%r.length,r.forEach((t,s)=>{const c=s===n;t.setAttribute("aria-selected",c?"true":"false"),c&&t.scrollIntoView({block:"nearest"})}))}function d(e){return e.replace(/[&<>"']/g,t=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[t])}function m(){i&&(i.open||i.showModal(),setTimeout(()=>u?.focus(),0))}function p(){i?.open&&i.close()}document.addEventListener("click",e=>{e.target?.closest("[data-search-trigger]")&&(e.preventDefault(),m())});document.addEventListener("keydown",e=>{if((/Mac|iPod|iPhone|iPad/.test(navigator.platform)?e.metaKey:e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault(),m();return}if(e.key==="/"&&!(e.target instanceof HTMLInputElement)&&!(e.target instanceof HTMLTextAreaElement)){e.preventDefault(),m();return}if(i?.open&&(e.key==="ArrowDown"&&(e.preventDefault(),f(n+1)),e.key==="ArrowUp"&&(e.preventDefault(),f(n-1)),e.key==="Enter"&&r[n])){e.preventDefault();const c=r[n].href;p(),window.location.href=c}});i?.addEventListener("click",e=>{e.target===i&&p()});u?.addEventListener("input",e=>{const t=e.target.value;v(t)});i?.addEventListener("close",()=>{u&&(u.value=""),a&&(a.innerHTML='<p class="search-hint">Try <em>SKILL.md</em>, <em>permission mode</em>, <em>AGENTS.md</em>, or <em>prefix_rule</em>.</p>'),r=[],n=-1});</script> <script type="module">function i(s){if(s.parentElement?.classList.contains("code-figure"))return;const e=document.createElement("figure");e.className="code-figure",s.replaceWith(e),e.appendChild(s);const c=Array.from(s.classList).find(t=>t.startsWith("language-"))??s.querySelector("code")?.className.match(/language-(\S+)/)?.[0]??"";if(c){const t=c.replace("language-","");if(t&&t!=="plaintext"&&t!=="text"){const o=document.createElement("span");o.className="code-lang",o.textContent=t,e.appendChild(o)}}const n=document.createElement("button");n.type="button",n.className="copy-btn",n.setAttribute("aria-label","Copy code"),n.dataset.copyCode="",n.innerHTML=`
+    <svg class="copy-icon-default" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <path d="M5 15V5a2 2 0 012-2h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <svg class="copy-icon-success" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" style="display:none">
+      <path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+  `,e.appendChild(n)}function r(){document.querySelectorAll("pre.astro-code").forEach(i),document.querySelectorAll("[data-copy-code]").forEach(e=>{e.dataset.bound||(e.dataset.bound="true",e.addEventListener("click",async()=>{const t=e.closest(".code-figure")?.querySelector("pre")?.innerText.replace(/\s+$/,"")??"";try{await navigator.clipboard.writeText(t),e.dataset.copied="true";const o=e.querySelector(".copy-icon-default"),a=e.querySelector(".copy-icon-success");o&&a&&(o.style.display="none",a.style.display="inline"),setTimeout(()=>{e.dataset.copied="false",o&&a&&(o.style.display="inline",a.style.display="none")},1400)}catch{}}))})}typeof document<"u"&&(document.addEventListener("DOMContentLoaded",r),document.addEventListener("astro:after-swap",r));</script> </body> </html> 

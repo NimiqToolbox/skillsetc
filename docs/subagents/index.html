@@ -1,0 +1,693 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="generator" content="Astro v5.18.1"><title>Subagents · skillsetc</title><meta name="description" content="Isolated, delegated agent contexts. Configuration, the /agents command, built-in types, invocation patterns, parallel execution, and hooks integration."><link rel="canonical" href="https://nimiqtoolbox.github.io/skillsetc/docs/subagents"><meta name="theme-color" content="#0B1020"><meta name="color-scheme" content="dark"><link rel="icon" type="image/svg+xml" href="/skillsetc/favicon.svg"><link rel="apple-touch-icon" href="/skillsetc/favicon.svg"><meta property="og:type" content="website"><meta property="og:title" content="Subagents · skillsetc"><meta property="og:description" content="Isolated, delegated agent contexts. Configuration, the /agents command, built-in types, invocation patterns, parallel execution, and hooks integration."><meta property="og:url" content="https://nimiqtoolbox.github.io/skillsetc/docs/subagents"><meta property="og:image" content="https://nimiqtoolbox.github.io/og-default.png"><meta property="og:site_name" content="skillsetc"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Subagents · skillsetc"><meta name="twitter:description" content="Isolated, delegated agent contexts. Configuration, the /agents command, built-in types, invocation patterns, parallel execution, and hooks integration."><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/skillsetc/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CbWU6YBD.js"></script><link rel="stylesheet" href="/skillsetc/_astro/_slug_.CMe-WxGh.css">
+<link rel="stylesheet" href="/skillsetc/_astro/_slug_.De0UF2tn.css"></head> <body data-base="/skillsetc"> <a href="#main" class="skip-link">Skip to content</a> <header class="site-header" data-pagefind-ignore data-astro-cid-3ef6ksr2> <div class="header-inner" data-astro-cid-3ef6ksr2> <a href="/skillsetc/" class="brand" aria-label="skillsetc — home" data-astro-cid-3ef6ksr2> <span class="brand-mark" aria-hidden="true" data-astro-cid-3ef6ksr2>◆</span> <span class="brand-name" data-astro-cid-3ef6ksr2>skillsetc</span> </a> <nav class="primary-nav" aria-label="Primary" data-astro-cid-3ef6ksr2> <a href="/skillsetc/docs" class="nav-link active" data-astro-cid-3ef6ksr2> Docs </a><a href="/skillsetc/decide" class="nav-link" data-astro-cid-3ef6ksr2> Decide </a> </nav> <div class="header-actions" data-astro-cid-3ef6ksr2> <button type="button" class="search-trigger" data-search-trigger aria-label="Search the guide" data-astro-cid-3ef6ksr2> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg> <span class="search-trigger-label" data-astro-cid-3ef6ksr2>Search</span> <span class="kbd-group search-trigger-kbd" aria-label="⌘ then K" data-astro-cid-wy7pfqz2>  <kbd data-astro-cid-wy7pfqz2>⌘</kbd> <span class="kbd-sep" aria-hidden="true" data-astro-cid-wy7pfqz2>+</span> <kbd data-astro-cid-wy7pfqz2>K</kbd>  </span>  </button> <a href="https://github.com" class="icon-link" aria-label="GitHub repository" target="_blank" rel="noopener noreferrer" data-astro-cid-3ef6ksr2> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class aria-hidden="true"><path d="M12 .5a11.5 11.5 0 00-3.64 22.41c.58.1.79-.25.79-.55v-2.06c-3.2.7-3.88-1.36-3.88-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.74 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.17a10.95 10.95 0 015.76 0c2.2-1.48 3.16-1.17 3.16-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.06.78 2.13v3.16c0 .31.21.66.8.55A11.5 11.5 0 0012 .5z" fill="currentColor"/></svg> </a> <button type="button" class="menu-trigger" data-menu-trigger aria-label="Open navigation menu" data-astro-cid-3ef6ksr2> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg> </button> </div> </div> </header>  <script type="module">const t=document.querySelector(".site-header");if(t){const e=()=>{t.dataset.scrolled=window.scrollY>8?"true":"false"};e(),window.addEventListener("scroll",e,{passive:!0}),document.addEventListener("astro:after-swap",e)}</script> <main id="main">  <div class="doc-shell" data-astro-cid-fz5pa65a> <aside class="sidebar" data-pagefind-ignore aria-label="Documentation navigation" data-astro-cid-ssfzsv2f> <nav class="sidebar-nav" data-astro-cid-ssfzsv2f> <section class="sidebar-group" data-astro-cid-o4nxl7dn> <h2 class="sidebar-group-label" data-astro-cid-o4nxl7dn>Primitives</h2> <ul class="sidebar-list" data-astro-cid-o4nxl7dn> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/skills" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Skills</span> <span class="sb-desc" data-astro-cid-o7fgaejc>SKILL.md, progressive disclosure, authoring</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/subagents" class="sb-link active" aria-current="page" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Subagents</span> <span class="sb-desc" data-astro-cid-o7fgaejc>Isolated contexts, /agents, invocation</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/hooks-mcp-memory-settings" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Hooks · MCP · Memory</span> <span class="sb-desc" data-astro-cid-o7fgaejc>Lifecycle, transports, CLAUDE.md, settings</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/comparison-and-decision-guide" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Decision Guide</span> <span class="sb-desc" data-astro-cid-o7fgaejc>When to use what — with worked examples</span> </a> </li>  </ul> </section> <section class="sidebar-group" data-astro-cid-o4nxl7dn> <h2 class="sidebar-group-label" data-astro-cid-o4nxl7dn>Reference</h2> <ul class="sidebar-list" data-astro-cid-o4nxl7dn> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/claude-code" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Claude Code</span> <span class="sb-desc" data-astro-cid-o7fgaejc>CLI · IDE · permissions · slash commands</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/openai-codex" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>OpenAI Codex</span> <span class="sb-desc" data-astro-cid-o7fgaejc>CLI · Cloud · IDE · models · pricing</span> </a> </li>  </ul> </section>  </nav> </aside>  <article class="doc-article" data-pagefind-body data-astro-cid-fz5pa65a> <nav class="breadcrumbs" aria-label="Breadcrumb" data-astro-cid-ilhxcym7> <ol data-astro-cid-ilhxcym7> <li data-astro-cid-ilhxcym7> <a href="/skillsetc/docs" data-astro-cid-ilhxcym7>Docs</a> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="bc-sep" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> </li><li data-astro-cid-ilhxcym7> <span aria-current="page" data-astro-cid-ilhxcym7>Subagents</span>  </li> </ol> </nav>  <span class="eyebrow"> Reference </span> <h1 class="doc-title serif" data-astro-cid-fz5pa65a>Subagents</h1> <p class="doc-lead" data-astro-cid-fz5pa65a>Isolated, delegated agent contexts. Configuration, the /agents command, built-in types, invocation patterns, parallel execution, and hooks integration.</p> <section class="sources-panel" aria-label="Sources" data-astro-cid-5nphvqvb><header class="sources-header" data-astro-cid-5nphvqvb><span class="sources-eyebrow" data-astro-cid-5nphvqvb>Sourced from</span></header><ul class="sources-list" data-astro-cid-5nphvqvb><li data-astro-cid-5nphvqvb><a href="https://docs.claude.com/en/docs/claude-code/sub-agents" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>docs.claude.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/en/docs/claude-code/sub-agents</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>code.claude.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/docs/en/sub-agents</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://www.anthropic.com/engineering/claude-code-best-practices" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>anthropic.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/engineering/claude-code-best-practices</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li></ul></section> <div class="prose" data-astro-cid-fz5pa65a>  <h2 id="1-what-a-subagent-is">1. What a subagent is<a class="heading-anchor" aria-label="Permalink" href="#1-what-a-subagent-is">#</a></h2>
+<p>A <strong>subagent</strong> is a specialised AI assistant that runs in an <strong>isolated context</strong> within a single Claude Code session. Each subagent has:</p>
+<ul>
+<li>Its own context window (a fresh start; main conversation is not visible by default)</li>
+<li>A custom system prompt</li>
+<li>An optional tool allowlist / denylist</li>
+<li>Optional model override</li>
+<li>Its own permission rules and (optionally) hooks</li>
+<li>Optionally, persistent cross-session memory</li>
+</ul>
+<blockquote>
+<p><em>“Subagents are specialized AI assistants that handle specific types of tasks. Use one when a side task would flood your main conversation with search results, logs, or file contents you won’t reference again: the subagent does that work in its own context and returns only the summary.”</em> — official docs</p>
+</blockquote>
+<h3 id="subagent-vs-skill-vs-slash-command-vs-mcp-tool">Subagent vs. Skill vs. Slash command vs. MCP tool<a class="heading-anchor" aria-label="Permalink" href="#subagent-vs-skill-vs-slash-command-vs-mcp-tool">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Property</th><th>Subagent</th><th>Skill</th><th>Slash command (legacy)</th><th>MCP tool</th></tr></thead><tbody><tr><td>Runs in</td><td><strong>Isolated</strong> context</td><td>Same context</td><td>Same context</td><td>Same context</td></tr><tr><td>System prompt</td><td>Custom per agent</td><td>Injected guidance</td><td>None</td><td>None</td></tr><tr><td>Tools</td><td>Configurable allowlist/denylist</td><td>Inherited</td><td>N/A</td><td>Defines its own</td></tr><tr><td>Model override</td><td>Yes</td><td>Yes (<code>model:</code> field)</td><td>—</td><td>Decided by host</td></tr><tr><td>Auto-delegation</td><td>Description-based</td><td>Description-based</td><td>No</td><td>No</td></tr><tr><td>Persistent memory</td><td>Optional (<code>memory: user/project/local</code>)</td><td>No</td><td>No</td><td>N/A</td></tr><tr><td>Returns</td><td>Summary to main thread</td><td>Inline output</td><td>Inline output</td><td>Tool result</td></tr></tbody></table>
+<hr>
+<h2 id="2-configuration">2. Configuration<a class="heading-anchor" aria-label="Permalink" href="#2-configuration">#</a></h2>
+<p>Subagents are Markdown files with YAML frontmatter.</p>
+<h3 id="file-locations--priority">File locations &#x26; priority<a class="heading-anchor" aria-label="Permalink" href="#file-locations--priority">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Source</th><th>Path</th><th>Priority</th></tr></thead><tbody><tr><td>Managed settings</td><td>(org-deployed)</td><td>1 (highest)</td></tr><tr><td><code>--agents</code> CLI flag</td><td><code>claude --agents '&#x3C;json>'</code></td><td>2</td></tr><tr><td>Project</td><td><code>.claude/agents/&#x3C;name>.md</code></td><td>3</td></tr><tr><td>User</td><td><code>~/.claude/agents/&#x3C;name>.md</code></td><td>4</td></tr><tr><td>Plugin</td><td><code>&#x3C;plugin>/agents/&#x3C;name>.md</code></td><td>5</td></tr></tbody></table>
+<p>When the same <code>name</code> exists at multiple scopes, the higher-priority definition wins. Project agents are designed to be checked into git.</p>
+<h3 id="frontmatter-full-reference">Frontmatter (full reference)<a class="heading-anchor" aria-label="Permalink" href="#frontmatter-full-reference">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"><span style="color:#FFC799">name</span><span style="color:#FFF">: </span><span style="color:#99FFE4">code-reviewer</span></span>
+<span class="line"><span style="color:#FFC799">description</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Expert code review specialist. Proactively reviews code for quality, security, and maintainability.</span></span>
+<span class="line"><span style="color:#FFC799">tools</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Read, Grep, Glob, Bash</span></span>
+<span class="line"><span style="color:#FFC799">disallowedTools</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Write, Edit</span></span>
+<span class="line"><span style="color:#FFC799">model</span><span style="color:#FFF">: </span><span style="color:#99FFE4">sonnet</span></span>
+<span class="line"><span style="color:#FFC799">permissionMode</span><span style="color:#FFF">: </span><span style="color:#99FFE4">default</span></span>
+<span class="line"><span style="color:#FFC799">maxTurns</span><span style="color:#FFF">: </span><span style="color:#FFC799">10</span></span>
+<span class="line"><span style="color:#FFC799">skills</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">  - </span><span style="color:#99FFE4">api-conventions</span></span>
+<span class="line"><span style="color:#FFF">  - </span><span style="color:#99FFE4">error-handling-patterns</span></span>
+<span class="line"><span style="color:#FFC799">mcpServers</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">  - </span><span style="color:#99FFE4">github</span></span>
+<span class="line"><span style="color:#FFF">  - </span><span style="color:#FFC799">playwright</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFC799">      type</span><span style="color:#FFF">: </span><span style="color:#99FFE4">stdio</span></span>
+<span class="line"><span style="color:#FFC799">      command</span><span style="color:#FFF">: </span><span style="color:#99FFE4">npx</span></span>
+<span class="line"><span style="color:#FFC799">      args</span><span style="color:#FFF">: [</span><span style="color:#99FFE4">"-y"</span><span style="color:#FFF">, </span><span style="color:#99FFE4">"@playwright/mcp@latest"</span><span style="color:#FFF">]</span></span>
+<span class="line"><span style="color:#FFC799">hooks</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFC799">  PreToolUse</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">    - </span><span style="color:#FFC799">matcher</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"Bash"</span></span>
+<span class="line"><span style="color:#FFC799">      hooks</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">        - </span><span style="color:#FFC799">type</span><span style="color:#FFF">: </span><span style="color:#99FFE4">command</span></span>
+<span class="line"><span style="color:#FFC799">          command</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"./scripts/validate-command.sh"</span></span>
+<span class="line"><span style="color:#FFC799">memory</span><span style="color:#FFF">: </span><span style="color:#99FFE4">project</span></span>
+<span class="line"><span style="color:#FFC799">background</span><span style="color:#FFF">: </span><span style="color:#FFC799">false</span></span>
+<span class="line"><span style="color:#FFC799">effort</span><span style="color:#FFF">: </span><span style="color:#99FFE4">high</span></span>
+<span class="line"><span style="color:#FFC799">isolation</span><span style="color:#FFF">: </span><span style="color:#99FFE4">worktree</span></span>
+<span class="line"><span style="color:#FFC799">color</span><span style="color:#FFF">: </span><span style="color:#99FFE4">blue</span></span>
+<span class="line"><span style="color:#FFC799">initialPrompt</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"Start by reviewing the recent changes"</span></span>
+<span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#99FFE4">You are a senior code reviewer. Focus on quality, security, and maintainability.</span></span>
+<span class="line"><span style="color:#99FFE4">…system prompt body…</span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead><tbody><tr><td><code>name</code></td><td>string</td><td>required</td><td>Lowercase letters and hyphens; unique within scope</td></tr><tr><td><code>description</code></td><td>string</td><td>required</td><td><strong>The most important field</strong> — drives auto-delegation</td></tr><tr><td><code>tools</code></td><td>comma list</td><td>inherits all</td><td>Allowlist. <code>Agent(worker, researcher)</code> restricts which subagents this one can spawn</td></tr><tr><td><code>disallowedTools</code></td><td>comma list</td><td>none</td><td>Denylist; removes from inherited or specified list</td></tr><tr><td><code>model</code></td><td>string</td><td><code>inherit</code></td><td><code>sonnet</code>, <code>opus</code>, <code>haiku</code>, full ID (<code>claude-opus-4-7</code>), or <code>inherit</code></td></tr><tr><td><code>permissionMode</code></td><td>string</td><td><code>default</code></td><td><code>default</code>, <code>acceptEdits</code>, <code>auto</code>, <code>dontAsk</code>, <code>bypassPermissions</code>, <code>plan</code></td></tr><tr><td><code>maxTurns</code></td><td>int</td><td>unlimited</td><td>Hard cap on agentic turns</td></tr><tr><td><code>skills</code></td><td>list</td><td>none</td><td>Skills preloaded into the subagent’s context (full content, not just description)</td></tr><tr><td><code>mcpServers</code></td><td>list / refs</td><td>inherits</td><td>MCP servers; inline definitions are scoped to this agent</td></tr><tr><td><code>hooks</code></td><td>object</td><td>none</td><td>Lifecycle hooks scoped to subagent (<code>PreToolUse</code>, <code>PostToolUse</code>, <code>Stop</code>)</td></tr><tr><td><code>memory</code></td><td>string</td><td>none</td><td><code>user</code>, <code>project</code>, or <code>local</code> for persistent memory</td></tr><tr><td><code>background</code></td><td>bool</td><td><code>false</code></td><td>If <code>true</code>, always runs as a background task</td></tr><tr><td><code>effort</code></td><td>string</td><td>inherits</td><td><code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, <code>max</code></td></tr><tr><td><code>isolation</code></td><td>string</td><td>none</td><td><code>worktree</code> to run in a temporary git worktree</td></tr><tr><td><code>color</code></td><td>string</td><td>default</td><td><code>red</code>, <code>blue</code>, <code>green</code>, <code>yellow</code>, <code>purple</code>, <code>orange</code>, <code>pink</code>, <code>cyan</code></td></tr><tr><td><code>initialPrompt</code></td><td>string</td><td>none</td><td>Auto-submitted first turn when this agent is the main session</td></tr></tbody></table>
+<h3 id="system-prompt-body">System prompt body<a class="heading-anchor" aria-label="Permalink" href="#system-prompt-body">#</a></h3>
+<p>The Markdown after frontmatter becomes the agent’s system prompt. The agent does <strong>not</strong> receive Claude Code’s default system prompt — only this body plus the working-directory environment.</p>
+<blockquote>
+<p>Important: <code>cd</code> inside subagent Bash calls does <strong>not</strong> persist between calls and does <strong>not</strong> affect the main conversation.</p>
+</blockquote>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"><span style="color:#FFC799">name</span><span style="color:#FFF">: </span><span style="color:#99FFE4">security-reviewer</span></span>
+<span class="line"><span style="color:#FFC799">description</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Reviews code for security vulnerabilities</span></span>
+<span class="line"><span style="color:#FFC799">tools</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Read, Grep, Glob, Bash</span></span>
+<span class="line"><span style="color:#FFC799">model</span><span style="color:#FFF">: </span><span style="color:#99FFE4">opus</span></span>
+<span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFF">You are a senior security engineer. Review code for:</span></span>
+<span class="line"><span style="color:#FFF">- Injection vulnerabilities (SQL, XSS, command injection)</span></span>
+<span class="line"><span style="color:#FFF">- Authentication / authorisation flaws</span></span>
+<span class="line"><span style="color:#FFF">- Secrets or credentials in code</span></span>
+<span class="line"><span style="color:#FFF">- Insecure data handling</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFF">Provide specific line references and suggested fixes.</span></span></code></pre>
+<hr>
+<h2 id="3-the-agents-slash-command">3. The <code>/agents</code> slash command<a class="heading-anchor" aria-label="Permalink" href="#3-the-agents-slash-command">#</a></h2>
+<p>Run <code>/agents</code> to open a tabbed UI:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tab</th><th>Function</th></tr></thead><tbody><tr><td><strong>Running</strong></td><td>Live subagent instances; open or stop running agents</td></tr><tr><td><strong>Library</strong></td><td>Browse, create, edit, delete subagents (built-in, user, project, plugin); see priority overrides</td></tr></tbody></table>
+<h3 id="creation-flow">Creation flow<a class="heading-anchor" aria-label="Permalink" href="#creation-flow">#</a></h3>
+<ol>
+<li><code>/agents</code> → <strong>Library</strong> → <strong>Create new agent</strong></li>
+<li>Choose location: <strong>Personal</strong> (<code>~/.claude/agents/</code>) or <strong>Project</strong> (<code>.claude/agents/</code>)</li>
+<li>Optionally <strong>Generate with Claude</strong> — describe the agent in plain English</li>
+<li>Claude generates <code>name</code>, <code>description</code>, system prompt</li>
+<li>Pick tools (read-only / all / custom), model, color</li>
+<li>Configure memory scope</li>
+<li>Press <code>s</code>/<code>Enter</code> to save, <code>e</code> to edit in your editor</li>
+</ol>
+<h3 id="cli-alternatives">CLI alternatives<a class="heading-anchor" aria-label="Permalink" href="#cli-alternatives">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> agents</span><span style="color:#8B8B8B94">                                    # list grouped by source</span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> --agent</span><span style="color:#99FFE4"> code-reviewer</span><span style="color:#8B8B8B94">                     # run with subagent as main thread</span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> --agents</span><span style="color:#99FFE4"> '{"reviewer":{"description":"…","prompt":"…","tools":["Read"]}}'</span></span></code></pre>
+<hr>
+<h2 id="4-built-in-subagents-shipped-with-claude-code">4. Built-in subagents (shipped with Claude Code)<a class="heading-anchor" aria-label="Permalink" href="#4-built-in-subagents-shipped-with-claude-code">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Model</th><th>Tools</th><th>Use case</th></tr></thead><tbody><tr><td><code>Explore</code></td><td>Haiku</td><td>Read-only (no Write/Edit)</td><td>File discovery, code search, codebase exploration. Specify thoroughness: <code>quick</code>, <code>medium</code>, <code>very thorough</code></td></tr><tr><td><code>Plan</code></td><td>Inherits</td><td>Read-only</td><td>Codebase research during plan mode; prevents nested-subagent recursion</td></tr><tr><td><code>general-purpose</code></td><td>Inherits</td><td>All</td><td>Multi-step tasks needing exploration + action</td></tr><tr><td><code>statusline-setup</code></td><td>Sonnet</td><td>Read, Edit</td><td>Triggered by <code>/statusline</code></td></tr><tr><td><code>output-style-setup</code></td><td>Sonnet</td><td>Read, Edit</td><td>Triggered by <code>/statusline-setup</code> flow</td></tr><tr><td><code>claude-code-guide</code></td><td>Haiku</td><td>Bash, Read, WebFetch, WebSearch</td><td>Answers questions about Claude Code features and Anthropic API</td></tr></tbody></table>
+<blockquote>
+<p>Many of these are why the harness “knows” things — when you ask “how do I configure a hook?” the <code>claude-code-guide</code> subagent fetches the answer from official docs without consuming your main context.</p>
+</blockquote>
+<hr>
+<h2 id="5-invocation-patterns">5. Invocation patterns<a class="heading-anchor" aria-label="Permalink" href="#5-invocation-patterns">#</a></h2>
+<h3 id="a-automatic-delegation">A. Automatic delegation<a class="heading-anchor" aria-label="Permalink" href="#a-automatic-delegation">#</a></h3>
+<p>Claude reads each subagent’s <code>description</code> and decides whether to delegate based on the current task. To encourage automatic use, use phrases like <em>“proactively”</em> or <em>“use immediately after”</em>:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#FFC799">description</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Expert code review specialist. Proactively reviews code for quality, security, and maintainability. Use immediately after writing or modifying code.</span></span></code></pre>
+<h3 id="b-natural-language-invocation">B. Natural-language invocation<a class="heading-anchor" aria-label="Permalink" href="#b-natural-language-invocation">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Have the test-runner subagent fix any failing tests</span></span>
+<span class="line"><span>Use the code-reviewer subagent to look at the auth changes</span></span></code></pre>
+<h3 id="c--mention-guarantees">C. <code>@</code>-mention guarantees<a class="heading-anchor" aria-label="Permalink" href="#c--mention-guarantees">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>@"code-reviewer (agent)" look at the auth changes</span></span></code></pre>
+<p>Syntax variants:</p>
+<ul>
+<li>Local: <code>@agent-&#x3C;name></code></li>
+<li>Plugin: <code>@agent-&#x3C;plugin>:&#x3C;name></code></li>
+</ul>
+<h3 id="d-whole-session-subagent">D. Whole-session subagent<a class="heading-anchor" aria-label="Permalink" href="#d-whole-session-subagent">#</a></h3>
+<p>Run a subagent as the <strong>main thread</strong> for the entire session:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> --agent</span><span style="color:#99FFE4"> code-reviewer</span></span>
+<span class="line"><span style="color:#FFC799">claude</span><span style="color:#99FFE4"> --agent</span><span style="color:#A0A0A0"> &#x3C;</span><span style="color:#99FFE4">plugin-nam</span><span style="color:#FFF">e</span><span style="color:#A0A0A0">></span><span style="color:#99FFE4">:</span><span style="color:#A0A0A0">&#x3C;</span><span style="color:#99FFE4">agent-nam</span><span style="color:#FFF">e</span><span style="color:#A0A0A0">></span></span></code></pre>
+<p>Or set as project default:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#FFF">{ </span><span style="color:#FFC799">"agent"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"code-reviewer"</span><span style="color:#FFF"> }</span></span></code></pre>
+<p>The default Claude Code system prompt is replaced. The agent name appears as <code>@&#x3C;name></code> in the startup header. If <code>initialPrompt</code> is set, it’s auto-submitted as the first turn.</p>
+<h3 id="e-programmatic-via-the-agent-tool">E. Programmatic via the Agent tool<a class="heading-anchor" aria-label="Permalink" href="#e-programmatic-via-the-agent-tool">#</a></h3>
+<p>When an agent is the main thread, it can spawn subagents using the Agent tool (formerly named Task):</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#FFC799">tools</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Agent(worker, researcher), Read, Bash</span><span style="color:#8B8B8B94">    # allowlist of spawnable subagents</span></span>
+<span class="line"><span style="color:#FFC799">tools</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Agent, Read, Bash</span><span style="color:#8B8B8B94">                        # any subagent</span></span></code></pre>
+<p>To block specific agents instead, use <code>permissions.deny</code> in settings.</p>
+<hr>
+<h2 id="6-parallel-vs-sequential-foreground-vs-background">6. Parallel vs. sequential, foreground vs. background<a class="heading-anchor" aria-label="Permalink" href="#6-parallel-vs-sequential-foreground-vs-background">#</a></h2>
+<h3 id="parallel-execution">Parallel execution<a class="heading-anchor" aria-label="Permalink" href="#parallel-execution">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Research the auth, database, and API modules in parallel using separate subagents</span></span></code></pre>
+<p>Each gets independent context; results return to the main conversation, which Claude synthesises.</p>
+<blockquote>
+<p>⚠️ Many subagents returning verbose results can still consume significant main-context tokens. Ask for short summaries.</p>
+</blockquote>
+<h3 id="background-execution">Background execution<a class="heading-anchor" aria-label="Permalink" href="#background-execution">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Trigger</th><th>Effect</th></tr></thead><tbody><tr><td><code>background: true</code> in frontmatter</td><td>Agent always runs in background</td></tr><tr><td>User says “run this in the background”</td><td>One-off background</td></tr><tr><td><code>Ctrl+B</code> while running</td><td>Background the running task</td></tr><tr><td><code>export CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1</code></td><td>Disable globally</td></tr></tbody></table>
+<p>Foreground subagents block until done and can pass permission prompts/clarifying questions through to you. Background subagents pre-approve permissions upfront; if a clarifying question is needed, the tool call fails but the subagent continues.</p>
+<h3 id="independent-contexts">Independent contexts<a class="heading-anchor" aria-label="Permalink" href="#independent-contexts">#</a></h3>
+<p>Each subagent:</p>
+<ul>
+<li>Starts with fresh context (except <code>context: fork</code> — see below)</li>
+<li>Cannot see main conversation history</li>
+<li>Has independent permissions, tool restrictions, MCP connections</li>
+<li>Has its own transcript at <code>~/.claude/projects/&#x3C;project>/&#x3C;sessionId>/subagents/agent-&#x3C;agentId>.jsonl</code></li>
+<li>Survives main-conversation compaction (transcripts are separate)</li>
+</ul>
+<h3 id="subagent-nesting">Subagent nesting<a class="heading-anchor" aria-label="Permalink" href="#subagent-nesting">#</a></h3>
+<blockquote>
+<p><em>“Subagents cannot spawn other subagents. If your workflow requires nested delegation, use Skills or chain subagents from the main conversation.”</em></p>
+</blockquote>
+<p>Built-in <code>Plan</code> enforces this anti-recursion guarantee for plan mode. For multi-level coordination, use <strong>Agent Teams</strong> (separate feature) where each worker has its own context.</p>
+<h3 id="context-fork-mode-skills">Context-fork mode (skills)<a class="heading-anchor" aria-label="Permalink" href="#context-fork-mode-skills">#</a></h3>
+<p>Skills can declare <code>context: fork</code> to run in an isolated subagent context — useful for skills that produce verbose output you don’t want in the main thread.</p>
+<hr>
+<h2 id="7-best-practices-from-anthropic">7. Best practices (from Anthropic)<a class="heading-anchor" aria-label="Permalink" href="#7-best-practices-from-anthropic">#</a></h2>
+<h3 id="1-write-detailed-action-flavoured-descriptions">1. Write detailed, action-flavoured descriptions<a class="heading-anchor" aria-label="Permalink" href="#1-write-detailed-action-flavoured-descriptions">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#8B8B8B94"># Good</span></span>
+<span class="line"><span style="color:#FFC799">description</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Expert code review specialist. Proactively reviews code for quality, security, and maintainability. Use immediately after writing or modifying code.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B8B8B94"># Bad</span></span>
+<span class="line"><span style="color:#FFC799">description</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Code reviewer</span></span></code></pre>
+<h3 id="2-single-responsibility-agents">2. Single-responsibility agents<a class="heading-anchor" aria-label="Permalink" href="#2-single-responsibility-agents">#</a></h3>
+<p>Each subagent should excel at <strong>one</strong> task. Don’t build a “do-everything” agent.</p>
+<h3 id="3-limit-tool-access">3. Limit tool access<a class="heading-anchor" aria-label="Permalink" href="#3-limit-tool-access">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#8B8B8B94"># Good</span></span>
+<span class="line"><span style="color:#FFC799">tools</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Read, Grep, Glob, Bash</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B8B8B94"># Risky (defaults to inheriting all tools)</span></span>
+<span class="line"><span style="color:#8B8B8B94"># (no `tools` field)</span></span></code></pre>
+<h3 id="4-version-control-project-agents">4. Version-control project agents<a class="heading-anchor" aria-label="Permalink" href="#4-version-control-project-agents">#</a></h3>
+<p>Commit <code>.claude/agents/*.md</code> so the team benefits from improvements.</p>
+<h3 id="5-use-subagents-for-context-heavy-research">5. Use subagents for context-heavy research<a class="heading-anchor" aria-label="Permalink" href="#5-use-subagents-for-context-heavy-research">#</a></h3>
+<blockquote>
+<p><em>“Use subagents when the task produces verbose output you don’t need in your main context.”</em></p>
+</blockquote>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Use a subagent to run the test suite and report only the failing tests with their error messages</span></span></code></pre>
+<h3 id="6-enable-persistent-memory-for-learning-agents">6. Enable persistent memory for learning agents<a class="heading-anchor" aria-label="Permalink" href="#6-enable-persistent-memory-for-learning-agents">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#FFC799">memory</span><span style="color:#FFF">: </span><span style="color:#99FFE4">project</span></span></code></pre>
+<p>Then in the body:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#FFF">Update your agent memory as you discover codepaths, patterns, library locations, and key architectural decisions. Consult memory before starting and update after completing.</span></span></code></pre>
+<h3 id="7-use-hooks-for-fine-grained-tool-control">7. Use hooks for fine-grained tool control<a class="heading-anchor" aria-label="Permalink" href="#7-use-hooks-for-fine-grained-tool-control">#</a></h3>
+<p>When <code>tools</code> allowlist isn’t fine enough:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#FFC799">hooks</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFC799">  PreToolUse</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">    - </span><span style="color:#FFC799">matcher</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"Bash"</span></span>
+<span class="line"><span style="color:#FFC799">      hooks</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">        - </span><span style="color:#FFC799">type</span><span style="color:#FFF">: </span><span style="color:#99FFE4">command</span></span>
+<span class="line"><span style="color:#FFC799">          command</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"./scripts/validate-readonly-query.sh"</span></span></code></pre>
+<p>Exit code 2 from the hook blocks the operation.</p>
+<hr>
+<h2 id="8-limits-and-trade-offs">8. Limits and trade-offs<a class="heading-anchor" aria-label="Permalink" href="#8-limits-and-trade-offs">#</a></h2>
+<h3 id="latency-from-cold-context">Latency from cold context<a class="heading-anchor" aria-label="Permalink" href="#latency-from-cold-context">#</a></h3>
+<p>Subagents start with a fresh context and may need time to gather background. Not ideal for quick, targeted tasks or workflows that share a lot of context across phases (plan → implement → test).</p>
+<h3 id="no-persistent-memory-by-default">No persistent memory by default<a class="heading-anchor" aria-label="Permalink" href="#no-persistent-memory-by-default">#</a></h3>
+<p>Each invocation is fresh. Set <code>memory: user|project|local</code> to persist across runs, or use Agent Teams for sustained collaboration.</p>
+<h3 id="cost">Cost<a class="heading-anchor" aria-label="Permalink" href="#cost">#</a></h3>
+<p>Each subagent invocation is a separate API call with its own context setup. Parallel subagents = multiple concurrent calls. <strong>Savings</strong> come from routing exploration to Haiku and keeping verbose output out of the main thread.</p>
+<h3 id="subagents-cannot-spawn-subagents">Subagents cannot spawn subagents<a class="heading-anchor" aria-label="Permalink" href="#subagents-cannot-spawn-subagents">#</a></h3>
+<p>Workarounds:</p>
+<ul>
+<li>Chain subagents from the main conversation</li>
+<li>Use Skills for nested workflows in the same context</li>
+<li>Use Agent Teams for multi-level coordination</li>
+</ul>
+<h3 id="plugin-subagents-have-restrictions">Plugin subagents have restrictions<a class="heading-anchor" aria-label="Permalink" href="#plugin-subagents-have-restrictions">#</a></h3>
+<blockquote>
+<p><em>“For security reasons, plugin subagents do not support the <code>hooks</code>, <code>mcpServers</code>, or <code>permissionMode</code> frontmatter fields.”</em></p>
+</blockquote>
+<p>To use those fields with a plugin’s agent, copy the file into <code>.claude/agents/</code> or <code>~/.claude/agents/</code>.</p>
+<h3 id="context-window-constraints">Context-window constraints<a class="heading-anchor" aria-label="Permalink" href="#context-window-constraints">#</a></h3>
+<p>Subagents share the same context-window limits as the main conversation. For tasks that exceed it, use Agent Teams.</p>
+<hr>
+<h2 id="9-hooks-integration">9. Hooks integration<a class="heading-anchor" aria-label="Permalink" href="#9-hooks-integration">#</a></h2>
+<h3 id="subagent-scoped-hooks-in-frontmatter">Subagent-scoped hooks (in frontmatter)<a class="heading-anchor" aria-label="Permalink" href="#subagent-scoped-hooks-in-frontmatter">#</a></h3>
+<p>Run only while the subagent is active:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#FFC799">hooks</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFC799">  PreToolUse</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">    - </span><span style="color:#FFC799">matcher</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"Bash"</span></span>
+<span class="line"><span style="color:#FFC799">      hooks</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">        - </span><span style="color:#FFC799">type</span><span style="color:#FFF">: </span><span style="color:#99FFE4">command</span></span>
+<span class="line"><span style="color:#FFC799">          command</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"./scripts/validate-command.sh $TOOL_INPUT"</span></span>
+<span class="line"><span style="color:#FFC799">  PostToolUse</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">    - </span><span style="color:#FFC799">matcher</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"Edit|Write"</span></span>
+<span class="line"><span style="color:#FFC799">      hooks</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">        - </span><span style="color:#FFC799">type</span><span style="color:#FFF">: </span><span style="color:#99FFE4">command</span></span>
+<span class="line"><span style="color:#FFC799">          command</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"./scripts/run-linter.sh"</span></span></code></pre>
+<p>When the subagent finishes, its <code>Stop</code> hooks fire as <code>SubagentStop</code> events at runtime.</p>
+<h3 id="project-scoped-hooks-reacting-to-subagent-lifecycle">Project-scoped hooks reacting to subagent lifecycle<a class="heading-anchor" aria-label="Permalink" href="#project-scoped-hooks-reacting-to-subagent-lifecycle">#</a></h3>
+<p>Configure in <code>.claude/settings.json</code>:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#FFF">{</span></span>
+<span class="line"><span style="color:#FFC799">  "hooks"</span><span style="color:#FFF">: {</span></span>
+<span class="line"><span style="color:#FFC799">    "SubagentStart"</span><span style="color:#FFF">: [</span></span>
+<span class="line"><span style="color:#FFF">      {</span></span>
+<span class="line"><span style="color:#FFC799">        "matcher"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"db-agent"</span><span style="color:#FFF">,</span></span>
+<span class="line"><span style="color:#FFC799">        "hooks"</span><span style="color:#FFF">: [</span></span>
+<span class="line"><span style="color:#FFF">          { </span><span style="color:#FFC799">"type"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"command"</span><span style="color:#FFF">, </span><span style="color:#FFC799">"command"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"./scripts/setup-db-connection.sh"</span><span style="color:#FFF"> }</span></span>
+<span class="line"><span style="color:#FFF">        ]</span></span>
+<span class="line"><span style="color:#FFF">      }</span></span>
+<span class="line"><span style="color:#FFF">    ],</span></span>
+<span class="line"><span style="color:#FFC799">    "SubagentStop"</span><span style="color:#FFF">: [</span></span>
+<span class="line"><span style="color:#FFF">      {</span></span>
+<span class="line"><span style="color:#FFC799">        "hooks"</span><span style="color:#FFF">: [</span></span>
+<span class="line"><span style="color:#FFF">          { </span><span style="color:#FFC799">"type"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"command"</span><span style="color:#FFF">, </span><span style="color:#FFC799">"command"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"./scripts/cleanup-db-connection.sh"</span><span style="color:#FFF"> }</span></span>
+<span class="line"><span style="color:#FFF">        ]</span></span>
+<span class="line"><span style="color:#FFF">      }</span></span>
+<span class="line"><span style="color:#FFF">    ]</span></span>
+<span class="line"><span style="color:#FFF">  }</span></span>
+<span class="line"><span style="color:#FFF">}</span></span></code></pre>
+<hr>
+<h2 id="10-subagent-vs-skill--quick-decision">10. Subagent vs. Skill — quick decision<a class="heading-anchor" aria-label="Permalink" href="#10-subagent-vs-skill--quick-decision">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Want this</th><th>Reach for</th></tr></thead><tbody><tr><td>Reusable knowledge / workflow loaded into the <strong>same</strong> context</td><td><strong>Skill</strong></td></tr><tr><td>Self-contained investigation that returns a summary</td><td><strong>Subagent</strong></td></tr><tr><td>Tool-restriction enforcement</td><td><strong>Subagent</strong></td></tr><tr><td>Different model for one task (e.g., Haiku for cheap exploration)</td><td><strong>Subagent</strong> with <code>model: haiku</code></td></tr><tr><td>Run multiple independent analyses in parallel</td><td><strong>Multiple subagents</strong></td></tr><tr><td>Domain knowledge for the whole team</td><td><strong>Skill</strong>, committed to <code>.claude/skills/</code></td></tr><tr><td>Run a long-running build in an isolated git worktree</td><td><strong>Subagent</strong> with <code>isolation: worktree</code></td></tr><tr><td>One assistant pre-loaded with a different system prompt for the whole session</td><td><code>claude --agent &#x3C;name></code> (subagent as main thread)</td></tr><tr><td>Frequent back-and-forth with main conversation</td><td>Stay in main thread, use a Skill</td></tr></tbody></table>
+<h3 id="concrete-examples">Concrete examples<a class="heading-anchor" aria-label="Permalink" href="#concrete-examples">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Scenario</th><th>Use</th></tr></thead><tbody><tr><td>”Run tests and report only failures”</td><td>Subagent</td></tr><tr><td>”Review code for security issues”</td><td>Subagent</td></tr><tr><td>”Provide API design guidelines I reference constantly”</td><td>Skill</td></tr><tr><td>”Investigate auth system in parallel with implementation”</td><td>Subagent</td></tr><tr><td>”Add JSDoc comments following our style”</td><td>Skill (or main thread)</td></tr><tr><td>“Research + summarise in separate context”</td><td>Subagent</td></tr><tr><td>”Domain knowledge for the whole team”</td><td>Skill, committed</td></tr><tr><td>”Run multiple independent analyses in parallel”</td><td>Subagents</td></tr></tbody></table>
+<p>For more detail and the full decision tree, see <a href="/skillsetc/docs/comparison-and-decision-guide"><code>06-comparison-and-decision-guide.md</code></a>.</p>
+<hr>
+<h2 id="11-complete-example">11. Complete example<a class="heading-anchor" aria-label="Permalink" href="#11-complete-example">#</a></h2>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"><span style="color:#FFC799">name</span><span style="color:#FFF">: </span><span style="color:#99FFE4">database-analyst</span></span>
+<span class="line"><span style="color:#FFC799">description</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Execute read-only database queries to analyse data and generate reports. Use proactively for data analysis tasks.</span></span>
+<span class="line"><span style="color:#FFC799">tools</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Bash</span></span>
+<span class="line"><span style="color:#FFC799">disallowedTools</span><span style="color:#FFF">: </span><span style="color:#99FFE4">Write, Edit</span></span>
+<span class="line"><span style="color:#FFC799">model</span><span style="color:#FFF">: </span><span style="color:#99FFE4">sonnet</span></span>
+<span class="line"><span style="color:#FFC799">permissionMode</span><span style="color:#FFF">: </span><span style="color:#99FFE4">default</span></span>
+<span class="line"><span style="color:#FFC799">maxTurns</span><span style="color:#FFF">: </span><span style="color:#FFC799">20</span></span>
+<span class="line"><span style="color:#FFC799">skills</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">  - </span><span style="color:#99FFE4">sql-best-practices</span></span>
+<span class="line"><span style="color:#FFF">  - </span><span style="color:#99FFE4">reporting-conventions</span></span>
+<span class="line"><span style="color:#FFC799">mcpServers</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">  - </span><span style="color:#99FFE4">bigquery</span></span>
+<span class="line"><span style="color:#FFC799">hooks</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFC799">  PreToolUse</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">    - </span><span style="color:#FFC799">matcher</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"Bash"</span></span>
+<span class="line"><span style="color:#FFC799">      hooks</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">        - </span><span style="color:#FFC799">type</span><span style="color:#FFF">: </span><span style="color:#99FFE4">command</span></span>
+<span class="line"><span style="color:#FFC799">          command</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"./scripts/validate-readonly-query.sh"</span></span>
+<span class="line"><span style="color:#FFC799">memory</span><span style="color:#FFF">: </span><span style="color:#99FFE4">project</span></span>
+<span class="line"><span style="color:#FFC799">background</span><span style="color:#FFF">: </span><span style="color:#FFC799">false</span></span>
+<span class="line"><span style="color:#FFC799">effort</span><span style="color:#FFF">: </span><span style="color:#99FFE4">high</span></span>
+<span class="line"><span style="color:#FFC799">isolation</span><span style="color:#FFF">: </span><span style="color:#99FFE4">worktree</span></span>
+<span class="line"><span style="color:#FFC799">color</span><span style="color:#FFF">: </span><span style="color:#99FFE4">blue</span></span>
+<span class="line"><span style="color:#FFC799">initialPrompt</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"Start by understanding the analysis requirement"</span></span>
+<span class="line"><span style="color:#FFF">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#99FFE4">You are a database analyst specialising in SQL and BigQuery analysis.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFC799">When invoked</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#99FFE4">1. Understand the data analysis requirement</span></span>
+<span class="line"><span style="color:#99FFE4">2. Write efficient SQL queries with proper filters</span></span>
+<span class="line"><span style="color:#99FFE4">3. Use BigQuery CLI tools when appropriate</span></span>
+<span class="line"><span style="color:#99FFE4">4. Analyse and summarise results</span></span>
+<span class="line"><span style="color:#99FFE4">5. Present findings clearly</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFC799">Key practices</span><span style="color:#FFF">:</span></span>
+<span class="line"><span style="color:#FFF">- </span><span style="color:#99FFE4">Optimised queries; avoid full-table scans</span></span>
+<span class="line"><span style="color:#FFF">- </span><span style="color:#99FFE4">Appropriate aggregations and joins</span></span>
+<span class="line"><span style="color:#FFF">- </span><span style="color:#99FFE4">Format results for readability</span></span>
+<span class="line"><span style="color:#FFF">- </span><span style="color:#99FFE4">Provide data-driven recommendations</span></span></code></pre>  </div> <p class="doc-updated" data-astro-cid-fz5pa65a>Last updated April 28, 2026</p> <nav class="prevnext" aria-label="Pagination" data-astro-cid-oerjsknp><a href="/skillsetc/docs/skills" class="pn-card pn-prev" rel="prev" data-astro-cid-oerjsknp><span class="pn-meta" data-astro-cid-oerjsknp><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Previous</span><span class="pn-label" data-astro-cid-oerjsknp>Skills</span></a><a href="/skillsetc/docs/hooks-mcp-memory-settings" class="pn-card pn-next" rel="next" data-astro-cid-oerjsknp><span class="pn-meta" data-astro-cid-oerjsknp>Next <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><span class="pn-label" data-astro-cid-oerjsknp>Hooks · MCP · Memory</span></a></nav> </article> <aside class="toc" data-pagefind-ignore aria-label="Table of contents" data-astro-cid-6t6zfk7k><span class="eyebrow toc-eyebrow"> On this page </span><ul class="toc-list" data-astro-cid-6t6zfk7k><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#1-what-a-subagent-is" data-toc-link="1-what-a-subagent-is" data-astro-cid-6t6zfk7k>1. What a subagent is#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#subagent-vs-skill-vs-slash-command-vs-mcp-tool" data-toc-link="subagent-vs-skill-vs-slash-command-vs-mcp-tool" data-astro-cid-6t6zfk7k>Subagent vs. Skill vs. Slash command vs. MCP tool#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#2-configuration" data-toc-link="2-configuration" data-astro-cid-6t6zfk7k>2. Configuration#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#file-locations--priority" data-toc-link="file-locations--priority" data-astro-cid-6t6zfk7k>File locations &amp; priority#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#frontmatter-full-reference" data-toc-link="frontmatter-full-reference" data-astro-cid-6t6zfk7k>Frontmatter (full reference)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#system-prompt-body" data-toc-link="system-prompt-body" data-astro-cid-6t6zfk7k>System prompt body#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#3-the-agents-slash-command" data-toc-link="3-the-agents-slash-command" data-astro-cid-6t6zfk7k>3. The /agents slash command#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#creation-flow" data-toc-link="creation-flow" data-astro-cid-6t6zfk7k>Creation flow#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#cli-alternatives" data-toc-link="cli-alternatives" data-astro-cid-6t6zfk7k>CLI alternatives#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#4-built-in-subagents-shipped-with-claude-code" data-toc-link="4-built-in-subagents-shipped-with-claude-code" data-astro-cid-6t6zfk7k>4. Built-in subagents (shipped with Claude Code)#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#5-invocation-patterns" data-toc-link="5-invocation-patterns" data-astro-cid-6t6zfk7k>5. Invocation patterns#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#a-automatic-delegation" data-toc-link="a-automatic-delegation" data-astro-cid-6t6zfk7k>A. Automatic delegation#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#b-natural-language-invocation" data-toc-link="b-natural-language-invocation" data-astro-cid-6t6zfk7k>B. Natural-language invocation#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#c--mention-guarantees" data-toc-link="c--mention-guarantees" data-astro-cid-6t6zfk7k>C. @-mention guarantees#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#d-whole-session-subagent" data-toc-link="d-whole-session-subagent" data-astro-cid-6t6zfk7k>D. Whole-session subagent#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#e-programmatic-via-the-agent-tool" data-toc-link="e-programmatic-via-the-agent-tool" data-astro-cid-6t6zfk7k>E. Programmatic via the Agent tool#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#6-parallel-vs-sequential-foreground-vs-background" data-toc-link="6-parallel-vs-sequential-foreground-vs-background" data-astro-cid-6t6zfk7k>6. Parallel vs. sequential, foreground vs. background#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#parallel-execution" data-toc-link="parallel-execution" data-astro-cid-6t6zfk7k>Parallel execution#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#background-execution" data-toc-link="background-execution" data-astro-cid-6t6zfk7k>Background execution#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#independent-contexts" data-toc-link="independent-contexts" data-astro-cid-6t6zfk7k>Independent contexts#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#subagent-nesting" data-toc-link="subagent-nesting" data-astro-cid-6t6zfk7k>Subagent nesting#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#context-fork-mode-skills" data-toc-link="context-fork-mode-skills" data-astro-cid-6t6zfk7k>Context-fork mode (skills)#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#7-best-practices-from-anthropic" data-toc-link="7-best-practices-from-anthropic" data-astro-cid-6t6zfk7k>7. Best practices (from Anthropic)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#1-write-detailed-action-flavoured-descriptions" data-toc-link="1-write-detailed-action-flavoured-descriptions" data-astro-cid-6t6zfk7k>1. Write detailed, action-flavoured descriptions#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#2-single-responsibility-agents" data-toc-link="2-single-responsibility-agents" data-astro-cid-6t6zfk7k>2. Single-responsibility agents#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#3-limit-tool-access" data-toc-link="3-limit-tool-access" data-astro-cid-6t6zfk7k>3. Limit tool access#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#4-version-control-project-agents" data-toc-link="4-version-control-project-agents" data-astro-cid-6t6zfk7k>4. Version-control project agents#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#5-use-subagents-for-context-heavy-research" data-toc-link="5-use-subagents-for-context-heavy-research" data-astro-cid-6t6zfk7k>5. Use subagents for context-heavy research#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#6-enable-persistent-memory-for-learning-agents" data-toc-link="6-enable-persistent-memory-for-learning-agents" data-astro-cid-6t6zfk7k>6. Enable persistent memory for learning agents#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#7-use-hooks-for-fine-grained-tool-control" data-toc-link="7-use-hooks-for-fine-grained-tool-control" data-astro-cid-6t6zfk7k>7. Use hooks for fine-grained tool control#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#8-limits-and-trade-offs" data-toc-link="8-limits-and-trade-offs" data-astro-cid-6t6zfk7k>8. Limits and trade-offs#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#latency-from-cold-context" data-toc-link="latency-from-cold-context" data-astro-cid-6t6zfk7k>Latency from cold context#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#no-persistent-memory-by-default" data-toc-link="no-persistent-memory-by-default" data-astro-cid-6t6zfk7k>No persistent memory by default#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#cost" data-toc-link="cost" data-astro-cid-6t6zfk7k>Cost#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#subagents-cannot-spawn-subagents" data-toc-link="subagents-cannot-spawn-subagents" data-astro-cid-6t6zfk7k>Subagents cannot spawn subagents#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#plugin-subagents-have-restrictions" data-toc-link="plugin-subagents-have-restrictions" data-astro-cid-6t6zfk7k>Plugin subagents have restrictions#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#context-window-constraints" data-toc-link="context-window-constraints" data-astro-cid-6t6zfk7k>Context-window constraints#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#9-hooks-integration" data-toc-link="9-hooks-integration" data-astro-cid-6t6zfk7k>9. Hooks integration#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#subagent-scoped-hooks-in-frontmatter" data-toc-link="subagent-scoped-hooks-in-frontmatter" data-astro-cid-6t6zfk7k>Subagent-scoped hooks (in frontmatter)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#project-scoped-hooks-reacting-to-subagent-lifecycle" data-toc-link="project-scoped-hooks-reacting-to-subagent-lifecycle" data-astro-cid-6t6zfk7k>Project-scoped hooks reacting to subagent lifecycle#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#10-subagent-vs-skill--quick-decision" data-toc-link="10-subagent-vs-skill--quick-decision" data-astro-cid-6t6zfk7k>10. Subagent vs. Skill — quick decision#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#concrete-examples" data-toc-link="concrete-examples" data-astro-cid-6t6zfk7k>Concrete examples#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#11-complete-example" data-toc-link="11-complete-example" data-astro-cid-6t6zfk7k>11. Complete example#</a></li></ul></aside><script type="module">const i=document.querySelectorAll("[data-toc-link]");if(i.length>0){const s=new Map;i.forEach(t=>s.set(t.dataset.tocLink,t));const r=[];s.forEach((t,o)=>{const e=document.getElementById(o);e&&r.push(e)});let c=null;const l=t=>{t!==c&&(c=t,i.forEach(o=>o.setAttribute("aria-current",o.dataset.tocLink===t?"true":"false")))},a=new IntersectionObserver(t=>{const o=t.filter(e=>e.isIntersecting).sort((e,n)=>e.boundingClientRect.top-n.boundingClientRect.top);if(o.length>0)l(o[0].target.id);else{const e=r.map(n=>({id:n.id,top:n.getBoundingClientRect().top})).filter(n=>n.top<80).sort((n,d)=>d.top-n.top);e[0]&&l(e[0].id)}},{rootMargin:"-72px 0px -65% 0px",threshold:0});r.forEach(t=>a.observe(t))}</script> </div>  </main> <footer class="site-footer" data-pagefind-ignore data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-col footer-brand" data-astro-cid-sz7xmlte> <span class="footer-mark" aria-hidden="true" data-astro-cid-sz7xmlte>◆</span> <span class="footer-name" data-astro-cid-sz7xmlte>skillsetc</span> <p class="footer-tagline" data-astro-cid-sz7xmlte>
+A field guide to Skills, Subagents, Claude Code &amp; OpenAI Codex —
+        compiled from primary sources.
+</p> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h2 class="footer-heading" data-astro-cid-sz7xmlte>Primitives</h2> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/skills" data-astro-cid-sz7xmlte>Skills</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/subagents" data-astro-cid-sz7xmlte>Subagents</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/hooks-mcp-memory-settings" data-astro-cid-sz7xmlte>Hooks · MCP · Memory</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/comparison-and-decision-guide" data-astro-cid-sz7xmlte>Decision Guide</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/decide" data-astro-cid-sz7xmlte>Interactive flow</a></li> </ul> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h2 class="footer-heading" data-astro-cid-sz7xmlte>Reference</h2> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/claude-code" data-astro-cid-sz7xmlte>Claude Code</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/openai-codex" data-astro-cid-sz7xmlte>OpenAI Codex</a></li> </ul> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h2 class="footer-heading" data-astro-cid-sz7xmlte>Sources</h2> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>docs.claude.com</a></li> <li data-astro-cid-sz7xmlte><a href="https://developers.openai.com/codex" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>developers.openai.com</a></li> <li data-astro-cid-sz7xmlte><a href="https://agentskills.io" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>agentskills.io</a></li> <li data-astro-cid-sz7xmlte><a href="https://agents.md" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>agents.md</a></li> </ul> </div> </div> <div class="footer-meta" data-astro-cid-sz7xmlte> <div class="footer-meta-inner" data-astro-cid-sz7xmlte> <span data-astro-cid-sz7xmlte>© 2026 skillsetc</span> <span class="footer-sep" aria-hidden="true" data-astro-cid-sz7xmlte>·</span> <span data-astro-cid-sz7xmlte>Last updated April 28, 2026</span> <span class="footer-sep" aria-hidden="true" data-astro-cid-sz7xmlte>·</span> <span data-astro-cid-sz7xmlte>Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>Astro</a></span> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" data-pagefind-ignore data-astro-cid-mjrxwznw> <div class="search-modal" role="document" data-astro-cid-mjrxwznw> <div class="search-input-row" data-astro-cid-mjrxwznw> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="search-input-icon" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg> <input type="search" id="search-input" class="search-input" placeholder="Search the field guide…" autocomplete="off" spellcheck="false" aria-label="Search query" data-astro-cid-mjrxwznw> <kbd class="search-esc" data-astro-cid-mjrxwznw>esc</kbd> </div> <div class="search-results" id="search-results" aria-live="polite" data-astro-cid-mjrxwznw> <p class="search-hint" data-astro-cid-mjrxwznw>
+Try <em data-astro-cid-mjrxwznw>SKILL.md</em>, <em data-astro-cid-mjrxwznw>permission mode</em>, <em data-astro-cid-mjrxwznw>AGENTS.md</em>, or <em data-astro-cid-mjrxwznw>prefix_rule</em>.
+</p> </div> </div> </dialog>  <script type="module">const i=document.getElementById("search-dialog"),u=document.getElementById("search-input"),a=document.getElementById("search-results");let n=-1,r=[];async function w(){if(window.__pagefind)return window.__pagefind;try{const e=(document.body.dataset.base??"").replace(/\/+$/,""),s=await import(new URL(`${e}/pagefind/pagefind.js`,window.location.origin).toString());return window.__pagefind=s.default??s,window.__pagefind}catch{return null}}async function v(e){if(!a)return;if(!e.trim()){a.innerHTML='<p class="search-hint">Try <em>SKILL.md</em>, <em>permission mode</em>, <em>AGENTS.md</em>, or <em>prefix_rule</em>.</p>',r=[],n=-1;return}const t=await w();if(!t){a.innerHTML=`<p class="search-hint">Search index isn't built yet. Run <em>npm run build</em> or load the production site.</p>`;return}const s=await t.debouncedSearch(e);if(!s)return;const c=s.results.slice(0,8);if(c.length===0){a.innerHTML=`<p class="search-hint">No results for <em>${d(e)}</em>.</p>`,r=[],n=-1;return}const h=await Promise.all(c.map(o=>o.data()));a.innerHTML="",h.forEach((o,g)=>{const l=document.createElement("a");l.className="search-result",l.href=o.url,l.setAttribute("role","option"),l.setAttribute("aria-selected",g===0?"true":"false"),l.innerHTML=`
+        <div class="search-result-meta">${d(o.meta.title??o.url)}</div>
+        <h3 class="search-result-title">${d(o.sub_results?.[0]?.title??o.meta.title??"")}</h3>
+        <p class="search-result-snippet">${o.excerpt}</p>
+      `,a.appendChild(l)}),r=Array.from(a.querySelectorAll(".search-result")),n=0}function f(e){r.length!==0&&(n=(e+r.length)%r.length,r.forEach((t,s)=>{const c=s===n;t.setAttribute("aria-selected",c?"true":"false"),c&&t.scrollIntoView({block:"nearest"})}))}function d(e){return e.replace(/[&<>"']/g,t=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[t])}function m(){i&&(i.open||i.showModal(),setTimeout(()=>u?.focus(),0))}function p(){i?.open&&i.close()}document.addEventListener("click",e=>{e.target?.closest("[data-search-trigger]")&&(e.preventDefault(),m())});document.addEventListener("keydown",e=>{if((/Mac|iPod|iPhone|iPad/.test(navigator.platform)?e.metaKey:e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault(),m();return}if(e.key==="/"&&!(e.target instanceof HTMLInputElement)&&!(e.target instanceof HTMLTextAreaElement)){e.preventDefault(),m();return}if(i?.open&&(e.key==="ArrowDown"&&(e.preventDefault(),f(n+1)),e.key==="ArrowUp"&&(e.preventDefault(),f(n-1)),e.key==="Enter"&&r[n])){e.preventDefault();const c=r[n].href;p(),window.location.href=c}});i?.addEventListener("click",e=>{e.target===i&&p()});u?.addEventListener("input",e=>{const t=e.target.value;v(t)});i?.addEventListener("close",()=>{u&&(u.value=""),a&&(a.innerHTML='<p class="search-hint">Try <em>SKILL.md</em>, <em>permission mode</em>, <em>AGENTS.md</em>, or <em>prefix_rule</em>.</p>'),r=[],n=-1});</script> <script type="module">function i(s){if(s.parentElement?.classList.contains("code-figure"))return;const e=document.createElement("figure");e.className="code-figure",s.replaceWith(e),e.appendChild(s);const c=Array.from(s.classList).find(t=>t.startsWith("language-"))??s.querySelector("code")?.className.match(/language-(\S+)/)?.[0]??"";if(c){const t=c.replace("language-","");if(t&&t!=="plaintext"&&t!=="text"){const o=document.createElement("span");o.className="code-lang",o.textContent=t,e.appendChild(o)}}const n=document.createElement("button");n.type="button",n.className="copy-btn",n.setAttribute("aria-label","Copy code"),n.dataset.copyCode="",n.innerHTML=`
+    <svg class="copy-icon-default" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <path d="M5 15V5a2 2 0 012-2h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <svg class="copy-icon-success" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" style="display:none">
+      <path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+  `,e.appendChild(n)}function r(){document.querySelectorAll("pre.astro-code").forEach(i),document.querySelectorAll("[data-copy-code]").forEach(e=>{e.dataset.bound||(e.dataset.bound="true",e.addEventListener("click",async()=>{const t=e.closest(".code-figure")?.querySelector("pre")?.innerText.replace(/\s+$/,"")??"";try{await navigator.clipboard.writeText(t),e.dataset.copied="true";const o=e.querySelector(".copy-icon-default"),a=e.querySelector(".copy-icon-success");o&&a&&(o.style.display="none",a.style.display="inline"),setTimeout(()=>{e.dataset.copied="false",o&&a&&(o.style.display="inline",a.style.display="none")},1400)}catch{}}))})}typeof document<"u"&&(document.addEventListener("DOMContentLoaded",r),document.addEventListener("astro:after-swap",r));</script> </body> </html> 

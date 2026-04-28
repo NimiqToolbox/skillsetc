@@ -1,0 +1,978 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="generator" content="Astro v5.18.1"><title>OpenAI Codex · skillsetc</title><meta name="description" content="OpenAI's coding agent family — CLI, IDE, Cloud, GitHub. Login, AGENTS.md, slash commands, sandboxing, models, pricing, and MCP."><link rel="canonical" href="https://nimiqtoolbox.github.io/skillsetc/docs/openai-codex"><meta name="theme-color" content="#0B1020"><meta name="color-scheme" content="dark"><link rel="icon" type="image/svg+xml" href="/skillsetc/favicon.svg"><link rel="apple-touch-icon" href="/skillsetc/favicon.svg"><meta property="og:type" content="website"><meta property="og:title" content="OpenAI Codex · skillsetc"><meta property="og:description" content="OpenAI's coding agent family — CLI, IDE, Cloud, GitHub. Login, AGENTS.md, slash commands, sandboxing, models, pricing, and MCP."><meta property="og:url" content="https://nimiqtoolbox.github.io/skillsetc/docs/openai-codex"><meta property="og:image" content="https://nimiqtoolbox.github.io/og-default.png"><meta property="og:site_name" content="skillsetc"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="OpenAI Codex · skillsetc"><meta name="twitter:description" content="OpenAI's coding agent family — CLI, IDE, Cloud, GitHub. Login, AGENTS.md, slash commands, sandboxing, models, pricing, and MCP."><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/skillsetc/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CbWU6YBD.js"></script><link rel="stylesheet" href="/skillsetc/_astro/_slug_.CMe-WxGh.css">
+<link rel="stylesheet" href="/skillsetc/_astro/_slug_.De0UF2tn.css"></head> <body data-base="/skillsetc"> <a href="#main" class="skip-link">Skip to content</a> <header class="site-header" data-pagefind-ignore data-astro-cid-3ef6ksr2> <div class="header-inner" data-astro-cid-3ef6ksr2> <a href="/skillsetc/" class="brand" aria-label="skillsetc — home" data-astro-cid-3ef6ksr2> <span class="brand-mark" aria-hidden="true" data-astro-cid-3ef6ksr2>◆</span> <span class="brand-name" data-astro-cid-3ef6ksr2>skillsetc</span> </a> <nav class="primary-nav" aria-label="Primary" data-astro-cid-3ef6ksr2> <a href="/skillsetc/docs" class="nav-link active" data-astro-cid-3ef6ksr2> Docs </a><a href="/skillsetc/decide" class="nav-link" data-astro-cid-3ef6ksr2> Decide </a> </nav> <div class="header-actions" data-astro-cid-3ef6ksr2> <button type="button" class="search-trigger" data-search-trigger aria-label="Search the guide" data-astro-cid-3ef6ksr2> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg> <span class="search-trigger-label" data-astro-cid-3ef6ksr2>Search</span> <span class="kbd-group search-trigger-kbd" aria-label="⌘ then K" data-astro-cid-wy7pfqz2>  <kbd data-astro-cid-wy7pfqz2>⌘</kbd> <span class="kbd-sep" aria-hidden="true" data-astro-cid-wy7pfqz2>+</span> <kbd data-astro-cid-wy7pfqz2>K</kbd>  </span>  </button> <a href="https://github.com" class="icon-link" aria-label="GitHub repository" target="_blank" rel="noopener noreferrer" data-astro-cid-3ef6ksr2> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class aria-hidden="true"><path d="M12 .5a11.5 11.5 0 00-3.64 22.41c.58.1.79-.25.79-.55v-2.06c-3.2.7-3.88-1.36-3.88-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.74 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.17a10.95 10.95 0 015.76 0c2.2-1.48 3.16-1.17 3.16-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.06.78 2.13v3.16c0 .31.21.66.8.55A11.5 11.5 0 0012 .5z" fill="currentColor"/></svg> </a> <button type="button" class="menu-trigger" data-menu-trigger aria-label="Open navigation menu" data-astro-cid-3ef6ksr2> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg> </button> </div> </div> </header>  <script type="module">const t=document.querySelector(".site-header");if(t){const e=()=>{t.dataset.scrolled=window.scrollY>8?"true":"false"};e(),window.addEventListener("scroll",e,{passive:!0}),document.addEventListener("astro:after-swap",e)}</script> <main id="main">  <div class="doc-shell" data-astro-cid-fz5pa65a> <aside class="sidebar" data-pagefind-ignore aria-label="Documentation navigation" data-astro-cid-ssfzsv2f> <nav class="sidebar-nav" data-astro-cid-ssfzsv2f> <section class="sidebar-group" data-astro-cid-o4nxl7dn> <h2 class="sidebar-group-label" data-astro-cid-o4nxl7dn>Primitives</h2> <ul class="sidebar-list" data-astro-cid-o4nxl7dn> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/skills" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Skills</span> <span class="sb-desc" data-astro-cid-o7fgaejc>SKILL.md, progressive disclosure, authoring</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/subagents" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Subagents</span> <span class="sb-desc" data-astro-cid-o7fgaejc>Isolated contexts, /agents, invocation</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/hooks-mcp-memory-settings" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Hooks · MCP · Memory</span> <span class="sb-desc" data-astro-cid-o7fgaejc>Lifecycle, transports, CLAUDE.md, settings</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/comparison-and-decision-guide" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Decision Guide</span> <span class="sb-desc" data-astro-cid-o7fgaejc>When to use what — with worked examples</span> </a> </li>  </ul> </section> <section class="sidebar-group" data-astro-cid-o4nxl7dn> <h2 class="sidebar-group-label" data-astro-cid-o4nxl7dn>Reference</h2> <ul class="sidebar-list" data-astro-cid-o4nxl7dn> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/claude-code" class="sb-link" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>Claude Code</span> <span class="sb-desc" data-astro-cid-o7fgaejc>CLI · IDE · permissions · slash commands</span> </a> </li> <li data-astro-cid-o7fgaejc> <a href="/skillsetc/docs/openai-codex" class="sb-link active" aria-current="page" data-astro-cid-o7fgaejc> <span class="sb-dot" aria-hidden="true" data-astro-cid-o7fgaejc></span> <span class="sb-label" data-astro-cid-o7fgaejc>OpenAI Codex</span> <span class="sb-desc" data-astro-cid-o7fgaejc>CLI · Cloud · IDE · models · pricing</span> </a> </li>  </ul> </section>  </nav> </aside>  <article class="doc-article" data-pagefind-body data-astro-cid-fz5pa65a> <nav class="breadcrumbs" aria-label="Breadcrumb" data-astro-cid-ilhxcym7> <ol data-astro-cid-ilhxcym7> <li data-astro-cid-ilhxcym7> <a href="/skillsetc/docs" data-astro-cid-ilhxcym7>Docs</a> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="bc-sep" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> </li><li data-astro-cid-ilhxcym7> <span aria-current="page" data-astro-cid-ilhxcym7>OpenAI Codex</span>  </li> </ol> </nav>  <span class="eyebrow"> Reference </span> <h1 class="doc-title serif" data-astro-cid-fz5pa65a>OpenAI Codex</h1> <p class="doc-lead" data-astro-cid-fz5pa65a>OpenAI&#39;s coding agent family — CLI, IDE, Cloud, GitHub. Login, AGENTS.md, slash commands, sandboxing, models, pricing, and MCP.</p> <section class="sources-panel" aria-label="Sources" data-astro-cid-5nphvqvb><header class="sources-header" data-astro-cid-5nphvqvb><span class="sources-eyebrow" data-astro-cid-5nphvqvb>Sourced from</span></header><ul class="sources-list" data-astro-cid-5nphvqvb><li data-astro-cid-5nphvqvb><a href="https://openai.com/codex/" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>openai.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/codex</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://developers.openai.com/codex" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>developers.openai.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/codex</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://github.com/openai/codex" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>github.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/openai/codex</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://chatgpt.com/codex" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>chatgpt.com</span><span class="sources-path" data-astro-cid-5nphvqvb>/codex</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li><li data-astro-cid-5nphvqvb><a href="https://agents.md/" target="_blank" rel="noopener noreferrer" data-astro-cid-5nphvqvb><span class="sources-host" data-astro-cid-5nphvqvb>agents.md</span><span class="sources-path" data-astro-cid-5nphvqvb></span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="sources-icon" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></li></ul></section> <div class="prose" data-astro-cid-fz5pa65a>  <h2 id="1-what-codex-is-april-2026">1. What Codex is (April 2026)<a class="heading-anchor" aria-label="Permalink" href="#1-what-codex-is-april-2026">#</a></h2>
+<p>OpenAI Codex is <strong>OpenAI’s coding agent product family</strong> — <em>“One agent for everywhere you code.”</em> It is <strong>not</strong> the deprecated 2021 <code>code-davinci-002</code> API. The name “Codex” was relaunched in 2025 and now spans a unified set of surfaces sharing authentication, models, project memory (<code>AGENTS.md</code>), and configuration:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Surface</th><th>What it is</th></tr></thead><tbody><tr><td><strong>Codex CLI</strong> (<code>codex</code>)</td><td>Terminal agent. Apache-2.0 source at <code>github.com/openai/codex</code>. ~96% Rust. npm pkg <code>@openai/codex</code>.</td></tr><tr><td><strong>Codex Desktop App</strong></td><td>Native macOS/Windows client with project sidebar, threads, in-app browser (browser automation), worktrees, code-review UI. Launched via <code>codex app</code>.</td></tr><tr><td><strong>Codex IDE Extension</strong></td><td>VS Code, Cursor, Windsurf, VS Code Insiders, JetBrains (IntelliJ, PyCharm, WebStorm, GoLand, Rider).</td></tr><tr><td><strong>Codex Cloud / Web</strong></td><td><code>chatgpt.com/codex</code> — cloud-hosted parallel agent in isolated containers; opens GitHub PRs.</td></tr><tr><td><strong>GitHub Integration</strong></td><td><code>@codex</code> mentions in PRs/issues; automatic PR review; <code>openai/codex-action</code> GitHub Action.</td></tr><tr><td><strong>iOS / Mobile</strong></td><td>Inside the ChatGPT iOS app — start tasks, view diffs, push PRs, with iOS Live Activities on the lock screen. Available on Android via ChatGPT.</td></tr><tr><td><strong>Other</strong></td><td>Slack, Linear integrations.</td></tr></tbody></table>
+<blockquote>
+<p><em>“Codex is OpenAI’s coding agent that can read, edit, and run code … in the background (including in parallel) using its own cloud environment.”</em> — <code>developers.openai.com/codex/cloud</code></p>
+</blockquote>
+<hr>
+<h2 id="2-installation--quickstart-cli">2. Installation &#x26; quickstart (CLI)<a class="heading-anchor" aria-label="Permalink" href="#2-installation--quickstart-cli">#</a></h2>
+<h3 id="install-methods">Install methods<a class="heading-anchor" aria-label="Permalink" href="#install-methods">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#8B8B8B94"># npm (cross-platform)</span></span>
+<span class="line"><span style="color:#FFC799">npm</span><span style="color:#99FFE4"> install</span><span style="color:#99FFE4"> -g</span><span style="color:#99FFE4"> @openai/codex</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B8B8B94"># Homebrew (macOS)</span></span>
+<span class="line"><span style="color:#FFC799">brew</span><span style="color:#99FFE4"> install</span><span style="color:#99FFE4"> --cask</span><span style="color:#99FFE4"> codex</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B8B8B94"># Direct binary — github.com/openai/codex/releases/latest</span></span>
+<span class="line"><span style="color:#8B8B8B94"># - codex-aarch64-apple-darwin.tar.gz</span></span>
+<span class="line"><span style="color:#8B8B8B94"># - codex-x86_64-apple-darwin.tar.gz</span></span>
+<span class="line"><span style="color:#8B8B8B94"># - codex-x86_64-unknown-linux-musl.tar.gz</span></span>
+<span class="line"><span style="color:#8B8B8B94"># - codex-aarch64-unknown-linux-musl.tar.gz</span></span></code></pre>
+<h3 id="upgrade">Upgrade<a class="heading-anchor" aria-label="Permalink" href="#upgrade">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">npm</span><span style="color:#99FFE4"> i</span><span style="color:#99FFE4"> -g</span><span style="color:#99FFE4"> @openai/codex@latest</span></span></code></pre>
+<h3 id="platforms">Platforms<a class="heading-anchor" aria-label="Permalink" href="#platforms">#</a></h3>
+<p>macOS, Windows (native PowerShell with sandbox; or via WSL2), Linux.</p>
+<h3 id="first-run">First run<a class="heading-anchor" aria-label="Permalink" href="#first-run">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">codex</span></span></code></pre>
+<p>Launches the TUI and prompts for authentication.</p>
+<hr>
+<h2 id="3-authentication">3. Authentication<a class="heading-anchor" aria-label="Permalink" href="#3-authentication">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://developers.openai.com/codex/auth" rel="noopener noreferrer" target="_blank">https://developers.openai.com/codex/auth</a></p>
+</blockquote>
+<p>Two methods:</p>
+<h3 id="a-sign-in-with-chatgpt-default">A. Sign in with ChatGPT (default)<a class="heading-anchor" aria-label="Permalink" href="#a-sign-in-with-chatgpt-default">#</a></h3>
+<p>Opens a browser; after sign-in, returns an access token to the CLI/IDE/app. Tokens auto-refresh during sessions. <strong>Required for ChatGPT-plan-included Codex usage and is the only way to access certain models</strong> (e.g., <code>gpt-5.5</code>).</p>
+<p>Headless / device-code fallback:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> login</span><span style="color:#99FFE4"> --device-auth</span></span></code></pre>
+<p>User visits <code>https://auth.openai.com/codex/device</code> and enters the one-time code (15-min expiry). Email/password ChatGPT accounts must have MFA enabled.</p>
+<h3 id="b-api-key">B. API key<a class="heading-anchor" aria-label="Permalink" href="#b-api-key">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> login</span><span style="color:#99FFE4"> --with-api-key</span></span>
+<span class="line"><span style="color:#8B8B8B94"># or piped:</span></span>
+<span class="line"><span style="color:#FFC799">printenv</span><span style="color:#99FFE4"> OPENAI_API_KEY</span><span style="color:#A0A0A0"> |</span><span style="color:#FFC799"> codex</span><span style="color:#99FFE4"> login</span><span style="color:#99FFE4"> --with-api-key</span></span></code></pre>
+<p>API usage bills directly through the OpenAI Platform account at standard API rates.</p>
+<h3 id="credential-storage">Credential storage<a class="heading-anchor" aria-label="Permalink" href="#credential-storage">#</a></h3>
+<p><code>~/.codex/auth.json</code> (plaintext) or OS keyring (auto mode tries keyring first, falls back). Docs warn: <em>“treat <code>~/.codex/auth.json</code> like a password.”</em></p>
+<h3 id="auth-utility-commands">Auth utility commands<a class="heading-anchor" aria-label="Permalink" href="#auth-utility-commands">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> login</span><span style="color:#8B8B8B94">              # interactive</span></span>
+<span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> login</span><span style="color:#99FFE4"> --device-auth</span></span>
+<span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> login</span><span style="color:#99FFE4"> --with-api-key</span></span>
+<span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> login</span><span style="color:#99FFE4"> status</span></span>
+<span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> logout</span></span></code></pre>
+<hr>
+<h2 id="4-cli-usage">4. CLI usage<a class="heading-anchor" aria-label="Permalink" href="#4-cli-usage">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://developers.openai.com/codex/cli/reference" rel="noopener noreferrer" target="_blank">https://developers.openai.com/codex/cli/reference</a></p>
+</blockquote>
+<h3 id="subcommands">Subcommands<a class="heading-anchor" aria-label="Permalink" href="#subcommands">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody><tr><td><code>codex</code></td><td>Launch the terminal UI</td></tr><tr><td><code>codex app</code></td><td>Launch the Codex desktop app</td></tr><tr><td><code>codex app-server</code></td><td>Launch the Codex app server (for local development)</td></tr><tr><td><code>codex apply</code></td><td>Apply the latest diff from a Codex Cloud task to local working tree</td></tr><tr><td><code>codex cloud</code></td><td>Browse / execute Codex Cloud tasks from terminal</td></tr><tr><td><code>codex exec</code> (alias <code>codex e</code>)</td><td><strong>Run Codex non-interactively</strong> (headless / scriptable)</td></tr><tr><td><code>codex fork</code></td><td>Fork a previous interactive session into a new thread</td></tr><tr><td><code>codex resume</code></td><td>Continue a previous interactive session</td></tr><tr><td><code>codex completion</code></td><td>Generate shell-completion scripts (Bash/Zsh/Fish/PowerShell)</td></tr><tr><td><code>codex features</code></td><td>List feature flags / persistently enable-disable them</td></tr><tr><td><code>codex mcp</code></td><td>Manage MCP servers</td></tr><tr><td><code>codex sandbox</code></td><td>Run arbitrary commands inside Codex sandboxes</td></tr><tr><td><code>codex login</code> / <code>codex logout</code> / <code>codex login status</code></td><td>Auth</td></tr></tbody></table>
+<h3 id="global-flags">Global flags<a class="heading-anchor" aria-label="Permalink" href="#global-flags">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Flag</th><th>Values</th><th>Purpose</th></tr></thead><tbody><tr><td><code>--model, -m</code></td><td>string</td><td>Override config model</td></tr><tr><td><code>--sandbox, -s</code></td><td><code>read-only</code>, <code>workspace-write</code>, <code>danger-full-access</code></td><td>Sandbox policy for shell ops</td></tr><tr><td><code>--ask-for-approval, -a</code></td><td><code>untrusted</code>, <code>on-request</code>, <code>never</code></td><td>When to pause for approval</td></tr><tr><td><code>--full-auto</code></td><td>flag</td><td>Shortcut for low-friction local work</td></tr><tr><td><code>--cd, -C</code></td><td>path</td><td>Working directory before processing</td></tr><tr><td><code>--image, -i</code></td><td>path</td><td>Attach image(s) to the prompt</td></tr><tr><td><code>--config, -c</code></td><td><code>key=value</code></td><td>Override config values (dot notation)</td></tr><tr><td><code>--profile, -p</code></td><td>string</td><td>Configuration profile to load</td></tr><tr><td><code>--search</code></td><td>flag</td><td>Enable live web search</td></tr><tr><td><code>--remote</code></td><td>ws/wss URL</td><td>Connect TUI to remote app-server</td></tr></tbody></table>
+<h3 id="codex-exec-extras"><code>codex exec</code> extras<a class="heading-anchor" aria-label="Permalink" href="#codex-exec-extras">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Flag</th><th>Purpose</th></tr></thead><tbody><tr><td><code>--json</code></td><td>NDJSON event stream instead of formatted text</td></tr><tr><td><code>--output-last-message, -o &#x3C;file></code></td><td>Write the assistant’s final message to a file</td></tr><tr><td><code>--ephemeral</code></td><td>Don’t persist session rollouts</td></tr><tr><td><code>--skip-git-repo-check</code></td><td>Allow running outside a Git repo</td></tr></tbody></table>
+<h3 id="examples">Examples<a class="heading-anchor" aria-label="Permalink" href="#examples">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">codex</span><span style="color:#8B8B8B94">                                        # interactive</span></span>
+<span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> "explain this codebase"</span></span>
+<span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> --image</span><span style="color:#99FFE4"> screenshot.png</span><span style="color:#99FFE4"> "explain this UI"</span></span>
+<span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> exec</span><span style="color:#99FFE4"> --json</span><span style="color:#99FFE4"> "run the tests and fix failures"</span></span>
+<span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> exec</span><span style="color:#99FFE4"> -o</span><span style="color:#99FFE4"> response.md</span><span style="color:#99FFE4"> "summarise the diff"</span></span>
+<span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> fork</span><span style="color:#8B8B8B94">                                   # branch from previous session</span></span>
+<span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> resume</span><span style="color:#8B8B8B94">                                 # resume the last session</span></span></code></pre>
+<h3 id="file-context-inside-a-session">File context inside a session<a class="heading-anchor" aria-label="Permalink" href="#file-context-inside-a-session">#</a></h3>
+<ul>
+<li><code>@file</code> — attach files / directories</li>
+<li><code>/mention</code> — slash command picker for files</li>
+<li><code>$skill</code> — mention an installed skill</li>
+</ul>
+<hr>
+<h2 id="5-approval--sandboxing">5. Approval &#x26; sandboxing<a class="heading-anchor" aria-label="Permalink" href="#5-approval--sandboxing">#</a></h2>
+<p>Codex distinguishes <strong>approval policy</strong> (when to pause and ask) from <strong>sandbox mode</strong> (what shell/file ops can touch).</p>
+<h3 id="sandbox-modes---sandbox--sandbox_mode">Sandbox modes (<code>--sandbox</code> / <code>sandbox_mode</code>)<a class="heading-anchor" aria-label="Permalink" href="#sandbox-modes---sandbox--sandbox_mode">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Mode</th><th>Behaviour</th></tr></thead><tbody><tr><td><code>read-only</code></td><td>Read files; no writes or shell ops that modify the system</td></tr><tr><td><code>workspace-write</code></td><td>Write inside cwd; network and other FS regions restricted</td></tr><tr><td><code>danger-full-access</code></td><td>No sandboxing — full user privileges</td></tr></tbody></table>
+<h3 id="approval-policy---ask-for-approval--approval_policy">Approval policy (<code>--ask-for-approval</code> / <code>approval_policy</code>)<a class="heading-anchor" aria-label="Permalink" href="#approval-policy---ask-for-approval--approval_policy">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Policy</th><th>Behaviour</th></tr></thead><tbody><tr><td><code>untrusted</code></td><td>Pause for approval on most tool calls</td></tr><tr><td><code>on-request</code></td><td>Approval only when escalation is needed</td></tr><tr><td><code>never</code></td><td>Never asks (combine with a tight sandbox)</td></tr></tbody></table>
+<p>Granular booleans also exist: <code>sandbox_approval</code>, <code>rules</code>, <code>mcp_elicitations</code>, <code>request_permissions</code>, <code>skill_approval</code>.</p>
+<h3 id="ide-extension-ux-modes">IDE extension UX modes<a class="heading-anchor" aria-label="Permalink" href="#ide-extension-ux-modes">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Mode</th><th>What it means</th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>Read-only conversation</td></tr><tr><td><strong>Agent</strong></td><td>Acts but asks before edits/commands</td></tr><tr><td><strong>Agent (Full Access)</strong></td><td>Equivalent to <code>danger-full-access</code></td></tr></tbody></table>
+<h3 id="--full-auto-shortcut"><code>--full-auto</code> shortcut<a class="heading-anchor" aria-label="Permalink" href="#--full-auto-shortcut">#</a></h3>
+<p>Pairs <code>workspace-write</code> with <code>on-request</code>/<code>never</code> for fluid local work.</p>
+<h3 id="rules-layer-starlark-prefix_rule">Rules layer (Starlark <code>prefix_rule()</code>)<a class="heading-anchor" aria-label="Permalink" href="#rules-layer-starlark-prefix_rule">#</a></h3>
+<blockquote>
+<p>Source: <a href="https://developers.openai.com/codex/rules" rel="noopener noreferrer" target="_blank">https://developers.openai.com/codex/rules</a></p>
+</blockquote>
+<p>A filesystem-level command policy. Starlark <code>.rules</code> files in:</p>
+<ul>
+<li><code>~/.codex/rules/default.rules</code> (user)</li>
+<li><code>&#x3C;repo>/.codex/rules/</code> (project, only when trusted)</li>
+</ul>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#FFF">prefix_rule(</span></span>
+<span class="line"><span style="color:#FFF">    pattern </span><span style="color:#A0A0A0">=</span><span style="color:#FFF"> [</span><span style="color:#99FFE4">"gh"</span><span style="color:#FFF">, </span><span style="color:#99FFE4">"pr"</span><span style="color:#FFF">, </span><span style="color:#99FFE4">"view"</span><span style="color:#FFF">],</span></span>
+<span class="line"><span style="color:#FFF">    decision </span><span style="color:#A0A0A0">=</span><span style="color:#99FFE4"> "prompt"</span><span style="color:#FFF">,</span></span>
+<span class="line"><span style="color:#FFF">    justification </span><span style="color:#A0A0A0">=</span><span style="color:#99FFE4"> "Viewing PRs is allowed with approval"</span><span style="color:#FFF">,</span></span>
+<span class="line"><span style="color:#FFF">)</span></span></code></pre>
+<p>Decisions: <code>allow</code>, <code>prompt</code>, <code>forbidden</code>. <strong>Most restrictive wins</strong> when multiple match (<code>forbidden > prompt > allow</code>).</p>
+<p>Codex parses shell scripts via tree-sitter, splitting on <code>&#x26;&#x26;</code>, <code>||</code>, <code>;</code>, <code>|</code> and evaluating each segment.</p>
+<p>Test rules:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> execpolicy</span><span style="color:#99FFE4"> check</span><span style="color:#99FFE4"> --pretty</span><span style="color:#99FFE4"> --rules</span><span style="color:#A0A0A0"> &#x3C;</span><span style="color:#99FFE4">pat</span><span style="color:#FFF">h</span><span style="color:#A0A0A0">></span><span style="color:#99FFE4"> --</span><span style="color:#A0A0A0"> &#x3C;</span><span style="color:#99FFE4">comman</span><span style="color:#FFF">d</span><span style="color:#A0A0A0">></span></span></code></pre>
+<hr>
+<h2 id="6-configuration-configtoml-and-agentsmd">6. Configuration: <code>config.toml</code> and <code>AGENTS.md</code><a class="heading-anchor" aria-label="Permalink" href="#6-configuration-configtoml-and-agentsmd">#</a></h2>
+<h3 id="codexconfigtoml-user-and-repocodexconfigtoml-project-requires-trust"><code>~/.codex/config.toml</code> (user) and <code>&#x3C;repo>/.codex/config.toml</code> (project, requires trust)<a class="heading-anchor" aria-label="Permalink" href="#codexconfigtoml-user-and-repocodexconfigtoml-project-requires-trust">#</a></h3>
+<p>Common keys:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="toml"><code><span class="line"><span style="color:#FFF">model = </span><span style="color:#99FFE4">"gpt-5.5"</span></span>
+<span class="line"><span style="color:#FFF">model_provider = </span><span style="color:#99FFE4">"openai"</span></span>
+<span class="line"><span style="color:#FFF">model_context_window = </span><span style="color:#FFC799">128000</span></span>
+<span class="line"><span style="color:#FFF">model_reasoning_effort = </span><span style="color:#99FFE4">"high"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFF">approval_policy = </span><span style="color:#99FFE4">"on-request"</span></span>
+<span class="line"><span style="color:#FFF">sandbox_mode    = </span><span style="color:#99FFE4">"workspace-write"</span></span>
+<span class="line"><span style="color:#FFF">web_search      = </span><span style="color:#99FFE4">"cached"</span><span style="color:#8B8B8B94">             # "live", "disabled"</span></span>
+<span class="line"><span style="color:#FFF">personality     = </span><span style="color:#99FFE4">"friendly"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFF">[</span><span style="color:#FFC799">features</span><span style="color:#FFF">]</span></span>
+<span class="line"><span style="color:#FFF">shell_tool      = </span><span style="color:#FFC799">true</span></span>
+<span class="line"><span style="color:#FFF">web_search      = </span><span style="color:#FFC799">true</span></span>
+<span class="line"><span style="color:#FFF">multi_agent     = </span><span style="color:#FFC799">true</span></span>
+<span class="line"><span style="color:#FFF">memories        = </span><span style="color:#FFC799">true</span></span>
+<span class="line"><span style="color:#FFF">unified_exec    = </span><span style="color:#FFC799">true</span></span>
+<span class="line"><span style="color:#FFF">undo            = </span><span style="color:#FFC799">true</span></span>
+<span class="line"><span style="color:#FFF">codex_hooks     = </span><span style="color:#FFC799">true</span><span style="color:#8B8B8B94">                 # required to enable hooks</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFF">[</span><span style="color:#FFC799">windows</span><span style="color:#FFF">]</span></span>
+<span class="line"><span style="color:#FFF">sandbox = </span><span style="color:#99FFE4">"elevated"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFF">[</span><span style="color:#FFC799">shell_environment_policy</span><span style="color:#FFF">]</span></span>
+<span class="line"><span style="color:#FFF">inherit  = </span><span style="color:#99FFE4">"none"</span></span>
+<span class="line"><span style="color:#FFF">set      = { PATH = </span><span style="color:#99FFE4">"/usr/bin"</span><span style="color:#FFF"> }</span></span>
+<span class="line"><span style="color:#FFF">exclude  = [</span><span style="color:#99FFE4">"AWS_*"</span><span style="color:#FFF">]</span></span></code></pre>
+<h3 id="profiles">Profiles<a class="heading-anchor" aria-label="Permalink" href="#profiles">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="toml"><code><span class="line"><span style="color:#FFF">model = </span><span style="color:#99FFE4">"gpt-5.4"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFF">[</span><span style="color:#FFC799">profiles</span><span style="color:#FFF">.</span><span style="color:#FFC799">deep-review</span><span style="color:#FFF">]</span></span>
+<span class="line"><span style="color:#FFF">model = </span><span style="color:#99FFE4">"gpt-5-pro"</span></span>
+<span class="line"><span style="color:#FFF">model_reasoning_effort = </span><span style="color:#99FFE4">"high"</span></span></code></pre>
+<p>Run with:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> --profile</span><span style="color:#99FFE4"> deep-review</span></span></code></pre>
+<h3 id="custom-model-providers">Custom model providers<a class="heading-anchor" aria-label="Permalink" href="#custom-model-providers">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="toml"><code><span class="line"><span style="color:#FFF">[</span><span style="color:#FFC799">model_providers</span><span style="color:#FFF">.</span><span style="color:#FFC799">proxy</span><span style="color:#FFF">]</span></span>
+<span class="line"><span style="color:#FFF">name      = </span><span style="color:#99FFE4">"OpenAI via LLM proxy"</span></span>
+<span class="line"><span style="color:#FFF">base_url  = </span><span style="color:#99FFE4">"http://proxy.example.com"</span></span>
+<span class="line"><span style="color:#FFF">env_key   = </span><span style="color:#99FFE4">"OPENAI_API_KEY"</span></span></code></pre>
+<p>Reserved provider IDs (cannot be reused): <code>openai</code>, <code>ollama</code>, <code>lmstudio</code>.</p>
+<h3 id="cli-overrides">CLI overrides<a class="heading-anchor" aria-label="Permalink" href="#cli-overrides">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> --model</span><span style="color:#99FFE4"> gpt-5.4</span></span>
+<span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> --config</span><span style="color:#99FFE4"> 'model="gpt-5.4"'</span></span>
+<span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> --config</span><span style="color:#99FFE4"> 'shell_environment_policy.include_only=["PATH","HOME"]'</span></span></code></pre>
+<h3 id="codex_home-env-var"><code>CODEX_HOME</code> env var<a class="heading-anchor" aria-label="Permalink" href="#codex_home-env-var">#</a></h3>
+<p>Redirects the entire profile directory (useful for project-specific automation users):</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFF">CODEX_HOME</span><span style="color:#A0A0A0">=</span><span style="color:#99FFE4">/srv/codex-runner</span><span style="color:#FFC799"> codex</span><span style="color:#99FFE4"> …</span></span></code></pre>
+<h3 id="agentsmd--project-memory"><code>AGENTS.md</code> — project memory<a class="heading-anchor" aria-label="Permalink" href="#agentsmd--project-memory">#</a></h3>
+<blockquote>
+<p>Source: <a href="https://developers.openai.com/codex/guides/agents-md" rel="noopener noreferrer" target="_blank">https://developers.openai.com/codex/guides/agents-md</a></p>
+</blockquote>
+<p>The Codex equivalent of <code>CLAUDE.md</code>. Open standard at <a href="https://agents.md/" rel="noopener noreferrer" target="_blank">agents.md</a> — also used by Cursor and others.</p>
+<blockquote>
+<p><em>“Codex reads <code>AGENTS.md</code> files before doing any work. By layering global guidance with project-specific overrides, you can start each task with consistent expectations, no matter which repository you open.”</em></p>
+</blockquote>
+<p><strong>Discovery / chain order:</strong></p>
+<ol>
+<li><strong>Global scope</strong> (<code>~/.codex</code> or <code>$CODEX_HOME</code>):
+<code>AGENTS.override.md</code> if present, else <code>AGENTS.md</code>.</li>
+<li><strong>Project scope:</strong> walks from Git root <strong>down</strong> to cwd, picking at most one file per directory (override preferred).</li>
+<li><strong>Merge:</strong> <em>“Codex concatenates files from the root down, joining them with blank lines. Files closer to your current directory override earlier guidance because they appear later in the combined prompt.”</em></li>
+</ol>
+<p><strong>Size limit:</strong> <code>project_doc_max_bytes</code> (default 32 KiB). Custom fallback filenames via <code>project_doc_fallback_filenames</code>.</p>
+<p><strong>Scaffolding:</strong></p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/init</span></span></code></pre>
+<p>inside the CLI generates an <code>AGENTS.md</code> skeleton in the current directory.</p>
+<hr>
+<h2 id="7-slash-commands-cli">7. Slash commands (CLI)<a class="heading-anchor" aria-label="Permalink" href="#7-slash-commands-cli">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://developers.openai.com/codex/cli/slash-commands" rel="noopener noreferrer" target="_blank">https://developers.openai.com/codex/cli/slash-commands</a></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody><tr><td><code>/permissions</code></td><td>Set what Codex can do without asking</td></tr><tr><td><code>/sandbox-add-read-dir</code></td><td>Grant read access to extra dir (Windows only)</td></tr><tr><td><code>/agent</code></td><td>Switch active agent thread</td></tr><tr><td><code>/apps</code></td><td>Browse connectors/apps and insert into prompt</td></tr><tr><td><code>/plugins</code></td><td>Browse installed/discoverable plugins</td></tr><tr><td><code>/clear</code></td><td>Clear and start fresh</td></tr><tr><td><code>/compact</code></td><td>Summarise visible conversation to free tokens</td></tr><tr><td><code>/copy</code></td><td>Copy latest output</td></tr><tr><td><code>/diff</code></td><td>Show Git diff (incl. untracked)</td></tr><tr><td><code>/exit</code>, <code>/quit</code></td><td>Exit</td></tr><tr><td><code>/experimental</code></td><td>Toggle experimental features</td></tr><tr><td><code>/feedback</code></td><td>Send logs to maintainers</td></tr><tr><td><code>/init</code></td><td>Generate <code>AGENTS.md</code> scaffold</td></tr><tr><td><code>/logout</code></td><td>Sign out</td></tr><tr><td><code>/mcp</code></td><td>List configured MCP tools</td></tr><tr><td><code>/mention</code></td><td>Attach a file</td></tr><tr><td><code>/model</code></td><td>Choose active model + reasoning effort</td></tr><tr><td><code>/fast</code></td><td>Toggle Fast mode</td></tr><tr><td><code>/plan</code></td><td>Switch to plan mode (optional prompt)</td></tr><tr><td><code>/personality</code></td><td>Choose communication style</td></tr><tr><td><code>/ps</code></td><td>Show experimental background terminals</td></tr><tr><td><code>/stop</code></td><td>Stop all background terminals</td></tr><tr><td><code>/fork</code></td><td>Fork conversation into new thread</td></tr><tr><td><code>/resume</code></td><td>Resume saved conversation</td></tr><tr><td><code>/new</code></td><td>Start new conversation in same CLI session</td></tr><tr><td><code>/review</code></td><td>Review working tree</td></tr><tr><td><code>/status</code></td><td>Session config + token usage</td></tr><tr><td><code>/debug-config</code></td><td>Config-layer + requirements diagnostics</td></tr><tr><td><code>/statusline</code></td><td>Configure TUI status line</td></tr><tr><td><code>/title</code></td><td>Configure terminal-window/tab title</td></tr><tr><td><code>/skills</code></td><td>Skill picker (also <code>$&#x3C;name></code> to mention a skill)</td></tr><tr><td><code>/approvals</code></td><td>Legacy alias for <code>/permissions</code></td></tr></tbody></table>
+<hr>
+<h2 id="8-codex-cloud-chatgptcomcodex">8. Codex Cloud (<code>chatgpt.com/codex</code>)<a class="heading-anchor" aria-label="Permalink" href="#8-codex-cloud-chatgptcomcodex">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://developers.openai.com/codex/cloud" rel="noopener noreferrer" target="_blank">https://developers.openai.com/codex/cloud</a></p>
+</blockquote>
+<ul>
+<li>Connect a GitHub account, then access at <code>chatgpt.com/codex</code>.</li>
+<li>Tasks run in <strong>configured cloud containers</strong> with repo access.</li>
+<li><strong>Parallel</strong> — multiple tasks run simultaneously.</li>
+<li><strong>Pull-request creation</strong> — Codex can convert completed tasks into PRs.</li>
+<li><strong>Internet access toggle</strong> — admins control whether cloud Codex hits the public internet.</li>
+<li><strong>CLI bridge:</strong>
+<ul>
+<li><code>codex cloud</code> — browse/execute cloud tasks from terminal</li>
+<li><code>codex apply</code> — pull a cloud-generated diff into local working tree</li>
+</ul>
+</li>
+<li><strong>Environments</strong> — per-repo container definitions (setup steps, env vars). Larger VMs available on Business/Enterprise.</li>
+</ul>
+<p>The IDE extension exposes the same: <em>“Cloud delegation: offload extended tasks to cloud environments while monitoring progress from the IDE.”</em></p>
+<hr>
+<h2 id="9-ide-extension">9. IDE extension<a class="heading-anchor" aria-label="Permalink" href="#9-ide-extension">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://developers.openai.com/codex/ide" rel="noopener noreferrer" target="_blank">https://developers.openai.com/codex/ide</a></p>
+</blockquote>
+<p><strong>Editors supported:</strong></p>
+<ul>
+<li>VS Code, Cursor, Windsurf, VS Code Insiders</li>
+<li>JetBrains: IntelliJ, PyCharm, WebStorm, GoLand, Rider</li>
+</ul>
+<p>Marketplace listing on the VS Code Marketplace.</p>
+<p><strong>Auth:</strong> ChatGPT account or API key (same flow as CLI). <strong>Auto-updates.</strong></p>
+<p><strong>Features:</strong></p>
+<ul>
+<li>Context-aware prompting via open files, selections, <code>@file</code> references</li>
+<li>Inline model switching</li>
+<li>Reasoning levels: <code>low</code>, <code>medium</code>, <code>high</code></li>
+<li>In-editor image generation/editing with reference assets</li>
+<li>Approval modes: <strong>Chat / Agent / Agent (Full Access)</strong></li>
+<li><strong>Cloud delegation</strong> to long-running cloud tasks</li>
+<li>Slash commands (subset overlapping the CLI)</li>
+<li>Native Windows sandbox or WSL2</li>
+</ul>
+<p><strong>Shared state:</strong> signing in with the same ChatGPT account ties IDE sessions, CLI sessions, the desktop app, and <code>chatgpt.com/codex</code> — so cloud tasks and resulting PRs can be reviewed/applied from any surface.</p>
+<hr>
+<h2 id="10-github-integration">10. GitHub integration<a class="heading-anchor" aria-label="Permalink" href="#10-github-integration">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://developers.openai.com/codex/integrations/github" rel="noopener noreferrer" target="_blank">https://developers.openai.com/codex/integrations/github</a></p>
+</blockquote>
+<h3 id="setup">Setup<a class="heading-anchor" aria-label="Permalink" href="#setup">#</a></h3>
+<ol>
+<li>Configure Codex Cloud with repo access (GitHub App).</li>
+<li>In the Codex dashboard, toggle <strong>Code review</strong> for the repository.</li>
+</ol>
+<h3 id="codex-mentions-in-prs--issues"><code>@codex</code> mentions in PRs / issues<a class="heading-anchor" aria-label="Permalink" href="#codex-mentions-in-prs--issues">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Comment</th><th>Effect</th></tr></thead><tbody><tr><td><code>@codex review</code></td><td>👀 reaction; posts a standard GitHub code review on the PR</td></tr><tr><td><code>@codex &#x3C;anything else></code></td><td><em>”Starts a cloud task using your pull request as context”</em> — can edit code, push commits, propose changes</td></tr></tbody></table>
+<h3 id="automatic-reviews">Automatic reviews<a class="heading-anchor" aria-label="Permalink" href="#automatic-reviews">#</a></h3>
+<p>Opt-in setting: posts a Codex review on every newly opened PR without an explicit <code>@codex review</code>.</p>
+<h3 id="severity-defaults">Severity defaults<a class="heading-anchor" aria-label="Permalink" href="#severity-defaults">#</a></h3>
+<p>Codex flags only <strong>P0 and P1</strong> issues unless <code>AGENTS.md</code> “Review guidelines” specify otherwise.</p>
+<h3 id="per-file-guidance">Per-file guidance<a class="heading-anchor" aria-label="Permalink" href="#per-file-guidance">#</a></h3>
+<p>Codex applies the <strong>closest</strong> <code>AGENTS.md</code> to each changed file — deeper-nested files override repo-level.</p>
+<h3 id="openaicodex-action"><code>openai/codex-action</code><a class="heading-anchor" aria-label="Permalink" href="#openaicodex-action">#</a></h3>
+<p>A separate GitHub Action repo for running Codex inside Actions workflows.</p>
+<hr>
+<h2 id="11-models-april-2026">11. Models (April 2026)<a class="heading-anchor" aria-label="Permalink" href="#11-models-april-2026">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://developers.openai.com/codex/models" rel="noopener noreferrer" target="_blank">https://developers.openai.com/codex/models</a></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Model ID</th><th>Position</th><th>Notes</th></tr></thead><tbody><tr><td><code>gpt-5.5</code></td><td>OpenAI’s <em>“newest frontier model for complex coding, computer use, knowledge work, and research workflows in Codex.”</em></td><td>Default recommendation. <strong>Currently only via ChatGPT sign-in (not API key).</strong></td></tr><tr><td><code>gpt-5.4</code></td><td><em>”Flagship frontier model for professional work”</em> — coding + reasoning + tool use</td><td>Balanced; available via API and ChatGPT</td></tr><tr><td><code>gpt-5.4-mini</code></td><td><em>”Fast, efficient mini model for responsive coding tasks and subagents.”</em></td><td>Uses <strong>30%</strong> of GPT-5.4’s included limits; recommended for subagents</td></tr><tr><td><code>gpt-5.3-codex</code></td><td><em>”Industry-leading coding model for complex software engineering.”</em></td><td>Previous top-tier coding</td></tr><tr><td><code>gpt-5.3-codex-spark</code></td><td><em>”Text-only research preview model optimized for near-instant, real-time coding iteration.”</em></td><td><strong>ChatGPT Pro only</strong></td></tr><tr><td><code>gpt-5.2</code></td><td><em>”Previous general-purpose model for coding and agentic tasks, including hard debugging tasks.”</em></td><td>Legacy fallback</td></tr></tbody></table>
+<p>Other referenced: <code>gpt-5-pro</code> (used in deep-review profiles). Any model exposing OpenAI Chat Completions or Responses APIs can be plugged in via <code>[model_providers.*]</code>.</p>
+<blockquote>
+<p>Older interim IDs you may see in third-party docs (<code>gpt-5-codex</code>, <code>gpt-5.1-codex</code>, <code>codex-mini</code>, <code>codex-max</code>) are <strong>superseded</strong> by the matrix above.</p>
+</blockquote>
+<p>Selection: <code>--model &#x3C;id></code>, <code>model = "..."</code> in <code>config.toml</code>, or <code>/model</code> slash command.</p>
+<hr>
+<h2 id="12-plans--pricing">12. Plans &#x26; pricing<a class="heading-anchor" aria-label="Permalink" href="#12-plans--pricing">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://developers.openai.com/codex/pricing" rel="noopener noreferrer" target="_blank">https://developers.openai.com/codex/pricing</a> · <a href="https://chatgpt.com/codex/pricing/" rel="noopener noreferrer" target="_blank">https://chatgpt.com/codex/pricing/</a></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Plan</th><th>Price</th><th>Codex inclusion</th></tr></thead><tbody><tr><td>Free</td><td>$0</td><td>Quick tasks; limited</td></tr><tr><td>Go</td><td>$8/mo</td><td>Lightweight tasks</td></tr><tr><td>Plus</td><td>$20/mo</td><td>Codex on web, CLI, IDE, iOS. Cloud code review + Slack. GPT-5.5 + GPT-5.4.</td></tr><tr><td>Pro</td><td>$100 / $200 /mo</td><td>5x or 20x Plus rate limits. Access to <code>gpt-5.3-codex-spark</code>. Promo: $100 → 10x Plus, $200 → 25x Plus, through May 31, 2026.</td></tr><tr><td>Business</td><td>Pay-as-you-go</td><td>Standard / usage seats; larger cloud-VM tier</td></tr><tr><td>Enterprise / Edu</td><td>Sales</td><td>Priority processing, SCIM, EKM, analytics, custom controls</td></tr></tbody></table>
+<h3 id="5-hour-rate-limit-windows-examples">5-hour rate-limit windows (examples)<a class="heading-anchor" aria-label="Permalink" href="#5-hour-rate-limit-windows-examples">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Plan</th><th>GPT-5.5</th><th>GPT-5.4</th><th>GPT-5.4-mini</th></tr></thead><tbody><tr><td>Plus</td><td>15–80</td><td>20–100</td><td>60–350</td></tr><tr><td>Pro 5x</td><td>80–400</td><td>100–500</td><td>300–1,750</td></tr><tr><td>Pro 20x</td><td>300–1,600</td><td>400–2,000</td><td>1,200–7,000</td></tr></tbody></table>
+<h3 id="api-token-rates-business--new-enterprise">API token rates (Business / new Enterprise)<a class="heading-anchor" aria-label="Permalink" href="#api-token-rates-business--new-enterprise">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Model</th><th>Input / 1M</th><th>Cached / 1M</th><th>Output / 1M</th></tr></thead><tbody><tr><td>GPT-5.5</td><td>125 credits</td><td>12.50</td><td>750</td></tr><tr><td>GPT-5.4</td><td>62.50</td><td>6.25</td><td>375</td></tr></tbody></table>
+<h3 id="pluspro-local-message-averages">Plus/Pro local-message averages<a class="heading-anchor" aria-label="Permalink" href="#pluspro-local-message-averages">#</a></h3>
+<ul>
+<li>~14 credits (GPT-5.5)</li>
+<li>~7 (GPT-5.4)</li>
+<li>~5 (GPT-5.3-Codex)</li>
+</ul>
+<p>API-key auth bills directly through the OpenAI Platform account at standard API rates (no Codex surcharge).</p>
+<hr>
+<h2 id="13-mcp-support-in-the-cli">13. MCP support in the CLI<a class="heading-anchor" aria-label="Permalink" href="#13-mcp-support-in-the-cli">#</a></h2>
+<blockquote>
+<p>Source: <a href="https://developers.openai.com/codex/mcp" rel="noopener noreferrer" target="_blank">https://developers.openai.com/codex/mcp</a></p>
+</blockquote>
+<p>Codex CLI is a first-class MCP <strong>client</strong> supporting both transports.</p>
+<h3 id="add-via-cli">Add via CLI<a class="heading-anchor" aria-label="Permalink" href="#add-via-cli">#</a></h3>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> mcp</span><span style="color:#99FFE4"> add</span><span style="color:#A0A0A0"> &#x3C;</span><span style="color:#99FFE4">nam</span><span style="color:#FFF">e</span><span style="color:#A0A0A0">></span><span style="color:#99FFE4"> --env</span><span style="color:#99FFE4"> VAR=VALUE</span><span style="color:#99FFE4"> --</span><span style="color:#A0A0A0"> &#x3C;</span><span style="color:#99FFE4">stdio</span><span style="color:#99FFE4"> comman</span><span style="color:#FFF">d</span><span style="color:#A0A0A0">></span></span>
+<span class="line"><span style="color:#FFC799">codex</span><span style="color:#99FFE4"> mcp</span><span style="color:#99FFE4"> add</span><span style="color:#99FFE4"> context7</span><span style="color:#99FFE4"> --</span><span style="color:#99FFE4"> npx</span><span style="color:#99FFE4"> -y</span><span style="color:#99FFE4"> @upstash/context7-mcp</span></span></code></pre>
+<h3 id="toml-configuration-in-codexconfigtoml">TOML configuration in <code>~/.codex/config.toml</code><a class="heading-anchor" aria-label="Permalink" href="#toml-configuration-in-codexconfigtoml">#</a></h3>
+<h4 id="stdio-server">stdio server<a class="heading-anchor" aria-label="Permalink" href="#stdio-server">#</a></h4>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="toml"><code><span class="line"><span style="color:#FFF">[</span><span style="color:#FFC799">mcp_servers</span><span style="color:#FFF">.</span><span style="color:#FFC799">"chrome-devtools"</span><span style="color:#FFF">]</span></span>
+<span class="line"><span style="color:#FFF">command              = </span><span style="color:#99FFE4">"npx"</span></span>
+<span class="line"><span style="color:#FFF">args                 = [</span><span style="color:#99FFE4">"chrome-devtools-mcp@latest"</span><span style="color:#FFF">]</span></span>
+<span class="line"><span style="color:#FFF">env                  = { NODE_ENV = </span><span style="color:#99FFE4">"production"</span><span style="color:#FFF"> }</span></span>
+<span class="line"><span style="color:#FFF">cwd                  = </span><span style="color:#99FFE4">"/abs/path"</span></span>
+<span class="line"><span style="color:#FFF">startup_timeout_sec  = </span><span style="color:#FFC799">10</span></span>
+<span class="line"><span style="color:#FFF">tool_timeout_sec     = </span><span style="color:#FFC799">60</span></span>
+<span class="line"><span style="color:#FFF">enabled              = </span><span style="color:#FFC799">true</span></span>
+<span class="line"><span style="color:#FFF">required             = </span><span style="color:#FFC799">false</span></span>
+<span class="line"><span style="color:#FFF">enabled_tools        = [</span><span style="color:#99FFE4">"search_docs"</span><span style="color:#FFF">, </span><span style="color:#99FFE4">"fetch"</span><span style="color:#FFF">]</span></span>
+<span class="line"><span style="color:#FFF">disabled_tools       = []</span></span></code></pre>
+<h4 id="http-server-with-bearer-token-from-env">HTTP server (with bearer token from env)<a class="heading-anchor" aria-label="Permalink" href="#http-server-with-bearer-token-from-env">#</a></h4>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="toml"><code><span class="line"><span style="color:#FFF">[</span><span style="color:#FFC799">mcp_servers</span><span style="color:#FFF">.</span><span style="color:#FFC799">github</span><span style="color:#FFF">]</span></span>
+<span class="line"><span style="color:#FFF">url                  = </span><span style="color:#99FFE4">"https://api.githubcopilot.com/mcp/"</span></span>
+<span class="line"><span style="color:#FFF">bearer_token_env_var = </span><span style="color:#99FFE4">"GITHUB_PAT_TOKEN"</span></span>
+<span class="line"><span style="color:#FFF">http_headers         = { "X-Source" = </span><span style="color:#99FFE4">"codex"</span><span style="color:#FFF"> }</span></span>
+<span class="line"><span style="color:#FFF">env_http_headers     = { "X-Trace"  = </span><span style="color:#99FFE4">"TRACE_ID"</span><span style="color:#FFF"> }</span></span></code></pre>
+<h4 id="oauth-callback-options">OAuth callback options<a class="heading-anchor" aria-label="Permalink" href="#oauth-callback-options">#</a></h4>
+<ul>
+<li><code>mcp_oauth_callback_port</code> — fixed callback port</li>
+<li><code>mcp_oauth_callback_url</code> — custom callback URL</li>
+</ul>
+<h3 id="listing--managing">Listing &#x26; managing<a class="heading-anchor" aria-label="Permalink" href="#listing--managing">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>Effect</th></tr></thead><tbody><tr><td><code>/mcp</code> (in session)</td><td>List configured MCP tools</td></tr><tr><td><code>codex mcp</code></td><td>Outside-session management</td></tr></tbody></table>
+<p>Project-scoped MCP servers can live in <code>&#x3C;repo>/.codex/config.toml</code> but only load when the project is trusted.</p>
+<hr>
+<h2 id="14-skills-subagents-hooks-codex-side">14. Skills, Subagents, Hooks (Codex side)<a class="heading-anchor" aria-label="Permalink" href="#14-skills-subagents-hooks-codex-side">#</a></h2>
+<h3 id="skills">Skills<a class="heading-anchor" aria-label="Permalink" href="#skills">#</a></h3>
+<p>Codex implements the same <code>SKILL.md</code> open standard as Claude Code, plus an optional <code>agents/openai.yaml</code> for OpenAI-specific config:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>my-skill/</span></span>
+<span class="line"><span>├── SKILL.md</span></span>
+<span class="line"><span>├── scripts/</span></span>
+<span class="line"><span>├── references/</span></span>
+<span class="line"><span>├── assets/</span></span>
+<span class="line"><span>└── agents/</span></span>
+<span class="line"><span>    └── openai.yaml</span></span></code></pre>
+<p>Activation: <code>/skills</code> picker or <code>$&#x3C;name></code> mention. <em>“Skills build on the open agent skills standard.”</em></p>
+<h3 id="subagents">Subagents<a class="heading-anchor" aria-label="Permalink" href="#subagents">#</a></h3>
+<p>Codex stores subagents at <code>~/.codex/agents/&#x3C;name>.toml</code> (user) or <code>.codex/agents/</code> (project).</p>
+<p>Built-ins: <code>default</code>, <code>worker</code>, <code>explorer</code>.</p>
+<p>Required fields: <code>name</code>, <code>description</code>, <code>developer_instructions</code>.</p>
+<p>Settings: <code>[agents] max_threads</code> (default 6), <code>max_depth</code> (default 1).</p>
+<blockquote>
+<p><strong>Important difference from Claude Code:</strong> <em>“Codex only spawns a new agent when you explicitly ask it to.”</em> Auto-delegation by description does <strong>not</strong> happen.</p>
+</blockquote>
+<h3 id="hooks">Hooks<a class="heading-anchor" aria-label="Permalink" href="#hooks">#</a></h3>
+<p>Configured in <code>config.toml</code> (<code>[[hooks.PreToolUse]]</code> arrays) or <code>~/.codex/hooks.json</code>. Requires <code>[features] codex_hooks = true</code>.</p>
+<p>Hook events: <code>SessionStart</code>, <code>PreToolUse</code>, <code>PostToolUse</code>, <code>PermissionRequest</code>, <code>UserPromptSubmit</code>, <code>Stop</code>.</p>
+<p>Hooks receive JSON on stdin (<code>session_id</code>, <code>transcript_path</code>, <code>cwd</code>, <code>hook_event_name</code>, <code>model</code>, <code>turn_id</code>) and can return:</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#FFF">{ </span><span style="color:#FFC799">"decision"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"block"</span><span style="color:#FFF"> }</span></span></code></pre>
+<p>or</p>
+<pre class="astro-code vesper" style="background-color:#101010;color:#FFF; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#FFF">{ </span><span style="color:#FFC799">"permissionDecision"</span><span style="color:#FFF">: </span><span style="color:#99FFE4">"deny"</span><span style="color:#FFF"> }</span></span></code></pre>
+<p>Multiple matchers run <strong>concurrently</strong>.</p>
+<hr>
+<h2 id="15-file-paths-summary">15. File paths summary<a class="heading-anchor" aria-label="Permalink" href="#15-file-paths-summary">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Item</th><th>Path</th></tr></thead><tbody><tr><td>User config</td><td><code>~/.codex/config.toml</code></td></tr><tr><td>Project config (trust required)</td><td><code>&#x3C;repo>/.codex/config.toml</code></td></tr><tr><td>Auth / tokens</td><td><code>~/.codex/auth.json</code></td></tr><tr><td>User memory</td><td><code>~/.codex/AGENTS.md</code> (or <code>AGENTS.override.md</code>)</td></tr><tr><td>Project memory</td><td><code>&#x3C;repo>/AGENTS.md</code> (chain from git root down)</td></tr><tr><td>User rules</td><td><code>~/.codex/rules/default.rules</code></td></tr><tr><td>Project rules</td><td><code>&#x3C;repo>/.codex/rules/</code></td></tr><tr><td>User subagents</td><td><code>~/.codex/agents/&#x3C;name>.toml</code></td></tr><tr><td>Project subagents</td><td><code>&#x3C;repo>/.codex/agents/&#x3C;name>.toml</code></td></tr><tr><td>User hooks JSON</td><td><code>~/.codex/hooks.json</code></td></tr><tr><td>Skills (if installed)</td><td>(depends on installer; mirror Claude <code>~/.claude/skills/</code> patterns)</td></tr><tr><td>Profile dir override</td><td><code>$CODEX_HOME</code></td></tr></tbody></table>
+<hr>
+<h2 id="16-compared-with-claude-code">16. Compared with Claude Code<a class="heading-anchor" aria-label="Permalink" href="#16-compared-with-claude-code">#</a></h2>
+<p>See <a href="/skillsetc/docs/comparison-and-decision-guide"><code>06-comparison-and-decision-guide.md</code></a> for the full side-by-side. Highlights:</p>
+<ul>
+<li><strong>Cloud agent:</strong> Codex has a first-class hosted runner at <code>chatgpt.com/codex</code>; Claude Code is local-first.</li>
+<li><strong>Sandbox:</strong> Codex names three modes (<code>read-only</code> / <code>workspace-write</code> / <code>danger-full-access</code>) plus a Starlark <code>prefix_rule()</code> policy layer; Claude uses per-tool <code>allow</code>/<code>ask</code>/<code>deny</code> rules in settings.</li>
+<li><strong>Subagent invocation:</strong> Codex spawns subagents only on <strong>explicit user request</strong>; Claude Code auto-delegates based on description.</li>
+<li><strong>Mobile:</strong> Codex has iOS/Android via the ChatGPT app; Claude Code does not.</li>
+<li><strong>Source license:</strong> Codex CLI is <strong>Apache-2.0</strong> (<code>github.com/openai/codex</code>); Claude Code is closed-source.</li>
+<li><strong>Default models (April 2026):</strong> Codex defaults to <code>gpt-5.5</code> (ChatGPT-only) or <code>gpt-5.4</code>; Claude Code defaults to Sonnet 4.6 / Opus 4.7 depending on subscription.</li>
+<li><strong>GitHub PR review severity defaults:</strong> Codex flags only P0/P1 unless told otherwise.</li>
+<li><strong>Memory file:</strong> <code>AGENTS.md</code> (open standard) vs. <code>CLAUDE.md</code>. Both layer hierarchically from project root downward.</li>
+</ul>  </div> <p class="doc-updated" data-astro-cid-fz5pa65a>Last updated April 28, 2026</p> <nav class="prevnext" aria-label="Pagination" data-astro-cid-oerjsknp><a href="/skillsetc/docs/claude-code" class="pn-card pn-prev" rel="prev" data-astro-cid-oerjsknp><span class="pn-meta" data-astro-cid-oerjsknp><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Previous</span><span class="pn-label" data-astro-cid-oerjsknp>Claude Code</span></a><span data-astro-cid-oerjsknp></span></nav> </article> <aside class="toc" data-pagefind-ignore aria-label="Table of contents" data-astro-cid-6t6zfk7k><span class="eyebrow toc-eyebrow"> On this page </span><ul class="toc-list" data-astro-cid-6t6zfk7k><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#1-what-codex-is-april-2026" data-toc-link="1-what-codex-is-april-2026" data-astro-cid-6t6zfk7k>1. What Codex is (April 2026)#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#2-installation--quickstart-cli" data-toc-link="2-installation--quickstart-cli" data-astro-cid-6t6zfk7k>2. Installation &amp; quickstart (CLI)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#install-methods" data-toc-link="install-methods" data-astro-cid-6t6zfk7k>Install methods#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#upgrade" data-toc-link="upgrade" data-astro-cid-6t6zfk7k>Upgrade#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#platforms" data-toc-link="platforms" data-astro-cid-6t6zfk7k>Platforms#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#first-run" data-toc-link="first-run" data-astro-cid-6t6zfk7k>First run#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#3-authentication" data-toc-link="3-authentication" data-astro-cid-6t6zfk7k>3. Authentication#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#a-sign-in-with-chatgpt-default" data-toc-link="a-sign-in-with-chatgpt-default" data-astro-cid-6t6zfk7k>A. Sign in with ChatGPT (default)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#b-api-key" data-toc-link="b-api-key" data-astro-cid-6t6zfk7k>B. API key#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#credential-storage" data-toc-link="credential-storage" data-astro-cid-6t6zfk7k>Credential storage#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#auth-utility-commands" data-toc-link="auth-utility-commands" data-astro-cid-6t6zfk7k>Auth utility commands#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#4-cli-usage" data-toc-link="4-cli-usage" data-astro-cid-6t6zfk7k>4. CLI usage#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#subcommands" data-toc-link="subcommands" data-astro-cid-6t6zfk7k>Subcommands#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#global-flags" data-toc-link="global-flags" data-astro-cid-6t6zfk7k>Global flags#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#codex-exec-extras" data-toc-link="codex-exec-extras" data-astro-cid-6t6zfk7k>codex exec extras#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#examples" data-toc-link="examples" data-astro-cid-6t6zfk7k>Examples#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#file-context-inside-a-session" data-toc-link="file-context-inside-a-session" data-astro-cid-6t6zfk7k>File context inside a session#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#5-approval--sandboxing" data-toc-link="5-approval--sandboxing" data-astro-cid-6t6zfk7k>5. Approval &amp; sandboxing#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#sandbox-modes---sandbox--sandbox_mode" data-toc-link="sandbox-modes---sandbox--sandbox_mode" data-astro-cid-6t6zfk7k>Sandbox modes (--sandbox / sandbox_mode)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#approval-policy---ask-for-approval--approval_policy" data-toc-link="approval-policy---ask-for-approval--approval_policy" data-astro-cid-6t6zfk7k>Approval policy (--ask-for-approval / approval_policy)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#ide-extension-ux-modes" data-toc-link="ide-extension-ux-modes" data-astro-cid-6t6zfk7k>IDE extension UX modes#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#--full-auto-shortcut" data-toc-link="--full-auto-shortcut" data-astro-cid-6t6zfk7k>--full-auto shortcut#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#rules-layer-starlark-prefix_rule" data-toc-link="rules-layer-starlark-prefix_rule" data-astro-cid-6t6zfk7k>Rules layer (Starlark prefix_rule())#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#6-configuration-configtoml-and-agentsmd" data-toc-link="6-configuration-configtoml-and-agentsmd" data-astro-cid-6t6zfk7k>6. Configuration: config.toml and AGENTS.md#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#codexconfigtoml-user-and-repocodexconfigtoml-project-requires-trust" data-toc-link="codexconfigtoml-user-and-repocodexconfigtoml-project-requires-trust" data-astro-cid-6t6zfk7k>~/.codex/config.toml (user) and &lt;repo&gt;/.codex/config.toml (project, requires trust)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#profiles" data-toc-link="profiles" data-astro-cid-6t6zfk7k>Profiles#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#custom-model-providers" data-toc-link="custom-model-providers" data-astro-cid-6t6zfk7k>Custom model providers#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#cli-overrides" data-toc-link="cli-overrides" data-astro-cid-6t6zfk7k>CLI overrides#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#codex_home-env-var" data-toc-link="codex_home-env-var" data-astro-cid-6t6zfk7k>CODEX_HOME env var#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#agentsmd--project-memory" data-toc-link="agentsmd--project-memory" data-astro-cid-6t6zfk7k>AGENTS.md — project memory#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#7-slash-commands-cli" data-toc-link="7-slash-commands-cli" data-astro-cid-6t6zfk7k>7. Slash commands (CLI)#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#8-codex-cloud-chatgptcomcodex" data-toc-link="8-codex-cloud-chatgptcomcodex" data-astro-cid-6t6zfk7k>8. Codex Cloud (chatgpt.com/codex)#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#9-ide-extension" data-toc-link="9-ide-extension" data-astro-cid-6t6zfk7k>9. IDE extension#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#10-github-integration" data-toc-link="10-github-integration" data-astro-cid-6t6zfk7k>10. GitHub integration#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#setup" data-toc-link="setup" data-astro-cid-6t6zfk7k>Setup#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#codex-mentions-in-prs--issues" data-toc-link="codex-mentions-in-prs--issues" data-astro-cid-6t6zfk7k>@codex mentions in PRs / issues#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#automatic-reviews" data-toc-link="automatic-reviews" data-astro-cid-6t6zfk7k>Automatic reviews#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#severity-defaults" data-toc-link="severity-defaults" data-astro-cid-6t6zfk7k>Severity defaults#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#per-file-guidance" data-toc-link="per-file-guidance" data-astro-cid-6t6zfk7k>Per-file guidance#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#openaicodex-action" data-toc-link="openaicodex-action" data-astro-cid-6t6zfk7k>openai/codex-action#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#11-models-april-2026" data-toc-link="11-models-april-2026" data-astro-cid-6t6zfk7k>11. Models (April 2026)#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#12-plans--pricing" data-toc-link="12-plans--pricing" data-astro-cid-6t6zfk7k>12. Plans &amp; pricing#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#5-hour-rate-limit-windows-examples" data-toc-link="5-hour-rate-limit-windows-examples" data-astro-cid-6t6zfk7k>5-hour rate-limit windows (examples)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#api-token-rates-business--new-enterprise" data-toc-link="api-token-rates-business--new-enterprise" data-astro-cid-6t6zfk7k>API token rates (Business / new Enterprise)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#pluspro-local-message-averages" data-toc-link="pluspro-local-message-averages" data-astro-cid-6t6zfk7k>Plus/Pro local-message averages#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#13-mcp-support-in-the-cli" data-toc-link="13-mcp-support-in-the-cli" data-astro-cid-6t6zfk7k>13. MCP support in the CLI#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#add-via-cli" data-toc-link="add-via-cli" data-astro-cid-6t6zfk7k>Add via CLI#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#toml-configuration-in-codexconfigtoml" data-toc-link="toml-configuration-in-codexconfigtoml" data-astro-cid-6t6zfk7k>TOML configuration in ~/.codex/config.toml#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#listing--managing" data-toc-link="listing--managing" data-astro-cid-6t6zfk7k>Listing &amp; managing#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#14-skills-subagents-hooks-codex-side" data-toc-link="14-skills-subagents-hooks-codex-side" data-astro-cid-6t6zfk7k>14. Skills, Subagents, Hooks (Codex side)#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#skills" data-toc-link="skills" data-astro-cid-6t6zfk7k>Skills#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#subagents" data-toc-link="subagents" data-astro-cid-6t6zfk7k>Subagents#</a></li><li class="toc-item toc-d3" data-astro-cid-6t6zfk7k><a href="#hooks" data-toc-link="hooks" data-astro-cid-6t6zfk7k>Hooks#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#15-file-paths-summary" data-toc-link="15-file-paths-summary" data-astro-cid-6t6zfk7k>15. File paths summary#</a></li><li class="toc-item toc-d2" data-astro-cid-6t6zfk7k><a href="#16-compared-with-claude-code" data-toc-link="16-compared-with-claude-code" data-astro-cid-6t6zfk7k>16. Compared with Claude Code#</a></li></ul></aside><script type="module">const i=document.querySelectorAll("[data-toc-link]");if(i.length>0){const s=new Map;i.forEach(t=>s.set(t.dataset.tocLink,t));const r=[];s.forEach((t,o)=>{const e=document.getElementById(o);e&&r.push(e)});let c=null;const l=t=>{t!==c&&(c=t,i.forEach(o=>o.setAttribute("aria-current",o.dataset.tocLink===t?"true":"false")))},a=new IntersectionObserver(t=>{const o=t.filter(e=>e.isIntersecting).sort((e,n)=>e.boundingClientRect.top-n.boundingClientRect.top);if(o.length>0)l(o[0].target.id);else{const e=r.map(n=>({id:n.id,top:n.getBoundingClientRect().top})).filter(n=>n.top<80).sort((n,d)=>d.top-n.top);e[0]&&l(e[0].id)}},{rootMargin:"-72px 0px -65% 0px",threshold:0});r.forEach(t=>a.observe(t))}</script> </div>  </main> <footer class="site-footer" data-pagefind-ignore data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-col footer-brand" data-astro-cid-sz7xmlte> <span class="footer-mark" aria-hidden="true" data-astro-cid-sz7xmlte>◆</span> <span class="footer-name" data-astro-cid-sz7xmlte>skillsetc</span> <p class="footer-tagline" data-astro-cid-sz7xmlte>
+A field guide to Skills, Subagents, Claude Code &amp; OpenAI Codex —
+        compiled from primary sources.
+</p> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h2 class="footer-heading" data-astro-cid-sz7xmlte>Primitives</h2> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/skills" data-astro-cid-sz7xmlte>Skills</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/subagents" data-astro-cid-sz7xmlte>Subagents</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/hooks-mcp-memory-settings" data-astro-cid-sz7xmlte>Hooks · MCP · Memory</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/comparison-and-decision-guide" data-astro-cid-sz7xmlte>Decision Guide</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/decide" data-astro-cid-sz7xmlte>Interactive flow</a></li> </ul> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h2 class="footer-heading" data-astro-cid-sz7xmlte>Reference</h2> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/claude-code" data-astro-cid-sz7xmlte>Claude Code</a></li> <li data-astro-cid-sz7xmlte><a href="/skillsetc/docs/openai-codex" data-astro-cid-sz7xmlte>OpenAI Codex</a></li> </ul> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h2 class="footer-heading" data-astro-cid-sz7xmlte>Sources</h2> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>docs.claude.com</a></li> <li data-astro-cid-sz7xmlte><a href="https://developers.openai.com/codex" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>developers.openai.com</a></li> <li data-astro-cid-sz7xmlte><a href="https://agentskills.io" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>agentskills.io</a></li> <li data-astro-cid-sz7xmlte><a href="https://agents.md" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>agents.md</a></li> </ul> </div> </div> <div class="footer-meta" data-astro-cid-sz7xmlte> <div class="footer-meta-inner" data-astro-cid-sz7xmlte> <span data-astro-cid-sz7xmlte>© 2026 skillsetc</span> <span class="footer-sep" aria-hidden="true" data-astro-cid-sz7xmlte>·</span> <span data-astro-cid-sz7xmlte>Last updated April 28, 2026</span> <span class="footer-sep" aria-hidden="true" data-astro-cid-sz7xmlte>·</span> <span data-astro-cid-sz7xmlte>Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>Astro</a></span> </div> </div> </footer>  <dialog id="search-dialog" class="search-dialog" data-pagefind-ignore data-astro-cid-mjrxwznw> <div class="search-modal" role="document" data-astro-cid-mjrxwznw> <div class="search-input-row" data-astro-cid-mjrxwznw> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="search-input-icon" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg> <input type="search" id="search-input" class="search-input" placeholder="Search the field guide…" autocomplete="off" spellcheck="false" aria-label="Search query" data-astro-cid-mjrxwznw> <kbd class="search-esc" data-astro-cid-mjrxwznw>esc</kbd> </div> <div class="search-results" id="search-results" aria-live="polite" data-astro-cid-mjrxwznw> <p class="search-hint" data-astro-cid-mjrxwznw>
+Try <em data-astro-cid-mjrxwznw>SKILL.md</em>, <em data-astro-cid-mjrxwznw>permission mode</em>, <em data-astro-cid-mjrxwznw>AGENTS.md</em>, or <em data-astro-cid-mjrxwznw>prefix_rule</em>.
+</p> </div> </div> </dialog>  <script type="module">const i=document.getElementById("search-dialog"),u=document.getElementById("search-input"),a=document.getElementById("search-results");let n=-1,r=[];async function w(){if(window.__pagefind)return window.__pagefind;try{const e=(document.body.dataset.base??"").replace(/\/+$/,""),s=await import(new URL(`${e}/pagefind/pagefind.js`,window.location.origin).toString());return window.__pagefind=s.default??s,window.__pagefind}catch{return null}}async function v(e){if(!a)return;if(!e.trim()){a.innerHTML='<p class="search-hint">Try <em>SKILL.md</em>, <em>permission mode</em>, <em>AGENTS.md</em>, or <em>prefix_rule</em>.</p>',r=[],n=-1;return}const t=await w();if(!t){a.innerHTML=`<p class="search-hint">Search index isn't built yet. Run <em>npm run build</em> or load the production site.</p>`;return}const s=await t.debouncedSearch(e);if(!s)return;const c=s.results.slice(0,8);if(c.length===0){a.innerHTML=`<p class="search-hint">No results for <em>${d(e)}</em>.</p>`,r=[],n=-1;return}const h=await Promise.all(c.map(o=>o.data()));a.innerHTML="",h.forEach((o,g)=>{const l=document.createElement("a");l.className="search-result",l.href=o.url,l.setAttribute("role","option"),l.setAttribute("aria-selected",g===0?"true":"false"),l.innerHTML=`
+        <div class="search-result-meta">${d(o.meta.title??o.url)}</div>
+        <h3 class="search-result-title">${d(o.sub_results?.[0]?.title??o.meta.title??"")}</h3>
+        <p class="search-result-snippet">${o.excerpt}</p>
+      `,a.appendChild(l)}),r=Array.from(a.querySelectorAll(".search-result")),n=0}function f(e){r.length!==0&&(n=(e+r.length)%r.length,r.forEach((t,s)=>{const c=s===n;t.setAttribute("aria-selected",c?"true":"false"),c&&t.scrollIntoView({block:"nearest"})}))}function d(e){return e.replace(/[&<>"']/g,t=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[t])}function m(){i&&(i.open||i.showModal(),setTimeout(()=>u?.focus(),0))}function p(){i?.open&&i.close()}document.addEventListener("click",e=>{e.target?.closest("[data-search-trigger]")&&(e.preventDefault(),m())});document.addEventListener("keydown",e=>{if((/Mac|iPod|iPhone|iPad/.test(navigator.platform)?e.metaKey:e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault(),m();return}if(e.key==="/"&&!(e.target instanceof HTMLInputElement)&&!(e.target instanceof HTMLTextAreaElement)){e.preventDefault(),m();return}if(i?.open&&(e.key==="ArrowDown"&&(e.preventDefault(),f(n+1)),e.key==="ArrowUp"&&(e.preventDefault(),f(n-1)),e.key==="Enter"&&r[n])){e.preventDefault();const c=r[n].href;p(),window.location.href=c}});i?.addEventListener("click",e=>{e.target===i&&p()});u?.addEventListener("input",e=>{const t=e.target.value;v(t)});i?.addEventListener("close",()=>{u&&(u.value=""),a&&(a.innerHTML='<p class="search-hint">Try <em>SKILL.md</em>, <em>permission mode</em>, <em>AGENTS.md</em>, or <em>prefix_rule</em>.</p>'),r=[],n=-1});</script> <script type="module">function i(s){if(s.parentElement?.classList.contains("code-figure"))return;const e=document.createElement("figure");e.className="code-figure",s.replaceWith(e),e.appendChild(s);const c=Array.from(s.classList).find(t=>t.startsWith("language-"))??s.querySelector("code")?.className.match(/language-(\S+)/)?.[0]??"";if(c){const t=c.replace("language-","");if(t&&t!=="plaintext"&&t!=="text"){const o=document.createElement("span");o.className="code-lang",o.textContent=t,e.appendChild(o)}}const n=document.createElement("button");n.type="button",n.className="copy-btn",n.setAttribute("aria-label","Copy code"),n.dataset.copyCode="",n.innerHTML=`
+    <svg class="copy-icon-default" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <path d="M5 15V5a2 2 0 012-2h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <svg class="copy-icon-success" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" style="display:none">
+      <path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+  `,e.appendChild(n)}function r(){document.querySelectorAll("pre.astro-code").forEach(i),document.querySelectorAll("[data-copy-code]").forEach(e=>{e.dataset.bound||(e.dataset.bound="true",e.addEventListener("click",async()=>{const t=e.closest(".code-figure")?.querySelector("pre")?.innerText.replace(/\s+$/,"")??"";try{await navigator.clipboard.writeText(t),e.dataset.copied="true";const o=e.querySelector(".copy-icon-default"),a=e.querySelector(".copy-icon-success");o&&a&&(o.style.display="none",a.style.display="inline"),setTimeout(()=>{e.dataset.copied="false",o&&a&&(o.style.display="inline",a.style.display="none")},1400)}catch{}}))})}typeof document<"u"&&(document.addEventListener("DOMContentLoaded",r),document.addEventListener("astro:after-swap",r));</script> </body> </html> 
