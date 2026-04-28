@@ -376,176 +376,207 @@ const treeJson = JSON.stringify(baseTree);
 
 <script>
   // ────────────────────────── Decision flow runtime ──────────────────────────
+  // Re-run on every page load (direct + view-transition) so the flow always
+  // wires into a fresh DOM. Idempotent: safe to call multiple times.
   type Accent = 'indigo' | 'amber' | 'success';
   type QuestionOption = { label: string; description?: string; next: string };
   type QuestionNode = { kind: 'question'; id: string; question: string; subtitle?: string; options: QuestionOption[] };
   type ResultNode = { kind: 'result'; id: string; primitive: string; tagline: string; details: string[]; link: { href: string; label: string }; accent: Accent };
   type FlowNode = QuestionNode | ResultNode;
 
-  const dataEl = document.getElementById('flow-tree-data');
-  if (!dataEl?.textContent) {
-    // No data — bail.
-  } else {
-    const tree = JSON.parse(dataEl.textContent) as Record<string, FlowNode>;
-    const root  = document.querySelector<HTMLElement>('[data-flow-root]')!;
-    const stage = root.querySelector<HTMLElement>('[data-flow-stage]')!;
-    const path  = root.querySelector<HTMLElement>('[data-flow-path]')!;
-    const back  = root.querySelector<HTMLButtonElement>('[data-flow-back]')!;
-    const restart = root.querySelector<HTMLButtonElement>('[data-flow-restart]')!;
+  function escapeHtml(s: string): string {
+    return s.replace(/[&<>"']/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' } as Record<string,string>)[c]);
+  }
+  function inlineCode(s: string): string {
+    return escapeHtml(s).replace(/`([^`]+)`/g, '<code>$1</code>')
+                        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  }
 
-    type PathEntry = { nodeId: string; chosen: string };
-    let stack: PathEntry[] = [];     // history of nodes we've passed through (questions)
-    let currentId = 'start';
+  function renderQuestion(node: QuestionNode, step: number): string {
+    const opts = node.options.map((o) => `
+      <li>
+        <button type="button" class="flow-option" data-flow-next="${escapeHtml(o.next)}" data-flow-label="${escapeHtml(o.label)}">
+          <span class="flow-option-label">${escapeHtml(o.label)}</span>
+          ${o.description ? `<span class="flow-option-desc">${inlineCode(o.description)}</span>` : ''}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="flow-option-arrow" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </button>
+      </li>
+    `).join('');
+    return `
+      <article class="flow-card flow-question" data-flow-current data-node-id="${node.id}">
+        <div class="flow-card-meta">
+          <span class="flow-step">Step <span data-flow-step>${step}</span></span>
+          <span class="flow-sep" aria-hidden="true">·</span>
+          <span class="flow-kind">Question</span>
+        </div>
+        <h2 class="flow-question-title serif">${escapeHtml(node.question)}</h2>
+        ${node.subtitle ? `<p class="flow-question-sub">${inlineCode(node.subtitle)}</p>` : ''}
+        <ul class="flow-options">${opts}</ul>
+      </article>
+    `;
+  }
 
-    function escapeHtml(s: string): string {
-      return s.replace(/[&<>"']/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' } as Record<string,string>)[c]);
+  function renderResult(node: ResultNode, step: number): string {
+    const details = node.details.map((d) => `<li>${inlineCode(d)}</li>`).join('');
+    return `
+      <article class="flow-card flow-result" data-flow-current data-node-id="${node.id}" data-accent="${node.accent}">
+        <div class="flow-card-meta">
+          <span class="flow-step">Step ${step}</span>
+          <span class="flow-sep" aria-hidden="true">·</span>
+          <span class="flow-result-meta">Recommendation</span>
+        </div>
+        <h2 class="flow-result-primitive serif">${escapeHtml(node.primitive)}</h2>
+        <p class="flow-result-tagline">${inlineCode(node.tagline)}</p>
+        <ul class="flow-result-details">${details}</ul>
+        <a href="${escapeHtml(node.link.href)}" class="flow-result-cta">
+          ${escapeHtml(node.link.label)}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </a>
+      </article>
+    `;
+  }
+
+  type PathEntry = { nodeId: string; chosen: string };
+
+  interface FlowState {
+    tree: Record<string, FlowNode>;
+    startId: string;
+    stack: PathEntry[];
+    currentId: string;
+    root: HTMLElement;
+    stage: HTMLElement;
+    path: HTMLElement;
+    back: HTMLButtonElement;
+    restart: HTMLButtonElement;
+  }
+
+  function setupFlow() {
+    const root = document.querySelector<HTMLElement>('[data-flow-root]');
+    if (!root) return;                       // not on /decide
+    if (root.dataset.flowReady === 'true') return; // already wired this DOM
+
+    const dataEl = document.getElementById('flow-tree-data') as HTMLScriptElement | null;
+    if (!dataEl?.textContent) return;
+
+    let tree: Record<string, FlowNode>;
+    try {
+      tree = JSON.parse(dataEl.textContent);
+    } catch {
+      return;
     }
 
-    // Convert markdown-ish inline `code` to <code>code</code>
-    function inlineCode(s: string): string {
-      return escapeHtml(s).replace(/`([^`]+)`/g, '<code>$1</code>')
-                          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-    }
+    const stage   = root.querySelector<HTMLElement>('[data-flow-stage]');
+    const path    = root.querySelector<HTMLElement>('[data-flow-path]');
+    const back    = root.querySelector<HTMLButtonElement>('[data-flow-back]');
+    const restart = root.querySelector<HTMLButtonElement>('[data-flow-restart]');
+    if (!stage || !path || !back || !restart) return;
 
-    function renderQuestion(node: QuestionNode, step: number): string {
-      const opts = node.options.map((o, i) => `
-        <li>
-          <button type="button" class="flow-option" data-flow-next="${escapeHtml(o.next)}" data-flow-label="${escapeHtml(o.label)}" autofocus="${i === 0 ? 'true' : 'false'}">
-            <span class="flow-option-label">${escapeHtml(o.label)}</span>
-            ${o.description ? `<span class="flow-option-desc">${inlineCode(o.description)}</span>` : ''}
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="flow-option-arrow" aria-hidden="true">
-              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-          </button>
-        </li>
-      `).join('');
-      return `
-        <article class="flow-card flow-question" data-flow-current data-node-id="${node.id}">
-          <div class="flow-card-meta">
-            <span class="flow-step">Step <span data-flow-step>${step}</span></span>
-            <span class="flow-sep" aria-hidden="true">·</span>
-            <span class="flow-kind">Question</span>
-          </div>
-          <h2 class="flow-question-title serif">${escapeHtml(node.question)}</h2>
-          ${node.subtitle ? `<p class="flow-question-sub">${inlineCode(node.subtitle)}</p>` : ''}
-          <ul class="flow-options">${opts}</ul>
-        </article>
-      `;
-    }
+    // Pick start from the first server-rendered node — falls back to the first key in the tree.
+    const initialNodeEl = stage.querySelector<HTMLElement>('[data-node-id]');
+    const startId = initialNodeEl?.dataset.nodeId ?? Object.keys(tree)[0];
 
-    function renderResult(node: ResultNode, step: number): string {
-      const details = node.details.map((d) => `<li>${inlineCode(d)}</li>`).join('');
-      return `
-        <article class="flow-card flow-result" data-flow-current data-node-id="${node.id}" data-accent="${node.accent}">
-          <div class="flow-card-meta">
-            <span class="flow-step">Step ${step}</span>
-            <span class="flow-sep" aria-hidden="true">·</span>
-            <span class="flow-result-meta">Recommendation</span>
-          </div>
-          <h2 class="flow-result-primitive serif">${escapeHtml(node.primitive)}</h2>
-          <p class="flow-result-tagline">${inlineCode(node.tagline)}</p>
-          <ul class="flow-result-details">${details}</ul>
-          <a href="${escapeHtml(node.link.href)}" class="flow-result-cta">
-            ${escapeHtml(node.link.label)}
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-          </a>
-        </article>
-      `;
-    }
+    const state: FlowState = {
+      tree, startId,
+      stack: [],
+      currentId: startId,
+      root, stage, path, back, restart,
+    };
 
     function renderPath() {
-      if (stack.length === 0) {
-        path.innerHTML = '';
+      if (state.stack.length === 0) {
+        state.path.innerHTML = '';
         return;
       }
-      path.innerHTML = stack.map((entry, i) => {
-        const sep = i < stack.length - 1 ? '<span class="flow-path-sep" aria-hidden="true">›</span>' : '';
+      state.path.innerHTML = state.stack.map((entry, i) => {
+        const sep = i < state.stack.length - 1 ? '<span class="flow-path-sep" aria-hidden="true">›</span>' : '';
         return `<button type="button" class="flow-path-item" data-flow-rewind="${i}">${escapeHtml(entry.chosen)}</button>${sep}`;
       }).join('');
     }
 
     function syncControls() {
-      const isStart = stack.length === 0;
-      back.hidden = isStart;
-      restart.hidden = isStart;
-      back.disabled = isStart;
-    }
-
-    function go(toId: string, chosenLabel?: string) {
-      const node = tree[toId];
-      if (!node) return;
-
-      // Push onto path if we're moving forward from a question
-      if (chosenLabel && currentId !== toId) {
-        const cur = tree[currentId];
-        if (cur?.kind === 'question') {
-          stack.push({ nodeId: currentId, chosen: chosenLabel });
-        }
-      }
-
-      currentId = toId;
-      const step = stack.length + 1;
-      stage.innerHTML = node.kind === 'question' ? renderQuestion(node, step) : renderResult(node, step);
-      bindOptions();
-      renderPath();
-      syncControls();
-
-      // Smooth-scroll the card into view (subtle)
-      requestAnimationFrame(() => {
-        stage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      });
+      const isStart = state.stack.length === 0;
+      state.back.hidden = isStart;
+      state.restart.hidden = isStart;
+      state.back.disabled = isStart;
     }
 
     function bindOptions() {
-      stage.querySelectorAll<HTMLButtonElement>('[data-flow-next]').forEach((btn) => {
+      state.stage.querySelectorAll<HTMLButtonElement>('[data-flow-next]').forEach((btn) => {
+        if (btn.dataset.bound === '1') return;
+        btn.dataset.bound = '1';
         btn.addEventListener('click', () => {
-          const next  = btn.dataset.flowNext!;
-          const label = btn.dataset.flowLabel!;
-          go(next, label);
+          const next  = btn.dataset.flowNext;
+          const label = btn.dataset.flowLabel;
+          if (next) go(next, label);
         });
       });
     }
 
-    function rewindTo(index: number) {
-      // Truncate the stack to index entries, then return to the node at that step.
-      // index = stack length we want — the question shown was that step's node.
-      if (index < 0 || index > stack.length) return;
-      const targetEntry = stack[index];
-      const targetId = targetEntry?.nodeId ?? 'start';
-      stack = stack.slice(0, index);
-      currentId = targetId;
-      const node = tree[targetId];
-      const step = stack.length + 1;
+    function go(toId: string, chosenLabel?: string) {
+      const node = state.tree[toId];
       if (!node) return;
-      stage.innerHTML = node.kind === 'question' ? renderQuestion(node, step) : renderResult(node, step);
+      if (chosenLabel && state.currentId !== toId) {
+        const cur = state.tree[state.currentId];
+        if (cur?.kind === 'question') {
+          state.stack.push({ nodeId: state.currentId, chosen: chosenLabel });
+        }
+      }
+      state.currentId = toId;
+      const step = state.stack.length + 1;
+      state.stage.innerHTML = node.kind === 'question' ? renderQuestion(node, step) : renderResult(node, step);
+      bindOptions();
+      renderPath();
+      syncControls();
+      requestAnimationFrame(() => {
+        state.stage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    }
+
+    function rewindTo(index: number) {
+      if (index < 0 || index > state.stack.length) return;
+      const targetEntry = state.stack[index];
+      const targetId = targetEntry?.nodeId ?? state.startId;
+      state.stack = state.stack.slice(0, index);
+      state.currentId = targetId;
+      const node = state.tree[targetId];
+      const step = state.stack.length + 1;
+      if (!node) return;
+      state.stage.innerHTML = node.kind === 'question' ? renderQuestion(node, step) : renderResult(node, step);
       bindOptions();
       renderPath();
       syncControls();
     }
 
-    // Wire path-item rewind
-    path.addEventListener('click', (e) => {
+    state.path.addEventListener('click', (e) => {
       const target = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-flow-rewind]');
-      if (!target) return;
-      rewindTo(parseInt(target.dataset.flowRewind!, 10));
+      if (!target?.dataset.flowRewind) return;
+      rewindTo(parseInt(target.dataset.flowRewind, 10));
+    });
+    state.back.addEventListener('click', () => {
+      if (state.stack.length === 0) return;
+      rewindTo(state.stack.length - 1);
+    });
+    state.restart.addEventListener('click', () => {
+      state.stack = [];
+      go(state.startId);
     });
 
-    // Wire back button
-    back.addEventListener('click', () => {
-      if (stack.length === 0) return;
-      rewindTo(stack.length - 1);
-    });
-
-    // Wire restart button
-    restart.addEventListener('click', () => {
-      stack = [];
-      go('start');
-    });
-
-    // Initial wiring (server-rendered start question)
     bindOptions();
     syncControls();
+    root.dataset.flowReady = 'true';
   }
+
+  // Run on direct page load.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupFlow, { once: true });
+  } else {
+    setupFlow();
+  }
+  // Run after every Astro view-transition swap (the freshly swapped-in DOM
+  // doesn't have its event handlers wired otherwise).
+  document.addEventListener('astro:page-load', setupFlow);
 </script>
