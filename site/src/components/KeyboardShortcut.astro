@@ -1,0 +1,30 @@
+---
+interface Props {
+  keys: string[];
+  class?: string;
+}
+
+const { keys, class: className = '' } = Astro.props;
+---
+
+<span class={`kbd-group ${className}`.trim()} aria-label={keys.join(' then ')}>
+  {keys.map((k, i) => (
+    <>
+      <kbd>{k}</kbd>
+      {i < keys.length - 1 && <span class="kbd-sep" aria-hidden="true">+</span>}
+    </>
+  ))}
+</span>
+
+<style>
+  .kbd-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .kbd-sep {
+    font-size: 0.7em;
+    color: var(--color-text-subtle);
+    margin: 0 1px;
+  }
+</style>

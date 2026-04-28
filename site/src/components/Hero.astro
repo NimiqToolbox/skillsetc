@@ -1,0 +1,159 @@
+---
+import Eyebrow from './Eyebrow.astro';
+import Icon from './Icon.astro';
+import { withBase } from '../lib/url';
+
+interface Cta {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  titleAccents?: string[]; // strings inside `title` to render as italic display
+  lead: string;
+  primaryCta: Cta;
+  secondaryCta?: Cta;
+  meta?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  titleAccents = [],
+  lead,
+  primaryCta,
+  secondaryCta,
+  meta,
+} = Astro.props;
+
+// Build title with accent fragments wrapped in <em>
+function renderTitle(t: string, accents: string[]): string {
+  if (accents.length === 0) return escapeHtml(t);
+  let out = escapeHtml(t);
+  for (const a of accents) {
+    const escaped = escapeHtml(a);
+    out = out.replace(escaped, `<em class="accent">${escaped}</em>`);
+  }
+  return out;
+}
+
+function escapeHtml(s: string): string {
+  return s.replace(/[&<>"']/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' } as Record<string,string>)[c]);
+}
+
+const titleHtml = renderTitle(title, titleAccents);
+---
+
+<section class="hero">
+  <div class="hero-inner">
+    {eyebrow && <Eyebrow class="hero-eyebrow">{eyebrow}</Eyebrow>}
+
+    <h1 class="hero-title serif" set:html={titleHtml} />
+
+    <p class="hero-lead">{lead}</p>
+
+    <div class="hero-ctas">
+      <a href={withBase(primaryCta.href)} class="btn btn-primary">
+        {primaryCta.label}
+        <Icon name="arrow-right" size={14} />
+      </a>
+      {secondaryCta && (
+        <a href={withBase(secondaryCta.href)} class="btn btn-ghost">
+          {secondaryCta.label}
+        </a>
+      )}
+    </div>
+
+    {meta && <p class="hero-meta">{meta}</p>}
+  </div>
+
+  <div class="hero-glow" aria-hidden="true"></div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(4rem, 8vw, 8rem) 1.5rem clamp(3rem, 6vw, 6rem);
+  }
+  @media (min-width: 1024px) {
+    .hero { padding-left: 1.75rem; padding-right: 1.75rem; }
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: var(--text-display-xl);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--color-text-strong);
+    margin: 0 0 1.4rem;
+    max-width: 16ch;
+  }
+  .hero-title :global(.accent) {
+    font-style: italic;
+    color: var(--color-text-strong);
+    background: linear-gradient(110deg, #FBFAF4 30%, #C7B8E0 60%, #F6C177 110%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-lead {
+    font-family: var(--font-sans);
+    font-size: clamp(1.1rem, 0.9rem + 0.6vw, var(--text-lead));
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    max-width: 56ch;
+    margin: 0 0 2rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-meta {
+    font-size: var(--text-caption);
+    color: var(--color-text-subtle);
+    margin: 0;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .hero-meta::before {
+    content: "";
+    display: inline-block;
+    width: 2.5rem;
+    height: 1px;
+    background: var(--color-border-strong);
+  }
+
+  /* Decorative glow positioned behind text */
+  .hero-glow {
+    position: absolute;
+    inset: -10% -20% auto auto;
+    width: 70%;
+    height: 90%;
+    background: radial-gradient(closest-side, rgba(124,140,255,0.18), transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 0;
+  }
+</style>

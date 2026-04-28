@@ -1,0 +1,216 @@
+---
+import Icon from './Icon.astro';
+import KeyboardShortcut from './KeyboardShortcut.astro';
+import { withBase, BASE } from '../lib/url';
+
+const navLinks = [
+  { href: withBase('/docs'),   label: 'Docs' },
+  { href: withBase('/decide'), label: 'Decide' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const base = BASE || '';
+---
+
+<header class="site-header" data-pagefind-ignore>
+  <div class="header-inner">
+    <a href={withBase('/')} class="brand" aria-label="skillsetc — home">
+      <span class="brand-mark" aria-hidden="true">◆</span>
+      <span class="brand-name">skillsetc</span>
+    </a>
+
+    <nav class="primary-nav" aria-label="Primary">
+      {navLinks.map((l) => (
+        <a
+          href={l.href}
+          class:list={['nav-link', { active: currentPath === l.href || currentPath.startsWith(l.href + '/') }]}
+        >
+          {l.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="header-actions">
+      <button
+        type="button"
+        class="search-trigger"
+        data-search-trigger
+        aria-label="Search the guide"
+      >
+        <Icon name="search" size={14} />
+        <span class="search-trigger-label">Search</span>
+        <KeyboardShortcut keys={['⌘', 'K']} class="search-trigger-kbd" />
+      </button>
+
+      <a
+        href="https://github.com"
+        class="icon-link"
+        aria-label="GitHub repository"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="github" size={18} />
+      </a>
+
+      <button
+        type="button"
+        class="menu-trigger"
+        data-menu-trigger
+        aria-label="Open navigation menu"
+      >
+        <Icon name="menu" size={20} />
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: var(--header-h);
+    background: rgba(11, 16, 32, 0.72);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--duration-fast) var(--ease-out),
+                background var(--duration-fast) var(--ease-out);
+  }
+  .site-header[data-scrolled="true"] {
+    border-bottom-color: var(--color-border);
+    background: rgba(11, 16, 32, 0.85);
+  }
+  .header-inner {
+    max-width: var(--container-doc);
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .header-inner { padding: 0 1.75rem; gap: 2rem; }
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-strong);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    font-size: var(--text-ui);
+  }
+  .brand:hover { color: var(--color-text-strong); text-decoration: none; }
+  .brand-mark {
+    display: inline-block;
+    color: var(--color-amber);
+    font-size: 0.85em;
+    transform: translateY(-0.5px);
+  }
+  .brand-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; letter-spacing: -0.01em; }
+
+  .primary-nav {
+    display: none;
+    gap: 1.5rem;
+    margin-right: auto;
+  }
+  @media (min-width: 768px) {
+    .primary-nav { display: inline-flex; }
+  }
+
+  .nav-link {
+    color: var(--color-text-muted);
+    font-size: var(--text-ui);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  .nav-link:hover { color: var(--color-text); text-decoration: none; }
+  .nav-link.active { color: var(--color-text-strong); }
+
+  .header-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+  }
+
+  .search-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 0.7rem 0.45rem 0.65rem;
+    color: var(--color-text-subtle);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-ui);
+    transition:
+      border-color var(--duration-fast) var(--ease-out),
+      color var(--duration-fast) var(--ease-out),
+      background var(--duration-fast) var(--ease-out);
+    cursor: pointer;
+  }
+  .search-trigger:hover {
+    color: var(--color-text);
+    border-color: var(--color-border-strong);
+    background: var(--color-surface-2);
+  }
+  .search-trigger-label {
+    display: none;
+  }
+  .search-trigger-kbd {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .search-trigger { min-width: 12rem; padding-right: 0.45rem; justify-content: flex-start; }
+    .search-trigger-label { display: inline; flex: 1; text-align: left; }
+    .search-trigger-kbd { display: inline-flex; }
+  }
+
+  .icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    color: var(--color-text-muted);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out),
+                background var(--duration-fast) var(--ease-out);
+  }
+  .icon-link:hover { color: var(--color-text-strong); background: var(--color-surface); text-decoration: none; }
+
+  .menu-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    color: var(--color-text-muted);
+    border-radius: var(--radius-sm);
+    transition: color var(--duration-fast) var(--ease-out),
+                background var(--duration-fast) var(--ease-out);
+  }
+  .menu-trigger:hover { color: var(--color-text-strong); background: var(--color-surface); }
+  @media (min-width: 1024px) {
+    .menu-trigger { display: none; }
+  }
+</style>
+
+<script>
+  // Add the scrolled state on the sticky header for the hairline border to appear
+  const header = document.querySelector<HTMLElement>('.site-header');
+  if (header) {
+    const onScroll = () => {
+      header.dataset.scrolled = window.scrollY > 8 ? 'true' : 'false';
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('astro:after-swap', onScroll);
+  }
+</script>

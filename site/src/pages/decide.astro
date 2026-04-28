@@ -1,0 +1,101 @@
+---
+import LandingLayout from '../layouts/LandingLayout.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import DecisionFlow from '../components/DecisionFlow.astro';
+import Icon from '../components/Icon.astro';
+import { withBase } from '../lib/url';
+---
+
+<LandingLayout
+  title="Decide"
+  description="An interactive decision flow. Answer a few questions and we'll point you to the right primitive — Skill, Subagent, Hook, MCP, or memory file — or to Claude Code vs OpenAI Codex."
+>
+  <section class="decide-hero">
+    <div class="decide-hero-inner">
+      <Eyebrow>Interactive</Eyebrow>
+      <h1 class="decide-title serif">Find the right primitive, in <em>five</em> answers or less.</h1>
+      <p class="decide-lead">
+        Skill, Subagent, Hook, MCP, or memory file? Answer a short series of questions and
+        we'll point you to the one that fits — with a link to the deep reference.
+      </p>
+    </div>
+  </section>
+
+  <DecisionFlow />
+
+  <section class="decide-foot">
+    <div class="decide-foot-inner">
+      <p class="decide-foot-text">
+        Prefer a written reference?
+      </p>
+      <a href={withBase('/docs/comparison-and-decision-guide')} class="decide-foot-link">
+        Read the prose decision guide
+        <Icon name="arrow-right" size={14} />
+      </a>
+    </div>
+  </section>
+</LandingLayout>
+
+<style>
+  .decide-hero {
+    padding: clamp(3.5rem, 6vw, 6rem) 1.5rem clamp(2rem, 3vw, 3rem);
+  }
+  @media (min-width: 1024px) {
+    .decide-hero { padding-left: 1.75rem; padding-right: 1.75rem; }
+  }
+  .decide-hero-inner {
+    max-width: 56rem;
+    margin: 0 auto;
+  }
+  .decide-title {
+    font-size: clamp(2.25rem, 1.7rem + 2.4vw, 3.5rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.018em;
+    color: var(--color-text-strong);
+    margin: 1rem 0 1.25rem;
+    max-width: 18ch;
+  }
+  .decide-title em {
+    font-style: italic;
+    background: linear-gradient(110deg, #FBFAF4 30%, #F6C177 110%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .decide-lead {
+    color: var(--color-text-muted);
+    font-size: var(--text-lead);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  .decide-foot {
+    margin-top: 4rem;
+    padding: 2rem 1.5rem 0;
+  }
+  .decide-foot-inner {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .decide-foot-text { color: var(--color-text-subtle); font-size: var(--text-ui); margin: 0; }
+  .decide-foot-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-size: var(--text-ui);
+    transition: color var(--duration-fast) var(--ease-out),
+                gap var(--duration-fast) var(--ease-out);
+  }
+  .decide-foot-link:hover { color: var(--color-accent-hover); gap: 0.7rem; text-decoration: none; }
+</style>

@@ -1,0 +1,56 @@
+---
+import Eyebrow from './Eyebrow.astro';
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+}
+
+const { eyebrow, title } = Astro.props;
+---
+
+<section class="concept-section">
+  <div class="concept-inner">
+    {eyebrow && <Eyebrow class="concept-eyebrow">{eyebrow}</Eyebrow>}
+    {title && <h2 class="concept-title serif">{title}</h2>}
+
+    <div class="concept-grid">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .concept-section {
+    padding: 4rem 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+  @media (min-width: 1024px) {
+    .concept-section { padding: 6rem 1.75rem; }
+  }
+  .concept-inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .concept-eyebrow { margin-bottom: 0.85rem; display: inline-block; }
+  .concept-title {
+    font-size: var(--text-display-md);
+    font-weight: 500;
+    color: var(--color-text-strong);
+    margin: 0 0 2.5rem;
+    letter-spacing: -0.014em;
+    line-height: 1.15;
+    max-width: 22ch;
+  }
+  .concept-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .concept-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .concept-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  }
+</style>

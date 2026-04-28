@@ -1,0 +1,68 @@
+---
+type Variant = 'info' | 'tip' | 'warning' | 'danger' | 'quote';
+
+interface Props {
+  variant?: Variant;
+  title?: string;
+  class?: string;
+}
+
+const { variant = 'quote', title, class: className = '' } = Astro.props;
+---
+
+<aside class:list={['callout', `callout-${variant}`, className]} role="note">
+  {title && <p class="callout-title">{title}</p>}
+  <div class="callout-body">
+    <slot />
+  </div>
+</aside>
+
+<style>
+  .callout {
+    margin: 1.5em 0;
+    padding: 1em 1.25em 1em 1.4em;
+    border-left: 2px solid var(--color-accent);
+    background: linear-gradient(to right, var(--color-accent-soft), transparent 70%);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    color: var(--color-text);
+    font-size: var(--text-body);
+    line-height: 1.65;
+  }
+  .callout > .callout-body > :first-child { margin-top: 0; }
+  .callout > .callout-body > :last-child { margin-bottom: 0; }
+
+  .callout-title {
+    font-size: var(--text-caption);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    margin: 0 0 0.5em;
+  }
+
+  .callout-info { border-left-color: var(--color-accent); background: linear-gradient(to right, var(--color-accent-soft), transparent 70%); }
+  .callout-info .callout-title { color: var(--color-accent); }
+
+  .callout-tip { border-left-color: var(--color-success); background: linear-gradient(to right, rgba(124,217,168,0.10), transparent 70%); }
+  .callout-tip .callout-title { color: var(--color-success); }
+
+  .callout-warning { border-left-color: var(--color-warning); background: linear-gradient(to right, rgba(242,179,106,0.10), transparent 70%); }
+  .callout-warning .callout-title { color: var(--color-warning); }
+
+  .callout-danger { border-left-color: var(--color-danger); background: linear-gradient(to right, rgba(240,138,160,0.10), transparent 70%); }
+  .callout-danger .callout-title { color: var(--color-danger); }
+
+  .callout-quote {
+    border-left-color: var(--color-quote);
+    background: linear-gradient(to right, rgba(199,184,224,0.08), transparent 70%);
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-quote);
+    font-size: 1.05em;
+  }
+  .callout-quote .callout-title {
+    font-family: var(--font-sans);
+    font-style: normal;
+    color: var(--color-quote);
+  }
+</style>

@@ -1,0 +1,127 @@
+---
+import Icon from './Icon.astro';
+import { withBase } from '../lib/url';
+
+interface Props {
+  kicker: string;
+  title: string;
+  tagline: string;
+  href: string;
+  accent?: 'indigo' | 'amber';
+}
+
+const { kicker, title, tagline, href, accent = 'indigo' } = Astro.props;
+---
+
+<a href={withBase(href)} class="concept-card" data-accent={accent}>
+  <div class="card-kicker">
+    <span class="card-dot" aria-hidden="true"></span>
+    {kicker}
+  </div>
+  <h3 class="card-title serif">{title}</h3>
+  <p class="card-tagline">{tagline}</p>
+  <div class="card-cta">
+    Read <Icon name="arrow-right" size={12} class="card-arrow" />
+  </div>
+</a>
+
+<style>
+  .concept-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.5rem 1.5rem 1.4rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: var(--color-text);
+    transition:
+      border-color var(--duration-base) var(--ease-out),
+      transform var(--duration-base) var(--ease-out),
+      box-shadow var(--duration-base) var(--ease-out),
+      background var(--duration-base) var(--ease-out);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .concept-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top right, rgba(124,140,255,0.08), transparent 50%);
+    opacity: 0;
+    transition: opacity var(--duration-base) var(--ease-out);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .concept-card[data-accent="amber"]::before {
+    background: radial-gradient(ellipse at top right, rgba(246,193,119,0.10), transparent 55%);
+  }
+  .concept-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-border-strong);
+    text-decoration: none;
+    background: var(--color-surface-hover);
+    box-shadow: var(--shadow-md);
+  }
+  .concept-card:hover::before {
+    opacity: 1;
+  }
+  .concept-card:hover .card-cta { color: var(--color-accent); }
+  .concept-card:hover .card-arrow { transform: translateX(2px); }
+  .concept-card[data-accent="amber"]:hover .card-cta { color: var(--color-amber); }
+
+  .card-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--text-eyebrow);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-subtle);
+    font-weight: 600;
+  }
+  .card-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(124,140,255,0.18);
+  }
+  .concept-card[data-accent="amber"] .card-dot {
+    background: var(--color-amber);
+    box-shadow: 0 0 0 3px rgba(246,193,119,0.18);
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--color-text-strong);
+    margin: 0;
+    letter-spacing: -0.012em;
+  }
+
+  .card-tagline {
+    color: var(--color-text-muted);
+    font-size: var(--text-ui);
+    line-height: 1.55;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+    font-size: var(--text-ui);
+    color: var(--color-text-muted);
+    font-weight: 500;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  .card-arrow {
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+</style>

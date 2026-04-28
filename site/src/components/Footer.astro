@@ -1,0 +1,160 @@
+---
+import { formatDate } from '../lib/format';
+import { withBase } from '../lib/url';
+
+const buildDate = import.meta.env.BUILD_DATE ?? new Date().toISOString().slice(0, 10);
+const formatted = formatDate(buildDate);
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer" data-pagefind-ignore>
+  <div class="footer-inner">
+    <div class="footer-col footer-brand">
+      <span class="footer-mark" aria-hidden="true">◆</span>
+      <span class="footer-name">skillsetc</span>
+      <p class="footer-tagline">
+        A field guide to Skills, Subagents, Claude Code &amp; OpenAI Codex —
+        compiled from primary sources.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h2 class="footer-heading">Primitives</h2>
+      <ul>
+        <li><a href={withBase('/docs/skills')}>Skills</a></li>
+        <li><a href={withBase('/docs/subagents')}>Subagents</a></li>
+        <li><a href={withBase('/docs/hooks-mcp-memory-settings')}>Hooks · MCP · Memory</a></li>
+        <li><a href={withBase('/docs/comparison-and-decision-guide')}>Decision Guide</a></li>
+        <li><a href={withBase('/decide')}>Interactive flow</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h2 class="footer-heading">Reference</h2>
+      <ul>
+        <li><a href={withBase('/docs/claude-code')}>Claude Code</a></li>
+        <li><a href={withBase('/docs/openai-codex')}>OpenAI Codex</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h2 class="footer-heading">Sources</h2>
+      <ul>
+        <li><a href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank" rel="noopener noreferrer">docs.claude.com</a></li>
+        <li><a href="https://developers.openai.com/codex" target="_blank" rel="noopener noreferrer">developers.openai.com</a></li>
+        <li><a href="https://agentskills.io" target="_blank" rel="noopener noreferrer">agentskills.io</a></li>
+        <li><a href="https://agents.md" target="_blank" rel="noopener noreferrer">agents.md</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-meta">
+    <div class="footer-meta-inner">
+      <span>© {year} skillsetc</span>
+      <span class="footer-sep" aria-hidden="true">·</span>
+      <span>Last updated {formatted}</span>
+      <span class="footer-sep" aria-hidden="true">·</span>
+      <span>Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a></span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 8rem;
+    padding-top: 4rem;
+    background: linear-gradient(to bottom, transparent, var(--color-bg-elevated));
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .footer-inner {
+    max-width: var(--container-doc);
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  @media (min-width: 640px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 1024px) {
+    .footer-inner {
+      grid-template-columns: 1.4fr repeat(3, 1fr);
+      padding: 0 1.75rem 4rem;
+    }
+  }
+
+  .footer-brand .footer-mark {
+    color: var(--color-amber);
+    font-size: 1rem;
+    margin-right: 0.4rem;
+  }
+  .footer-name {
+    font-family: var(--font-display);
+    color: var(--color-text-strong);
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .footer-tagline {
+    margin-top: 0.75rem;
+    color: var(--color-text-subtle);
+    font-size: var(--text-ui);
+    line-height: 1.55;
+    max-width: 28em;
+  }
+
+  .footer-heading {
+    font-size: var(--text-eyebrow);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-subtle);
+    font-weight: 600;
+    margin: 0 0 1rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .footer-col a {
+    color: var(--color-text-muted);
+    font-size: var(--text-ui);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  .footer-col a:hover { color: var(--color-text); text-decoration: none; }
+
+  .footer-meta {
+    border-top: 1px solid var(--color-border);
+    padding: 1.5rem 0;
+  }
+  .footer-meta-inner {
+    max-width: var(--container-doc);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    font-size: var(--text-caption);
+    color: var(--color-text-subtle);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  @media (min-width: 1024px) {
+    .footer-meta-inner { padding: 0 1.75rem; }
+  }
+  .footer-meta a {
+    color: var(--color-text-muted);
+    text-decoration: underline;
+    text-decoration-color: rgba(168,176,200,0.3);
+    text-underline-offset: 3px;
+  }
+  .footer-meta a:hover { color: var(--color-text); }
+  .footer-sep { color: var(--color-border-strong); }
+</style>

@@ -1,0 +1,300 @@
+---
+import Icon from './Icon.astro';
+---
+
+<dialog id="search-dialog" class="search-dialog" data-pagefind-ignore>
+  <div class="search-modal" role="document">
+    <div class="search-input-row">
+      <Icon name="search" size={18} class="search-input-icon" />
+      <input
+        type="search"
+        id="search-input"
+        class="search-input"
+        placeholder="Search the field guide…"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Search query"
+      />
+      <kbd class="search-esc">esc</kbd>
+    </div>
+
+    <div class="search-results" id="search-results" aria-live="polite">
+      <p class="search-hint">
+        Try <em>SKILL.md</em>, <em>permission mode</em>, <em>AGENTS.md</em>, or <em>prefix_rule</em>.
+      </p>
+    </div>
+  </div>
+</dialog>
+
+<style>
+  .search-dialog {
+    margin: 0 auto;
+    padding: 0;
+    width: min(640px, calc(100vw - 2rem));
+    max-height: min(70vh, 36rem);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    inset: auto;
+    top: 8vh;
+    overflow: hidden;
+  }
+  .search-dialog::backdrop {
+    background: rgba(11, 16, 32, 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: fade-in 0.18s var(--ease-out);
+  }
+  .search-dialog[open] {
+    animation: dialog-in 0.22s var(--ease-out);
+  }
+  @keyframes dialog-in {
+    from { opacity: 0; transform: translateY(-6px) scale(0.99); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .search-modal {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: inherit;
+  }
+
+  .search-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 1.1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .search-input-icon { color: var(--color-text-subtle); flex-shrink: 0; }
+  .search-input {
+    flex: 1;
+    background: transparent;
+    color: var(--color-text-strong);
+    border: 0;
+    outline: none;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.4;
+    padding: 0;
+  }
+  .search-input::placeholder { color: var(--color-text-subtle); }
+  .search-esc {
+    /* Use kbd styling from base */
+  }
+
+  .search-results {
+    padding: 0.5rem;
+    overflow-y: auto;
+    max-height: calc(70vh - 4rem);
+  }
+  .search-hint {
+    padding: 1.25rem 1rem;
+    color: var(--color-text-subtle);
+    font-size: var(--text-ui);
+    margin: 0;
+  }
+  .search-hint em {
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+    font-style: normal;
+    background: var(--color-surface-2);
+    padding: 0.05em 0.35em;
+    border-radius: var(--radius-xs);
+    border: 1px solid var(--color-border);
+  }
+
+  .search-result {
+    display: block;
+    padding: 0.75rem 0.85rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: background var(--duration-fast) var(--ease-out);
+    cursor: pointer;
+  }
+  .search-result:hover,
+  .search-result[aria-selected="true"] {
+    background: var(--color-accent-soft);
+    text-decoration: none;
+  }
+  .search-result-meta {
+    font-size: var(--text-caption);
+    color: var(--color-text-subtle);
+    margin-bottom: 0.2rem;
+  }
+  .search-result-title {
+    font-weight: 500;
+    color: var(--color-text-strong);
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+  }
+  .search-result-snippet {
+    font-size: var(--text-ui);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    /* Pagefind highlights */
+  }
+  .search-result-snippet :global(mark) {
+    background: var(--color-amber-soft);
+    color: var(--color-amber);
+    padding: 0 0.15em;
+    border-radius: 2px;
+  }
+</style>
+
+<script>
+  type PagefindResult = {
+    url: string;
+    raw_url?: string;
+    excerpt: string;
+    meta: { title?: string; [k: string]: unknown };
+    sub_results?: { title: string; url: string; excerpt: string }[];
+  };
+
+  type Pagefind = {
+    debouncedSearch: (q: string) => Promise<{ results: { id: string; data: () => Promise<PagefindResult> }[] } | null>;
+  };
+
+  declare global { interface Window { __pagefind?: Pagefind; } }
+
+  const dialog   = document.getElementById('search-dialog') as HTMLDialogElement | null;
+  const input    = document.getElementById('search-input')  as HTMLInputElement  | null;
+  const results  = document.getElementById('search-results') as HTMLElement     | null;
+
+  let activeIndex = -1;
+  let currentItems: HTMLAnchorElement[] = [];
+
+  async function ensurePagefind(): Promise<Pagefind | null> {
+    if (window.__pagefind) return window.__pagefind;
+    try {
+      // Build a runtime URL so Vite doesn't try to resolve at build time —
+      // Pagefind's index is generated post-build into <base>/pagefind/ in dist/.
+      const base = (document.body.dataset.base ?? '').replace(/\/+$/, '');
+      const url = new URL(`${base}/pagefind/pagefind.js`, window.location.origin).toString();
+      const pagefind = (await import(/* @vite-ignore */ url)) as { default?: Pagefind } & Pagefind;
+      window.__pagefind = (pagefind.default ?? pagefind) as Pagefind;
+      return window.__pagefind;
+    } catch {
+      return null;
+    }
+  }
+
+  async function renderResults(query: string) {
+    if (!results) return;
+    if (!query.trim()) {
+      results.innerHTML = `<p class="search-hint">Try <em>SKILL.md</em>, <em>permission mode</em>, <em>AGENTS.md</em>, or <em>prefix_rule</em>.</p>`;
+      currentItems = [];
+      activeIndex = -1;
+      return;
+    }
+    const pf = await ensurePagefind();
+    if (!pf) {
+      results.innerHTML = `<p class="search-hint">Search index isn't built yet. Run <em>npm run build</em> or load the production site.</p>`;
+      return;
+    }
+    const search = await pf.debouncedSearch(query);
+    if (!search) return;
+    const top = search.results.slice(0, 8);
+    if (top.length === 0) {
+      results.innerHTML = `<p class="search-hint">No results for <em>${escapeHtml(query)}</em>.</p>`;
+      currentItems = [];
+      activeIndex = -1;
+      return;
+    }
+    const datas = await Promise.all(top.map((r) => r.data()));
+    results.innerHTML = '';
+    datas.forEach((d, i) => {
+      const a = document.createElement('a');
+      a.className = 'search-result';
+      a.href = d.url;
+      a.setAttribute('role', 'option');
+      a.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      a.innerHTML = `
+        <div class="search-result-meta">${escapeHtml(d.meta.title ?? d.url)}</div>
+        <h3 class="search-result-title">${escapeHtml((d.sub_results?.[0]?.title) ?? d.meta.title ?? '')}</h3>
+        <p class="search-result-snippet">${d.excerpt}</p>
+      `;
+      results.appendChild(a);
+    });
+    currentItems = Array.from(results.querySelectorAll<HTMLAnchorElement>('.search-result'));
+    activeIndex = 0;
+  }
+
+  function setActive(i: number) {
+    if (currentItems.length === 0) return;
+    activeIndex = (i + currentItems.length) % currentItems.length;
+    currentItems.forEach((el, idx) => {
+      const sel = idx === activeIndex;
+      el.setAttribute('aria-selected', sel ? 'true' : 'false');
+      if (sel) el.scrollIntoView({ block: 'nearest' });
+    });
+  }
+
+  function escapeHtml(s: string) {
+    return s.replace(/[&<>"']/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' } as Record<string,string>)[c]);
+  }
+
+  function openSearch() {
+    if (!dialog) return;
+    if (!dialog.open) dialog.showModal();
+    setTimeout(() => input?.focus(), 0);
+  }
+  function closeSearch() {
+    if (dialog?.open) dialog.close();
+  }
+
+  document.addEventListener('click', (e) => {
+    const t = e.target as HTMLElement | null;
+    if (t?.closest('[data-search-trigger]')) {
+      e.preventDefault();
+      openSearch();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
+    const meta = isMac ? e.metaKey : e.ctrlKey;
+    if (meta && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      openSearch();
+      return;
+    }
+    if (e.key === '/' && !(e.target instanceof HTMLInputElement) && !(e.target instanceof HTMLTextAreaElement)) {
+      e.preventDefault();
+      openSearch();
+      return;
+    }
+    if (!dialog?.open) return;
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActive(activeIndex + 1); }
+    if (e.key === 'ArrowUp')   { e.preventDefault(); setActive(activeIndex - 1); }
+    if (e.key === 'Enter' && currentItems[activeIndex]) {
+      e.preventDefault();
+      const url = currentItems[activeIndex].href;
+      closeSearch();
+      window.location.href = url;
+    }
+  });
+
+  // Click outside the modal closes the dialog
+  dialog?.addEventListener('click', (e) => {
+    if (e.target === dialog) closeSearch();
+  });
+
+  input?.addEventListener('input', (e) => {
+    const v = (e.target as HTMLInputElement).value;
+    void renderResults(v);
+  });
+
+  // Reset state when reopening
+  dialog?.addEventListener('close', () => {
+    if (input) input.value = '';
+    if (results) results.innerHTML = `<p class="search-hint">Try <em>SKILL.md</em>, <em>permission mode</em>, <em>AGENTS.md</em>, or <em>prefix_rule</em>.</p>`;
+    currentItems = [];
+    activeIndex = -1;
+  });
+</script>

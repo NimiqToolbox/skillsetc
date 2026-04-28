@@ -1,0 +1,161 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Eyebrow from '../../components/Eyebrow.astro';
+import Icon from '../../components/Icon.astro';
+import { nav } from '../../data/nav';
+import { withBase } from '../../lib/url';
+
+const docs = await getCollection('docs');
+const docBySlug = new Map(docs.map((d) => [d.id, d]));
+---
+
+<BaseLayout
+  title="Documentation"
+  description="The full table of contents — six chapters covering Skills, Subagents, Claude Code, hooks/MCP/memory, OpenAI Codex, and the side-by-side comparison."
+>
+  <section class="docs-index">
+    <header class="docs-header">
+      <Eyebrow>Documentation</Eyebrow>
+      <h1 class="docs-title serif">The field guide.</h1>
+      <p class="docs-lead">
+        Six chapters compiled from primary sources, organised by primitive and capped with
+        a side-by-side comparison.
+      </p>
+    </header>
+
+    {nav.map((group) => (
+      <section class="docs-group">
+        <h2 class="docs-group-label">{group.label}</h2>
+        <ol class="docs-grid">
+          {group.items.map((item) => {
+            const doc = docBySlug.get(item.slug);
+            return (
+              <li>
+                <a href={withBase(`/docs/${item.slug}`)} class="docs-card">
+                  <span class="docs-card-num">{String(doc?.data.order ?? 0).padStart(2, '0')}</span>
+                  <div class="docs-card-body">
+                    <h3 class="docs-card-title">{doc?.data.title ?? item.label}</h3>
+                    <p class="docs-card-desc">{doc?.data.description ?? item.description}</p>
+                  </div>
+                  <Icon name="arrow-right" size={14} class="docs-card-arrow" />
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+      </section>
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+  .docs-index {
+    max-width: var(--container-doc);
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+  }
+  @media (min-width: 1024px) {
+    .docs-index { padding: 6rem 1.75rem 8rem; }
+  }
+
+  .docs-header {
+    max-width: 60ch;
+    margin: 0 0 4rem;
+  }
+  .docs-title {
+    font-size: var(--text-display-lg);
+    font-weight: 500;
+    line-height: 1.08;
+    color: var(--color-text-strong);
+    margin: 0.85rem 0 1.25rem;
+    letter-spacing: -0.018em;
+  }
+  .docs-lead {
+    font-size: var(--text-lead);
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .docs-group {
+    margin: 0 0 3.5rem;
+  }
+  .docs-group-label {
+    font-size: var(--text-eyebrow);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    color: var(--color-text-subtle);
+    margin: 0 0 1.25rem;
+  }
+
+  .docs-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 768px) {
+    .docs-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .docs-card {
+    display: grid;
+    grid-template-columns: 3rem 1fr auto;
+    align-items: start;
+    gap: 1rem;
+    padding: 1.5rem 1.5rem 1.4rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: var(--color-text);
+    transition:
+      border-color var(--duration-fast) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out),
+      background var(--duration-fast) var(--ease-out);
+    height: 100%;
+  }
+  .docs-card:hover {
+    border-color: var(--color-border-strong);
+    background: var(--color-surface-hover);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  .docs-card:hover .docs-card-arrow { transform: translateX(2px); color: var(--color-accent); }
+
+  .docs-card-num {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--color-amber);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    padding-top: 0.1rem;
+  }
+  .docs-card-body { display: flex; flex-direction: column; gap: 0.4rem; }
+  .docs-card-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.35rem;
+    line-height: 1.25;
+    letter-spacing: -0.012em;
+    color: var(--color-text-strong);
+    margin: 0;
+  }
+  .docs-card-desc {
+    font-size: var(--text-ui);
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.55;
+  }
+  .docs-card-arrow {
+    color: var(--color-text-subtle);
+    transition: transform var(--duration-fast) var(--ease-out),
+                color var(--duration-fast) var(--ease-out);
+    align-self: center;
+  }
+</style>

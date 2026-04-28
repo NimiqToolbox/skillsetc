@@ -1,0 +1,36 @@
+---
+import { Code } from 'astro:components';
+import Icon from './Icon.astro';
+
+interface Props {
+  code: string;
+  lang?: string;
+  filename?: string;
+}
+
+const { code, lang = 'text', filename } = Astro.props;
+---
+
+<figure class="code-figure">
+  {filename && (
+    <figcaption class="code-caption">
+      <span class="code-caption-mark" aria-hidden="true">▸</span>
+      {filename}
+    </figcaption>
+  )}
+  <Code code={code} lang={lang as any} theme="vesper" />
+  <button class="copy-btn" type="button" aria-label="Copy code" data-copy-code>
+    <Icon name="copy" size={14} class="copy-icon-default" />
+    <Icon name="check" size={14} class="copy-icon-success" />
+  </button>
+</figure>
+
+<style>
+  .copy-icon-success { display: none; }
+  .copy-btn[data-copied="true"] .copy-icon-default { display: none; }
+  .copy-btn[data-copied="true"] .copy-icon-success { display: inline; }
+  .code-caption-mark {
+    color: var(--color-amber);
+    margin-right: 0.5em;
+  }
+</style>

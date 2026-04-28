@@ -1,0 +1,10 @@
+node_modules
+dist
+.astro
+.git
+.idea
+.vscode
+*.log
+.env*
+.DS_Store
+README-DOCKER.md

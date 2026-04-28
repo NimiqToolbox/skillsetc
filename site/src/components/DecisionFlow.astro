@@ -1,0 +1,551 @@
+---
+import { tree, startId, type FlowNode } from '../data/decision-tree';
+import Icon from './Icon.astro';
+import { withBase } from '../lib/url';
+
+// Pre-rewrite result link hrefs with the configured base path so the
+// flow's deep links work under GitHub Pages (/skillsetc/) etc.
+const baseTree: Record<string, FlowNode> = Object.fromEntries(
+  Object.entries(tree).map(([k, node]) => {
+    if (node.kind === 'result') {
+      return [k, { ...node, link: { ...node.link, href: withBase(node.link.href) } }];
+    }
+    return [k, node];
+  }),
+);
+
+const startNode = baseTree[startId] as FlowNode;
+const treeJson = JSON.stringify(baseTree);
+---
+
+<section class="flow" data-flow-root>
+  <!-- Path so far (clickable to rewind) -->
+  <nav class="flow-path" data-flow-path aria-label="Your answers"></nav>
+
+  <!-- Stage area -->
+  <div class="flow-stage" data-flow-stage>
+    <!-- Server-rendered initial question (no JS = still readable) -->
+    {startNode.kind === 'question' && (
+      <article class="flow-card flow-question" data-flow-current data-node-id={startNode.id}>
+        <div class="flow-card-meta">
+          <span class="flow-step">Step <span data-flow-step>1</span></span>
+          <span class="flow-sep" aria-hidden="true">·</span>
+          <span class="flow-kind">Question</span>
+        </div>
+        <h2 class="flow-question-title serif">{startNode.question}</h2>
+        {startNode.subtitle && <p class="flow-question-sub">{startNode.subtitle}</p>}
+        <ul class="flow-options">
+          {startNode.options.map((opt) => (
+            <li>
+              <button type="button" class="flow-option" data-flow-next={opt.next} data-flow-label={opt.label}>
+                <span class="flow-option-label">{opt.label}</span>
+                {opt.description && <span class="flow-option-desc">{opt.description}</span>}
+                <Icon name="arrow-right" size={14} class="flow-option-arrow" />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </article>
+    )}
+  </div>
+
+  <div class="flow-controls">
+    <button type="button" class="flow-back" data-flow-back hidden>
+      <Icon name="arrow-left" size={12} />
+      Back
+    </button>
+    <button type="button" class="flow-restart" data-flow-restart hidden>
+      Start over
+    </button>
+  </div>
+
+  <noscript>
+    <p class="flow-noscript">
+      JavaScript is required for the interactive flow. Read the
+      <a href="/docs/comparison-and-decision-guide">prose decision guide</a> instead.
+    </p>
+  </noscript>
+</section>
+
+<script id="flow-tree-data" type="application/json" set:html={treeJson}></script>
+
+<style>
+  .flow {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .flow-path {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.5rem;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    min-height: 1.5rem;
+    font-size: var(--text-caption);
+    color: var(--color-text-subtle);
+  }
+  .flow-path:empty::before {
+    content: 'Your answers will appear here.';
+    color: var(--color-text-subtle);
+    font-style: italic;
+    opacity: 0.6;
+  }
+  .flow-path-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.6rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    color: var(--color-text-muted);
+    font-size: var(--text-caption);
+    cursor: pointer;
+    transition: color var(--duration-fast) var(--ease-out),
+                border-color var(--duration-fast) var(--ease-out),
+                background var(--duration-fast) var(--ease-out);
+  }
+  .flow-path-item:hover {
+    color: var(--color-text);
+    border-color: var(--color-border-strong);
+    background: var(--color-surface-hover);
+  }
+  .flow-path-sep {
+    color: var(--color-border-strong);
+    font-size: 0.7em;
+  }
+
+  .flow-stage {
+    position: relative;
+    min-height: 24rem;
+  }
+
+  .flow-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 2rem 1.75rem 2.25rem;
+    box-shadow: var(--shadow-md);
+    animation: flow-in 0.32s var(--ease-out-soft);
+  }
+  @media (min-width: 768px) {
+    .flow-card { padding: 2.5rem 2.5rem 2.75rem; }
+  }
+  @keyframes flow-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .flow-card-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: var(--text-eyebrow);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    color: var(--color-text-subtle);
+    margin-bottom: 1rem;
+  }
+  .flow-step { color: var(--color-amber); }
+  .flow-sep { color: var(--color-border-strong); font-size: 0.6em; }
+
+  .flow-question-title {
+    font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.25rem);
+    font-weight: 500;
+    line-height: 1.18;
+    letter-spacing: -0.014em;
+    color: var(--color-text-strong);
+    margin: 0 0 0.65rem;
+    max-width: 32ch;
+  }
+  .flow-question-sub {
+    color: var(--color-text-muted);
+    font-size: var(--text-ui);
+    line-height: 1.6;
+    margin: 0 0 1.5rem;
+    max-width: 56ch;
+  }
+
+  .flow-options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .flow-option {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 0.2rem 1rem;
+    width: 100%;
+    text-align: left;
+    padding: 1rem 1.15rem;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    color: var(--color-text);
+    cursor: pointer;
+    transition:
+      border-color var(--duration-fast) var(--ease-out),
+      background var(--duration-fast) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out),
+      box-shadow var(--duration-fast) var(--ease-out);
+  }
+  .flow-option:hover, .flow-option:focus-visible {
+    border-color: var(--color-accent);
+    background: var(--color-surface-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow);
+  }
+  .flow-option:hover .flow-option-arrow,
+  .flow-option:focus-visible .flow-option-arrow {
+    color: var(--color-accent);
+    transform: translateX(2px);
+  }
+  .flow-option-label {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--color-text-strong);
+    line-height: 1.4;
+  }
+  .flow-option-desc {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: var(--text-caption);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-top: 0.15rem;
+  }
+  .flow-option-arrow {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    color: var(--color-text-subtle);
+    transition: color var(--duration-fast) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out);
+    align-self: center;
+  }
+
+  /* Result card */
+  .flow-result {
+    border-color: var(--color-border-strong);
+    position: relative;
+    overflow: hidden;
+  }
+  .flow-result::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 100% 0%, rgba(124,140,255,0.10), transparent 60%);
+    pointer-events: none;
+  }
+  .flow-result[data-accent="amber"]::before {
+    background: radial-gradient(ellipse 80% 60% at 100% 0%, rgba(246,193,119,0.10), transparent 60%);
+  }
+  .flow-result[data-accent="success"]::before {
+    background: radial-gradient(ellipse 80% 60% at 100% 0%, rgba(124,217,168,0.10), transparent 60%);
+  }
+  .flow-result-meta { color: var(--color-success); }
+  .flow-result[data-accent="indigo"] .flow-result-meta { color: var(--color-accent); }
+  .flow-result[data-accent="amber"]  .flow-result-meta { color: var(--color-amber); }
+
+  .flow-result-primitive {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.018em;
+    color: var(--color-text-strong);
+    margin: 0 0 0.75rem;
+  }
+  .flow-result-tagline {
+    color: var(--color-text-muted);
+    font-size: var(--text-lead);
+    line-height: 1.55;
+    margin: 0 0 1.75rem;
+    max-width: 52ch;
+  }
+  .flow-result-details {
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .flow-result-details li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--color-text);
+    line-height: 1.6;
+    font-size: var(--text-ui);
+  }
+  .flow-result-details li::before {
+    content: "";
+    position: absolute;
+    left: 0.4rem;
+    top: 0.7rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+  .flow-result[data-accent="amber"] .flow-result-details li::before { background: var(--color-amber); }
+  .flow-result[data-accent="success"] .flow-result-details li::before { background: var(--color-success); }
+  .flow-result-details li code {
+    font-family: var(--font-mono);
+    font-size: 0.92em;
+    background: var(--color-surface-2);
+    padding: 0.1em 0.4em;
+    border-radius: var(--radius-xs);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-strong);
+  }
+  .flow-result-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.7rem 1.1rem;
+    background: var(--color-accent);
+    color: #0B1020;
+    font-size: var(--text-ui);
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: transform var(--duration-fast) var(--ease-out),
+                background var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-fast) var(--ease-out);
+  }
+  .flow-result[data-accent="amber"] .flow-result-cta { background: var(--color-amber); }
+  .flow-result[data-accent="success"] .flow-result-cta { background: var(--color-success); }
+  .flow-result-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md), var(--shadow-glow);
+    text-decoration: none;
+    color: #0B1020;
+  }
+  .flow-result[data-accent="amber"] .flow-result-cta:hover {
+    box-shadow: var(--shadow-md), var(--shadow-amber-glow);
+  }
+
+  .flow-controls {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    justify-content: space-between;
+  }
+  .flow-back, .flow-restart {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.85rem;
+    color: var(--color-text-muted);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-caption);
+    cursor: pointer;
+    transition: color var(--duration-fast) var(--ease-out),
+                border-color var(--duration-fast) var(--ease-out),
+                background var(--duration-fast) var(--ease-out);
+  }
+  .flow-back:hover, .flow-restart:hover {
+    color: var(--color-text);
+    border-color: var(--color-border-strong);
+    background: var(--color-surface);
+  }
+  .flow-back[hidden], .flow-restart[hidden] { display: none; }
+
+  .flow-noscript {
+    margin-top: 2rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-amber-soft);
+    border-left: 2px solid var(--color-amber);
+    color: var(--color-text);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+</style>
+
+<script>
+  // ────────────────────────── Decision flow runtime ──────────────────────────
+  type Accent = 'indigo' | 'amber' | 'success';
+  type QuestionOption = { label: string; description?: string; next: string };
+  type QuestionNode = { kind: 'question'; id: string; question: string; subtitle?: string; options: QuestionOption[] };
+  type ResultNode = { kind: 'result'; id: string; primitive: string; tagline: string; details: string[]; link: { href: string; label: string }; accent: Accent };
+  type FlowNode = QuestionNode | ResultNode;
+
+  const dataEl = document.getElementById('flow-tree-data');
+  if (!dataEl?.textContent) {
+    // No data — bail.
+  } else {
+    const tree = JSON.parse(dataEl.textContent) as Record<string, FlowNode>;
+    const root  = document.querySelector<HTMLElement>('[data-flow-root]')!;
+    const stage = root.querySelector<HTMLElement>('[data-flow-stage]')!;
+    const path  = root.querySelector<HTMLElement>('[data-flow-path]')!;
+    const back  = root.querySelector<HTMLButtonElement>('[data-flow-back]')!;
+    const restart = root.querySelector<HTMLButtonElement>('[data-flow-restart]')!;
+
+    type PathEntry = { nodeId: string; chosen: string };
+    let stack: PathEntry[] = [];     // history of nodes we've passed through (questions)
+    let currentId = 'start';
+
+    function escapeHtml(s: string): string {
+      return s.replace(/[&<>"']/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' } as Record<string,string>)[c]);
+    }
+
+    // Convert markdown-ish inline `code` to <code>code</code>
+    function inlineCode(s: string): string {
+      return escapeHtml(s).replace(/`([^`]+)`/g, '<code>$1</code>')
+                          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    }
+
+    function renderQuestion(node: QuestionNode, step: number): string {
+      const opts = node.options.map((o, i) => `
+        <li>
+          <button type="button" class="flow-option" data-flow-next="${escapeHtml(o.next)}" data-flow-label="${escapeHtml(o.label)}" autofocus="${i === 0 ? 'true' : 'false'}">
+            <span class="flow-option-label">${escapeHtml(o.label)}</span>
+            ${o.description ? `<span class="flow-option-desc">${inlineCode(o.description)}</span>` : ''}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="flow-option-arrow" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </button>
+        </li>
+      `).join('');
+      return `
+        <article class="flow-card flow-question" data-flow-current data-node-id="${node.id}">
+          <div class="flow-card-meta">
+            <span class="flow-step">Step <span data-flow-step>${step}</span></span>
+            <span class="flow-sep" aria-hidden="true">·</span>
+            <span class="flow-kind">Question</span>
+          </div>
+          <h2 class="flow-question-title serif">${escapeHtml(node.question)}</h2>
+          ${node.subtitle ? `<p class="flow-question-sub">${inlineCode(node.subtitle)}</p>` : ''}
+          <ul class="flow-options">${opts}</ul>
+        </article>
+      `;
+    }
+
+    function renderResult(node: ResultNode, step: number): string {
+      const details = node.details.map((d) => `<li>${inlineCode(d)}</li>`).join('');
+      return `
+        <article class="flow-card flow-result" data-flow-current data-node-id="${node.id}" data-accent="${node.accent}">
+          <div class="flow-card-meta">
+            <span class="flow-step">Step ${step}</span>
+            <span class="flow-sep" aria-hidden="true">·</span>
+            <span class="flow-result-meta">Recommendation</span>
+          </div>
+          <h2 class="flow-result-primitive serif">${escapeHtml(node.primitive)}</h2>
+          <p class="flow-result-tagline">${inlineCode(node.tagline)}</p>
+          <ul class="flow-result-details">${details}</ul>
+          <a href="${escapeHtml(node.link.href)}" class="flow-result-cta">
+            ${escapeHtml(node.link.label)}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </a>
+        </article>
+      `;
+    }
+
+    function renderPath() {
+      if (stack.length === 0) {
+        path.innerHTML = '';
+        return;
+      }
+      path.innerHTML = stack.map((entry, i) => {
+        const sep = i < stack.length - 1 ? '<span class="flow-path-sep" aria-hidden="true">›</span>' : '';
+        return `<button type="button" class="flow-path-item" data-flow-rewind="${i}">${escapeHtml(entry.chosen)}</button>${sep}`;
+      }).join('');
+    }
+
+    function syncControls() {
+      const isStart = stack.length === 0;
+      back.hidden = isStart;
+      restart.hidden = isStart;
+      back.disabled = isStart;
+    }
+
+    function go(toId: string, chosenLabel?: string) {
+      const node = tree[toId];
+      if (!node) return;
+
+      // Push onto path if we're moving forward from a question
+      if (chosenLabel && currentId !== toId) {
+        const cur = tree[currentId];
+        if (cur?.kind === 'question') {
+          stack.push({ nodeId: currentId, chosen: chosenLabel });
+        }
+      }
+
+      currentId = toId;
+      const step = stack.length + 1;
+      stage.innerHTML = node.kind === 'question' ? renderQuestion(node, step) : renderResult(node, step);
+      bindOptions();
+      renderPath();
+      syncControls();
+
+      // Smooth-scroll the card into view (subtle)
+      requestAnimationFrame(() => {
+        stage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    }
+
+    function bindOptions() {
+      stage.querySelectorAll<HTMLButtonElement>('[data-flow-next]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const next  = btn.dataset.flowNext!;
+          const label = btn.dataset.flowLabel!;
+          go(next, label);
+        });
+      });
+    }
+
+    function rewindTo(index: number) {
+      // Truncate the stack to index entries, then return to the node at that step.
+      // index = stack length we want — the question shown was that step's node.
+      if (index < 0 || index > stack.length) return;
+      const targetEntry = stack[index];
+      const targetId = targetEntry?.nodeId ?? 'start';
+      stack = stack.slice(0, index);
+      currentId = targetId;
+      const node = tree[targetId];
+      const step = stack.length + 1;
+      if (!node) return;
+      stage.innerHTML = node.kind === 'question' ? renderQuestion(node, step) : renderResult(node, step);
+      bindOptions();
+      renderPath();
+      syncControls();
+    }
+
+    // Wire path-item rewind
+    path.addEventListener('click', (e) => {
+      const target = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-flow-rewind]');
+      if (!target) return;
+      rewindTo(parseInt(target.dataset.flowRewind!, 10));
+    });
+
+    // Wire back button
+    back.addEventListener('click', () => {
+      if (stack.length === 0) return;
+      rewindTo(stack.length - 1);
+    });
+
+    // Wire restart button
+    restart.addEventListener('click', () => {
+      stack = [];
+      go('start');
+    });
+
+    // Initial wiring (server-rendered start question)
+    bindOptions();
+    syncControls();
+  }
+</script>

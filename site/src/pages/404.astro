@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import Icon from '../components/Icon.astro';
+import KeyboardShortcut from '../components/KeyboardShortcut.astro';
+import { withBase } from '../lib/url';
+---
+
+<BaseLayout
+  title="Not found"
+  description="The page you're looking for isn't in this guide."
+>
+  <section class="not-found">
+    <div class="not-found-inner">
+      <Eyebrow>404</Eyebrow>
+      <h1 class="nf-title serif">The page you're looking for isn't in this guide.</h1>
+      <p class="nf-lead">
+        Either the link is stale, or you've found a section we haven't written yet.
+        Try the index, or search the field guide.
+      </p>
+      <div class="nf-ctas">
+        <button type="button" class="btn btn-primary" data-search-trigger>
+          <Icon name="search" size={14} />
+          Search the guide
+          <KeyboardShortcut keys={['⌘', 'K']} />
+        </button>
+        <a href={withBase('/docs')} class="btn btn-ghost">
+          <Icon name="arrow-left" size={14} />
+          Back to docs
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    min-height: calc(100vh - var(--header-h) - 4rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+  }
+  .not-found-inner {
+    max-width: 48ch;
+    text-align: center;
+  }
+  .nf-title {
+    font-size: var(--text-display-md);
+    font-weight: 500;
+    color: var(--color-text-strong);
+    line-height: 1.15;
+    letter-spacing: -0.014em;
+    margin: 1rem 0 1.25rem;
+  }
+  .nf-lead {
+    color: var(--color-text-muted);
+    font-size: var(--text-body);
+    line-height: 1.65;
+    margin: 0 0 2rem;
+  }
+  .nf-ctas {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+</style>

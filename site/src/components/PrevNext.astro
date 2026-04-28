@@ -1,0 +1,89 @@
+---
+import Icon from './Icon.astro';
+import { withBase } from '../lib/url';
+
+interface Item {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  prev?: Item | null;
+  next?: Item | null;
+}
+
+const { prev, next } = Astro.props;
+---
+
+{(prev || next) && (
+  <nav class="prevnext" aria-label="Pagination">
+    {prev ? (
+      <a href={withBase(prev.href)} class="pn-card pn-prev" rel="prev">
+        <span class="pn-meta"><Icon name="arrow-left" size={12} /> Previous</span>
+        <span class="pn-label">{prev.label}</span>
+      </a>
+    ) : <span />}
+
+    {next ? (
+      <a href={withBase(next.href)} class="pn-card pn-next" rel="next">
+        <span class="pn-meta">Next <Icon name="arrow-right" size={12} /></span>
+        <span class="pn-label">{next.label}</span>
+      </a>
+    ) : <span />}
+  </nav>
+)}
+
+<style>
+  .prevnext {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+  @media (min-width: 640px) {
+    .prevnext { grid-template-columns: 1fr 1fr; }
+  }
+
+  .pn-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.1rem 1.25rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: var(--color-text);
+    transition:
+      border-color var(--duration-fast) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out),
+      background var(--duration-fast) var(--ease-out);
+  }
+  .pn-card:hover {
+    border-color: var(--color-border-strong);
+    background: var(--color-surface-hover);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  .pn-next { text-align: right; }
+  .pn-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: var(--text-caption);
+    color: var(--color-text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .pn-next .pn-meta { justify-content: flex-end; }
+  .pn-label {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--color-text-strong);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+</style>

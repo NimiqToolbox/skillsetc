@@ -1,0 +1,83 @@
+---
+import { withBase } from '../lib/url';
+
+interface Props {
+  href: string;
+  label: string;
+  description?: string;
+  active?: boolean;
+}
+
+const { href, label, description, active = false } = Astro.props;
+---
+
+<li>
+  <a
+    href={withBase(href)}
+    class:list={['sb-link', { active }]}
+    aria-current={active ? 'page' : undefined}
+  >
+    <span class="sb-dot" aria-hidden="true"></span>
+    <span class="sb-label">{label}</span>
+    {description && <span class="sb-desc">{description}</span>}
+  </a>
+</li>
+
+<style>
+  .sb-link {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1rem 1fr;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--color-text-muted);
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      background var(--duration-fast) var(--ease-out);
+  }
+  .sb-link:hover {
+    color: var(--color-text);
+    background: var(--color-surface);
+    text-decoration: none;
+  }
+  .sb-link.active {
+    color: var(--color-text-strong);
+    background: var(--color-accent-soft);
+  }
+
+  .sb-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: transparent;
+    transition: background var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-fast) var(--ease-out);
+    margin-top: 0.5em;
+  }
+  .sb-link:hover .sb-dot {
+    background: var(--color-text-subtle);
+  }
+  .sb-link.active .sb-dot {
+    background: var(--color-amber);
+    box-shadow: 0 0 0 3px rgba(246,193,119,0.18);
+  }
+
+  .sb-label {
+    font-size: var(--text-ui);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .sb-desc {
+    grid-column: 2;
+    font-size: var(--text-caption);
+    color: var(--color-text-subtle);
+    line-height: 1.4;
+    margin-top: 0.1rem;
+  }
+  .sb-link.active .sb-desc {
+    color: var(--color-text-muted);
+  }
+</style>

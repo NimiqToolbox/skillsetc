@@ -1,0 +1,26 @@
+# build output
+site/dist/
+site/.astro/
+
+# dependencies
+site/node_modules/
+node_modules/
+
+# logs
+*.log
+
+# environment
+.env
+.env.local
+.env.production
+
+# editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude planning artifacts (local only)
+.claude/

@@ -1,0 +1,120 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Toc from '../components/Toc.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PrevNext from '../components/PrevNext.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import SourcesPanel from '../components/SourcesPanel.astro';
+import { findNeighbours } from '../data/nav';
+import { formatDate } from '../lib/format';
+import { withBase } from '../lib/url';
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow?: string;
+  slug: string;
+  headings: Heading[];
+  sources?: string[];
+  updated?: Date;
+}
+
+const {
+  title,
+  description,
+  eyebrow,
+  slug,
+  headings,
+  sources = [],
+  updated,
+} = Astro.props;
+
+const { prev, next } = findNeighbours(slug);
+const prevItem = prev ? { href: withBase(`/docs/${prev.slug}`), label: prev.label } : null;
+const nextItem = next ? { href: withBase(`/docs/${next.slug}`), label: next.label } : null;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="doc-shell">
+    <Sidebar currentSlug={slug} />
+
+    <article class="doc-article" data-pagefind-body>
+      <Breadcrumbs crumbs={[{ label: 'Docs', href: withBase('/docs') }, { label: title }]} />
+
+      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+      <h1 class="doc-title serif">{title}</h1>
+      <p class="doc-lead">{description}</p>
+
+      {sources.length > 0 && <SourcesPanel sources={sources} />}
+
+      <div class="prose">
+        <slot />
+      </div>
+
+      {updated && (
+        <p class="doc-updated">Last updated {formatDate(updated)}</p>
+      )}
+
+      <PrevNext prev={prevItem} next={nextItem} />
+    </article>
+
+    <Toc headings={headings} />
+  </div>
+</BaseLayout>
+
+<style>
+  .doc-shell {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    max-width: var(--container-doc);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    .doc-shell { padding: 0 1.75rem; gap: 3rem; }
+  }
+  @media (min-width: 1280px) {
+    .doc-shell { gap: 3.5rem; }
+  }
+
+  .doc-article {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 2.5rem 0 4rem;
+    max-width: var(--article-max);
+  }
+  @media (min-width: 1024px) {
+    .doc-article { padding: 3.5rem 0 5rem; }
+  }
+
+  .doc-title {
+    font-size: var(--text-display-lg);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.018em;
+    color: var(--color-text-strong);
+    margin: 0.75rem 0 1.1rem;
+  }
+  .doc-lead {
+    font-size: var(--text-lead);
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    margin: 0 0 2rem;
+    max-width: 60ch;
+  }
+
+  .doc-updated {
+    margin-top: 3rem;
+    font-size: var(--text-caption);
+    color: var(--color-text-subtle);
+    letter-spacing: 0.02em;
+  }
+</style>

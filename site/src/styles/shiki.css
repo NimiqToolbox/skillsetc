@@ -1,0 +1,134 @@
+/* ────────────────────────────────────────────────────────────────────
+   Shiki code-block chrome (vesper theme)
+   The <pre class="astro-code"> wrapper is what Astro/Shiki emits.
+   ──────────────────────────────────────────────────────────────────── */
+
+.prose pre.astro-code,
+.code-figure pre.astro-code {
+  position: relative;
+  margin: 1.5em 0;
+  padding: 1.1em 1.25em;
+  font-family: var(--font-mono);
+  font-size: var(--text-code);
+  line-height: 1.65;
+  background: #101426 !important; /* vesper bg overridden to match site */
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  scrollbar-width: thin;
+  box-shadow: var(--shadow-sm);
+}
+
+.prose pre.astro-code::before {
+  /* Subtle top hairline */
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.06), transparent);
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+}
+
+.prose pre.astro-code code {
+  font-family: var(--font-mono);
+  font-size: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  /* Disable the inline code styling for code inside pre */
+}
+
+.prose pre.astro-code .line {
+  display: inline-block;
+  width: 100%;
+}
+
+/* Code figure wraps a <pre> with optional caption + copy button */
+.code-figure {
+  position: relative;
+  margin: 1.5em 0;
+}
+
+.code-figure .code-caption {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em 1em;
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  color: var(--color-text-subtle);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-bottom: 0;
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+}
+
+.code-figure .code-caption + pre.astro-code {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.6em;
+  right: 0.6em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  color: var(--color-text-subtle);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+  cursor: pointer;
+  z-index: 2;
+}
+.code-figure:hover .copy-btn,
+.copy-btn:focus-visible {
+  opacity: 1;
+}
+.copy-btn:hover {
+  color: var(--color-text-strong);
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-strong);
+}
+.copy-btn svg {
+  width: 14px;
+  height: 14px;
+}
+.copy-btn[data-copied="true"] {
+  color: var(--color-success);
+  border-color: var(--color-success);
+  opacity: 1;
+}
+
+.code-lang {
+  position: absolute;
+  top: 0.7em;
+  right: 3em;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  background: var(--color-surface-2);
+  padding: 0.2em 0.5em;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-border);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+.code-figure:hover .code-lang { opacity: 0.85; }

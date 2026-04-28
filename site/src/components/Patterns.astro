@@ -1,0 +1,313 @@
+---
+import Eyebrow from './Eyebrow.astro';
+import Icon from './Icon.astro';
+import { withBase } from '../lib/url';
+
+interface Pattern {
+  kicker: string;
+  title: string;
+  why: string;
+  primitive: string;
+  primitiveHref: string;
+  snippet: { lang: string; code: string };
+}
+
+const patterns: Pattern[] = [
+  {
+    kicker: 'Why a hook?',
+    title: 'Block dangerous bash commands before they run.',
+    why: 'Memory and skills can ask Claude to be careful — they can\'t enforce it. Hooks fire from the harness, not the model, so the rule is unskippable.',
+    primitive: 'Hook (PreToolUse)',
+    primitiveHref: '/docs/hooks-mcp-memory-settings#1-hooks',
+    snippet: {
+      lang: 'json',
+      code: `{
+  "hooks": {
+    "PreToolUse": [{
+      "matcher": "Bash",
+      "hooks": [{
+        "type": "command",
+        "if": "Bash(rm -rf *)",
+        "command": "./.claude/hooks/confirm.sh"
+      }]
+    }]
+  }
+}`,
+    },
+  },
+  {
+    kicker: 'Why a skill?',
+    title: 'Reusable workflows Claude auto-picks when relevant.',
+    why: 'A SKILL.md\'s description is loaded into context so Claude can match it to the user\'s request. The body and bundled scripts only load on demand — pay for what you use.',
+    primitive: 'Skill',
+    primitiveHref: '/docs/skills',
+    snippet: {
+      lang: 'yaml',
+      code: `---
+name: fix-issue
+description: Fix a GitHub issue. Use when the user
+  references an issue number or asks to address a bug.
+allowed-tools: Bash(git add *) Bash(git commit *)
+arguments: [issue-number]
+---
+1. Read issue \$ARGUMENTS[0]
+2. Implement the fix
+3. Write tests
+4. Commit`,
+    },
+  },
+  {
+    kicker: 'Why a subagent?',
+    title: 'Run verbose work without flooding your main context.',
+    why: 'Test logs, grep output, and file dumps would balloon the main conversation. A subagent runs the same work in an isolated window and returns only the summary you need.',
+    primitive: 'Subagent',
+    primitiveHref: '/docs/subagents',
+    snippet: {
+      lang: 'yaml',
+      code: `---
+name: test-runner
+description: Run the test suite and report only the failing
+  cases with file paths and error messages.
+tools: Bash, Read
+model: haiku
+---
+You are a test runner. Run \`npm test\`,
+return *only* failing test names + error output.
+Never paste full logs into your reply.`,
+    },
+  },
+  {
+    kicker: 'Why path-scoped rules?',
+    title: 'Different rules for different parts of the codebase.',
+    why: 'A monorepo with API + frontend + tests doesn\'t want the same conventions everywhere. Path-scoped rule files load only when the user is editing matching files — zero context cost when irrelevant.',
+    primitive: '.claude/rules/<name>.md',
+    primitiveHref: '/docs/hooks-mcp-memory-settings#3-memory',
+    snippet: {
+      lang: 'markdown',
+      code: `---
+paths:
+  - "src/api/**/*.ts"
+  - "src/server/**/*.ts"
+---
+
+# API Conventions
+
+- All endpoints return \`{ ok, data, error }\`
+- Use Zod for input validation
+- Never log full request bodies (PII risk)
+- Errors throw \`HTTPError(status, code, message)\``,
+    },
+  },
+];
+---
+
+<section class="patterns">
+  <div class="patterns-inner">
+    <header class="patterns-header">
+      <Eyebrow>When &amp; why</Eyebrow>
+      <h2 class="patterns-title serif">Pick the primitive that <em>actually</em> solves the problem.</h2>
+      <p class="patterns-lead">
+        Four worked examples — what each primitive is for, why the alternatives fall short, and the
+        smallest snippet that does the job.
+      </p>
+    </header>
+
+    <ol class="patterns-list">
+      {patterns.map((p, i) => (
+        <li class="pattern">
+          <div class="pattern-meta">
+            <span class="pattern-num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="pattern-kicker">{p.kicker}</span>
+          </div>
+
+          <div class="pattern-body">
+            <h3 class="pattern-title serif">{p.title}</h3>
+            <p class="pattern-why">{p.why}</p>
+            <a href={withBase(p.primitiveHref)} class="pattern-link">
+              Use a <strong>{p.primitive}</strong>
+              <Icon name="arrow-right" size={12} class="pattern-link-arrow" />
+            </a>
+          </div>
+
+          <pre class="pattern-snippet" data-lang={p.snippet.lang}><code>{p.snippet.code}</code></pre>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .patterns {
+    padding: 5rem 1.5rem 6rem;
+    border-top: 1px solid var(--color-border);
+  }
+  @media (min-width: 1024px) {
+    .patterns { padding: 7rem 1.75rem 8rem; }
+  }
+  .patterns-inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .patterns-header {
+    max-width: 50ch;
+    margin-bottom: 4rem;
+  }
+  .patterns-title {
+    font-size: var(--text-display-md);
+    font-weight: 500;
+    color: var(--color-text-strong);
+    margin: 0.85rem 0 1rem;
+    letter-spacing: -0.014em;
+    line-height: 1.15;
+  }
+  .patterns-title em {
+    font-style: italic;
+    color: var(--color-amber);
+    font-weight: 500;
+  }
+  .patterns-lead {
+    color: var(--color-text-muted);
+    font-size: var(--text-ui);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .patterns-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    counter-reset: pattern-counter;
+  }
+
+  .pattern {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem 2.5rem;
+    align-items: start;
+  }
+  @media (min-width: 900px) {
+    .pattern {
+      grid-template-columns: 1.05fr 1fr;
+    }
+  }
+
+  .pattern-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    grid-column: 1;
+  }
+  @media (min-width: 900px) {
+    .pattern-meta { grid-column: 1 / -1; }
+  }
+  .pattern-num {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--color-amber);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .pattern-kicker {
+    font-size: var(--text-eyebrow);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    color: var(--color-text-subtle);
+  }
+
+  .pattern-body {
+    grid-column: 1;
+  }
+  @media (min-width: 900px) {
+    .pattern-body { grid-column: 1; }
+  }
+
+  .pattern-title {
+    font-size: 1.65rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--color-text-strong);
+    margin: 0 0 0.85rem;
+    letter-spacing: -0.012em;
+    max-width: 22ch;
+  }
+  .pattern-why {
+    color: var(--color-text-muted);
+    font-size: var(--text-ui);
+    line-height: 1.7;
+    margin: 0 0 1.25rem;
+    max-width: 42ch;
+  }
+
+  .pattern-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-text);
+    font-size: var(--text-ui);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out),
+                gap var(--duration-fast) var(--ease-out);
+  }
+  .pattern-link strong {
+    color: var(--color-accent);
+    font-weight: 500;
+    margin-left: 0.2em;
+  }
+  .pattern-link:hover {
+    color: var(--color-text-strong);
+    text-decoration: none;
+    gap: 0.6rem;
+  }
+  .pattern-link:hover strong {
+    color: var(--color-accent-hover);
+  }
+  .pattern-link-arrow {
+    color: var(--color-text-subtle);
+  }
+
+  .pattern-snippet {
+    grid-column: 1;
+    margin: 0;
+    padding: 1.1rem 1.25rem;
+    background: #101426;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    overflow-x: auto;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+  @media (min-width: 900px) {
+    .pattern-snippet { grid-column: 2; }
+  }
+  .pattern-snippet::after {
+    content: attr(data-lang);
+    position: absolute;
+    top: 0.5rem;
+    right: 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-subtle);
+    background: var(--color-surface-2);
+    padding: 0.15em 0.45em;
+    border-radius: var(--radius-xs);
+    border: 1px solid var(--color-border);
+  }
+  .pattern-snippet code {
+    font-family: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    color: inherit;
+    white-space: pre;
+  }
+</style>

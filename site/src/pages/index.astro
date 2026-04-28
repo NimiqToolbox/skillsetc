@@ -1,0 +1,51 @@
+---
+import LandingLayout from '../layouts/LandingLayout.astro';
+import Hero from '../components/Hero.astro';
+import ConceptGrid from '../components/ConceptGrid.astro';
+import ConceptCard from '../components/ConceptCard.astro';
+import DecisionTeaser from '../components/DecisionTeaser.astro';
+import Patterns from '../components/Patterns.astro';
+
+const concepts = [
+  { kicker: 'Always-on',     title: 'Skills',     tagline: 'A reusable workflow auto-loaded by description. Bundled scripts run without paying tokens for the code itself.',           href: '/docs/skills',                                       accent: 'indigo' as const },
+  { kicker: 'Isolated',      title: 'Subagents',  tagline: 'A separate agent context with its own system prompt, tools, and model. Returns only a summary to the main thread.',         href: '/docs/subagents',                                    accent: 'indigo' as const },
+  { kicker: 'Automation',    title: 'Hooks',      tagline: 'Out-of-band scripts wired to PreToolUse, PostToolUse, Stop. The only primitive that fires *every* time, reliably.',          href: '/docs/hooks-mcp-memory-settings#1-hooks',            accent: 'indigo' as const },
+  { kicker: 'Integration',   title: 'MCP',        tagline: 'Model Context Protocol — stdio, SSE, HTTP. Databases, browsers, dev tools as first-class callable tools.',                  href: '/docs/hooks-mcp-memory-settings#2-mcp-model-context-protocol', accent: 'indigo' as const },
+  { kicker: 'Conventions',   title: 'Memory',     tagline: 'CLAUDE.md and .claude/rules/. Persistent project context Claude reads at every session start, with optional path-scoping.', href: '/docs/hooks-mcp-memory-settings#3-memory',           accent: 'indigo' as const },
+  { kicker: 'Decide',        title: 'Decision Guide', tagline: 'When to reach for which primitive. A decision tree, side-by-side comparisons, and battle-tested workflow patterns.',    href: '/docs/comparison-and-decision-guide',                accent: 'amber'  as const },
+];
+---
+
+<LandingLayout
+  title="skillsetc"
+  description="A field guide to Skills, Subagents, Claude Code & OpenAI Codex — compiled from primary sources, opinionated, source-cited."
+>
+  <Hero
+    eyebrow="A field guide · April 2026"
+    title="Skills, Subagents, Claude Code & OpenAI Codex."
+    titleAccents={["Skills", "Subagents"]}
+    lead="A reference distilled from official docs — the primitives that power modern coding agents, with side-by-side comparisons and a five-minute decision guide."
+    primaryCta={{ label: 'Read the guide',  href: '/docs/claude-code' }}
+    secondaryCta={{ label: 'Decision tree', href: '/docs/comparison-and-decision-guide' }}
+    meta="Sonnet 4.6 · Opus 4.7 (1M ctx) · gpt-5.5 · gpt-5.4-mini"
+  />
+
+  <ConceptGrid
+    eyebrow="The six primitives"
+    title="The vocabulary of modern coding agents."
+  >
+    {concepts.map((c) => (
+      <ConceptCard
+        kicker={c.kicker}
+        title={c.title}
+        tagline={c.tagline}
+        href={c.href}
+        accent={c.accent}
+      />
+    ))}
+  </ConceptGrid>
+
+  <Patterns />
+
+  <DecisionTeaser />
+</LandingLayout>
