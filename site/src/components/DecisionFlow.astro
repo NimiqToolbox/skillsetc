@@ -69,7 +69,11 @@ const treeJson = JSON.stringify(baseTree);
 
 <script id="flow-tree-data" type="application/json" set:html={treeJson}></script>
 
-<style>
+<style is:global>
+  /* `is:global` so dynamically-injected nodes (innerHTML on click) keep
+     their styling — Astro's scoped CSS uses data-astro-cid-* attrs that
+     JS-rendered HTML wouldn't carry. Class names are flow-prefixed so
+     this can't bleed into other components. */
   .flow {
     max-width: 56rem;
     margin: 0 auto;
